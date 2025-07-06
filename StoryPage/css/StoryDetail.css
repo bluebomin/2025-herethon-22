@@ -1,0 +1,114 @@
+* {
+  padding: 0;
+  margin: 0;
+  color: #333333;
+}
+section {
+  background-color: rgb(248, 248, 248);
+  padding-bottom: 30px;
+}
+
+#title {
+  margin: 10px 35px;
+  padding: 15px 0;
+  border-bottom: 1px solid #a8a8a8;
+}
+#titleTop {
+  font-size: 20px;
+  font-weight: bold;
+  color: #434d38;
+}
+#titleDt {
+  font-size: 12.7px;
+  padding-top: 3px;
+}
+
+#writeButton {
+  color: #fff;
+  font-weight: 300;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #427d58;
+  float: right;
+  cursor: pointer;
+}
+#writeButton:hover {
+  background-color: #3c7150;
+}
+#writeBtP {
+  overflow: hidden;
+  margin: 13px 35px;
+}
+
+article {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.storyCt {
+  padding: 20px;
+  width: 70%;
+  height: auto;
+  margin: 20px;
+  border-radius: 10px;
+  /* 배경색 지정(변경가능성) */
+  background: linear-gradient(135deg, #ffffff 50%, #e6f5e6 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+.story {
+  font-size: 19px;
+  font-weight: 500;
+  color: #434d38;
+}
+.profile {
+  width: 32px;
+  height: 32px;
+}
+.storyIf {
+  display: flex;
+  margin-top: 5%;
+  align-items: center;
+}
+.userIf {
+  margin-left: 10px;
+}
+.userSt {
+  display: flex;
+  align-items: center;
+}
+.userName {
+  font-size: 13px;
+  font-weight: 500;
+}
+.userT {
+  font-size: 12px;
+  padding-right: 3px;
+  border-right: 1px solid rgb(67, 67, 67);
+}
+.userJ {
+  font-size: 12px;
+  margin-left: 3px;
+}
+
+#storyMove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#mvF,
+#mvB,
+#mvN,
+#mvE {
+  width: 18px;
+  height: 18px;
+  margin: 30px 3px 30px 5px;
+}
+#thisPage {
+  font-size: 13px;
+  color: #427d58;
+  font-weight: 500;
+}
