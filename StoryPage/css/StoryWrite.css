@@ -9,21 +9,19 @@ section {
 }
 
 #title {
-  margin: 10px 35px;
-  padding: 15px 0;
+  margin: 0px 35px;
+  padding: 25px 0 15px 0;
   border-bottom: 1px solid #a8a8a8;
 }
-#titleTop {
-  font-size: 20px;
-  font-weight: bold;
-  color: #434d38;
+#HdImg {
+  width: 13%;
 }
 #titleDt {
   font-size: 12.7px;
   padding-top: 3px;
 }
 
-#wrT {
+.wrT {
   display: flex;
   margin: 28px 35px 0 35px;
 }
@@ -31,15 +29,142 @@ section {
   font-size: 15px;
   font-weight: 600;
   display: flex;
-  justify-content: center;
   align-items: center;
+  width: 5%;
 }
 #wrStoryTitle {
   padding: 14px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
   border: 1.5px solid #e5e7eb;
-  width: 80%;
+  width: 90%;
   margin-left: 30px;
   font-size: 15px;
 }
+#wrTitleN {
+  font-size: 14.5px;
+  font-weight: 600;
+  width: 5%;
+}
+#wrStoryN {
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #e5e7eb;
+  width: 90%;
+  margin-left: 30px;
+  font-size: 14.5px;
+  height: 300px;
+  font-family: system-ui, sans-serif;
+}
+#stSubF {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+#stSubmit {
+  width: 30%;
+  height: 35px;
+  border-radius: 8px;
+  border: none;
+  background-color: #427d58;
+  color: #fff;
+  font-weight: 320;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: none;
+}
+#stSubmit:hover {
+  background-color: #3c7150;
+}
+
+/* 푸터 */
+footer {
+  height: 100%;
+  text-align: center;
+  background-color: #427d58;
+}
+.logo2 {
+  margin-top: 25px;
+  width: 40px;
+}
+footer .logo3 {
+  width: 35%;
+  margin-bottom: 50px;
+}
+/* 푸터 */
+
+/* 헤더 */
+header {
+  display: flex;
+  width: 100%;
+  height: 87px;
+  position: sticky;
+  box-shadow: 0px 3px 11.4px 0px rgba(0, 0, 0, 0.15);
+}
+#HderLogos {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  white-space: nowrap;
+}
+#HdLogoTT {
+  width: 40%;
+  min-width: 30px;
+}
+#HdLogoKTT {
+  width: 35%;
+  min-width: 25px;
+}
+
+.HdA {
+  white-space: nowrap;
+  margin: 0 30px;
+}
+#menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+#HdScetion {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 50px;
+}
+
+a {
+  text-decoration: none; /* 밑줄 제거 */
+}
+#login {
+  width: 67%;
+  min-width: 80px;
+}
+#UserImg,
+#BellImg {
+  width: 48%;
+  margin-right: 30px;
+}
+#SearchImg {
+  width: 10%;
+  margin-bottom: 5px;
+}
+
+#user-actions {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  font-weight: 500;
+}
+nav a:hover {
+  color: #727272;
+}
+/* 헤더 */

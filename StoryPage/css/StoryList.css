@@ -9,14 +9,13 @@ section {
 }
 
 #title {
-  margin: 10px 35px;
-  padding: 15px 0;
+  margin: 0px 35px;
+  padding: 25px 0 15px 0;
   border-bottom: 1px solid #a8a8a8;
 }
-#titleTop {
-  font-size: 20px;
-  font-weight: bold;
-  color: #434d38;
+
+#HdImg {
+  width: 13%;
 }
 #titleDt {
   font-size: 12.7px;
@@ -162,4 +161,123 @@ section {
   text-align: center;
   font-size: 14px;
   font-weight: 570;
+  text-decoration: none;
 }
+#aList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#NrecoW {
+  display: flex;
+  border-bottom: 1.5px solid #a8a8a893;
+  padding-bottom: 10px;
+}
+#BrecoW {
+  display: flex;
+  margin-top: 10px;
+}
+.nextW {
+  margin-right: 15px;
+  font-weight: 500;
+  color: #434d38;
+  padding-left: 4px;
+}
+#starCt {
+  display: flex;
+  justify-content: space-between;
+}
+#star {
+  width: 39px;
+  height: 39px;
+  margin-right: 15px;
+}
+
+/* 푸터 */
+footer {
+  height: 100%;
+  text-align: center;
+  background-color: #427d58;
+}
+.logo2 {
+  margin-top: 25px;
+  width: 40px;
+}
+footer .logo3 {
+  width: 35%;
+  margin-bottom: 50px;
+}
+/* 푸터 */
+
+/* 헤더 */
+header {
+  display: flex;
+  width: 100%;
+  height: 87px;
+  position: sticky;
+  box-shadow: 0px 3px 11.4px 0px rgba(0, 0, 0, 0.15);
+}
+#HderLogos {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  white-space: nowrap;
+}
+#HdLogoTT {
+  width: 40%;
+  min-width: 30px;
+}
+#HdLogoKTT {
+  width: 35%;
+  min-width: 25px;
+}
+
+.HdA {
+  white-space: nowrap;
+  margin: 0 30px;
+}
+#menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+#HdScetion {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 50px;
+}
+
+a {
+  text-decoration: none; /* 밑줄 제거 */
+}
+#login {
+  width: 67%;
+  min-width: 80px;
+}
+#UserImg,
+#BellImg {
+  width: 48%;
+  margin-right: 30px;
+}
+#SearchImg {
+  width: 10%;
+  margin-bottom: 5px;
+}
+
+#user-actions {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  font-weight: 500;
+}
+nav a:hover {
+  color: #727272;
+}
+/* 헤더 */
