@@ -1,6 +1,5 @@
 // 댓글 작성하면 댓글 +1개 (완)
 // 공감 누르면 사진 교체 (완)
-// 목록 누르면 목록으로 이동
 
 // 좋아요
 document.addEventListener("DOMContentLoaded", function () {
@@ -48,6 +47,22 @@ document.addEventListener("DOMContentLoaded", function () {
   smileImg.addEventListener("click", function () {
     current = (current + 1) % fsmImg.length;
     smileImg.src = fsmImg[current];
+  });
+});
+//스크랩
+document.addEventListener("DOMContentLoaded", function () {
+  const starImg = document.getElementById("star");
+
+  const fStarImg = [
+    "/img/Star 1.png", // 현재 이미지
+    "/img/fStar 1.png", // 교체 이미지
+  ];
+
+  let current = 0;
+
+  starImg.addEventListener("click", function () {
+    current = (current + 1) % fStarImg.length;
+    starImg.src = fStarImg[current];
   });
 });
 
