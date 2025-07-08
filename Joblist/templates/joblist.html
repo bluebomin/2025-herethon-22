@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/joblist.css" />
+    <title>최신채용정보</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 헤더 -->
+      <header>
+        <a href="/login/templates/login.html" class="logo">
+          <img src="../static/img/logo1.svg" alt="로고" />
+          <img src="../static/img/logo4.svg" alt="로고" />
+        </a>
+        <nav class="menu">
+          <ul>
+            <!-- 추후 경로 페이지 수정 -->
+            <li><a href="">틈틈이공유</a></li>
+            <li><a href="">틈틈이정보</a></li>
+            <li><a href="">틈틈이계획</a></li>
+          </ul>
+        </nav>
+        <nav class="user-actions">
+          <ul>
+            <li>
+              <!-- 추후 경로 페이지 수정 -->
+              <a href="/login/"
+                ><img
+                  src="../static/img/loginbtn.svg"
+                  alt="로그인"
+                  class="login"
+              /></a>
+            </li>
+            <li>
+              <a href="/mypage/"
+                ><img src="../static/img/mypage.svg" alt="마이페이지"
+              /></a>
+            </li>
+            <li>
+              <a href="/alert/"
+                ><img src="../static/img/alert.svg" alt="알림"
+              /></a>
+            </li>
+            <li><img src="../static/img/search.svg" alt="검색" /></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- 채용정보 검색 -->
+      <main class="content">
+        <h2>최신 채용 정보</h2>
+        <p>회원님만의 맞춤 채용 정보를 틈틈이 준비했어요.</p>
+        <!-- 위에꺼 폰트 적용하기 -->
+        <hr />
+        <!-- 검색 조건 필터 -->
+        <form action="" method="POST" class="search-filter">
+          <div class="kw-wrapper">
+            <label for="keyword">검색 키워드</label>
+            <input
+              type="text"
+              id="keyword"
+              name="search-keyword"
+              placeholder="관심 있는 채용 키워드를 입력해 주세요."
+              required
+            />
+          </div>
+
+          <div class="job-wrapper">
+            <label>직종</label>
+            <div class="dropdown">
+              <button id="dropdownButton">직종 선택</button>
+              <!-- 여기에 커스텀 화살표  -->
+              <div class="dropdown-menu" id="dropdownMenu">
+                <label
+                  ><input type="checkbox" name="job" value="기획·전략" />
+                  기획·전략</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="IT·개발·데이터" />
+                  IT·개발·데이터</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="생산·제조" />
+                  생산·제조</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="콘텐츠·미디어" />
+                  콘텐츠·미디어</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="마케팅·홍보·MD" />
+                  마케팅·홍보·MD</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="고객상담·CS" />
+                  고객상담·CS</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="건축·시설관리" />
+                  건축·시설관리</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="금융·보험" />
+                  금융·보험</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="회계·세무·재무" />
+                  회계·세무·재무</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="물류·운송" />
+                  물류·운송</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="의료·간호" />
+                  의료·간호</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="공공·복지" />
+                  공공·복지</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="디자인" />
+                  디자인</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="운영·서비스업" />
+                  운영·서비스업</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="교육·강의" />
+                  교육·강의</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="인사·사무·총무" />
+                  인사·사무·총무</label
+                >
+              </div>
+            </div>
+          </div>
+
+           <div class="location-wrapper">
+            <label>지역</label>
+            <div class="dropdown">
+              <button id="dropdownButton">직종 선택</button>
+              <!-- 여기에 커스텀 화살표  -->
+              <div class="dropdown-menu" id="dropdownMenu">
+                <label
+                  ><input type="checkbox" name="job" value="기획·전략" />
+                  기획·전략</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="IT·개발·데이터" />
+                  IT·개발·데이터</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="생산·제조" />
+                  생산·제조</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="콘텐츠·미디어" />
+                  콘텐츠·미디어</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="마케팅·홍보·MD" />
+                  마케팅·홍보·MD</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="고객상담·CS" />
+                  고객상담·CS</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="건축·시설관리" />
+                  건축·시설관리</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="금융·보험" />
+                  금융·보험</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="회계·세무·재무" />
+                  회계·세무·재무</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="물류·운송" />
+                  물류·운송</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="의료·간호" />
+                  의료·간호</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="공공·복지" />
+                  공공·복지</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="디자인" />
+                  디자인</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="운영·서비스업" />
+                  운영·서비스업</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="교육·강의" />
+                  교육·강의</label
+                >
+                <label
+                  ><input type="checkbox" name="job" value="인사·사무·총무" />
+                  인사·사무·총무</label
+                >
+              </div>
+            </div>
+          </div>
+        </form>
+      </main>
+      <!-- 푸터 -->
+      <footer>
+        <img src="../static/img/logo2.svg" alt="로고" class="logo2" />
+
+        <div class="footer-bottom">
+          <h1>단절의 시간을 기회의 시간으로 바꾸는 플랫폼,</h1>
+          <img src="../static/img/logo3.svg" class="logo3" />
+        </div>
+      </footer>
+    </div>
+    <script src="../static/js/joblist.js"></script>
+  </body>
+</html>
