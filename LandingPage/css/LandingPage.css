@@ -14,9 +14,9 @@ header {
   position: sticky;
   box-shadow: 0px 3px 11.4px 0px rgba(0, 0, 0, 0.15);
   /*고정*/
-  /* position: fixed;
+  position: fixed;
   background-color: #ffffff;
-  z-index: 9999; */
+  z-index: 9999;
 }
 
 /* 돋보기 */
@@ -49,7 +49,6 @@ header {
   cursor: pointer;
   color: #4a7154;
 }
-/* 까지 */
 
 #HderLogos {
   flex-direction: column;
@@ -71,6 +70,10 @@ header {
 .HdA {
   white-space: nowrap;
   margin: 0 30px;
+  font-weight: 500;
+}
+.HdA:hover {
+  color: #727272;
 }
 #menu {
   display: flex;
@@ -129,25 +132,6 @@ a {
   /* z-index: 99900; */
   /* 처음엔 숨겨둠 */
   display: none;
-}
-
-/* 고정 */
-notif-box {
-  position: fixed; /*반드시 fixed*/
-  top: 90px; /* 헤더 아래 정도로 */
-  right: 90px; /* 종 아이콘에 맞춰 위치 조정 */
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 16px;
-  padding: 15px 20px;
-  width: 330px;
-  max-height: 300px;
-  margin-top: -20px;
-  overflow-y: auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 99999;
-  /* display: none; 기본은 숨김 */
-  /* 알림스크롤 */
   max-height: 120px; /* 높이 고정 */
   overflow-y: auto;
 }
@@ -162,11 +146,49 @@ notif-box {
   align-items: center;
 }
 
-nav a {
-  font-weight: 500;
+#LoginUserIf {
+  background-color: #427d58;
+  display: flex;
+  width: 50%;
+  min-width: 100px;
+  padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  border-radius: 20px;
+  margin-right: 20px;
+  display: none;
 }
-nav a:hover {
-  color: #727272;
+#LoginUsertxt {
+  font-size: 14px;
+  color: #fff;
+  margin-left: 3px;
+}
+#LoginUserName {
+  color: #fff;
+}
+#LoginPenImg {
+  width: 10%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.theNav {
+  display: block;
+}
+.theSe {
+  margin-top: 10%;
+  font-size: 13px;
+  white-space: nowrap;
+  text-align: center;
+  display: none;
+}
+.theSe > p:hover {
+  color: #427d58;
+}
+.theNav:hover .theSe {
+  display: block;
 }
 /* 헤더 */
 
@@ -433,6 +455,7 @@ footer .logo3 {
 .Tcstar {
   width: 38px;
   height: 38px;
+  cursor: pointer;
 }
 #CtT {
   font-size: 18px;
