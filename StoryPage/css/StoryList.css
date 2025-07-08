@@ -192,6 +192,7 @@ section {
   width: 39px;
   height: 39px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 /* 푸터 */
