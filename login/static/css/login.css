@@ -1,0 +1,209 @@
+:root {
+  --text-color: #333; /* 기본 텍스트 컬러 */
+  --primary-color: #427d58; /* 메인 컬러 */
+}
+
+html,
+body {
+  color: var(--text-color);
+  height: 100%;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /*전체를 감싸고 세로 정렬 */
+  max-width: 1440px;
+  width: 100%; /*뷰포트 너비에 맞춤*/
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  height: 129px;
+  padding: 82px;
+  align-items: center;
+  gap: 60px;
+  box-sizing: border-box;
+  position: sticky;
+  box-shadow: 0px 3px 11.4px 0px rgba(0, 0, 0, 0.15);
+}
+
+nav {
+  display: flex;
+  font-size: 24px;
+  font-weight: 500;
+}
+.menu ul {
+  gap: 78px;
+}
+.title {
+  font-size: 40px;
+  font-weight: 600;
+}
+body {
+  margin: 0;
+}
+a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: var(--text-color); /* 파란색 링크 색 변경 */
+}
+a.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-color);
+  gap: 8px;
+}
+nav ul {
+  list-style: none; /* 동그라미 제거 */
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.user-actions ul {
+  gap: 20px;
+}
+nav ul li {
+  display: flex;
+  align-items: center;
+}
+nav a {
+  font-weight: 500;
+}
+nav a:hover {
+  color: #727272;
+}
+.user-actions {
+  margin-left: auto; /* 오른쪽으로 밀어냄 */
+}
+.user-actions img.login {
+  width: 137px;
+  height: auto;
+}
+.user-actions img {
+  display: flex;
+  width: 32px;
+  height: auto;
+  align-items: center; /* 아이콘들 세로 정렬 통일 */
+  cursor: pointer;
+}
+.content {
+  flex: 1; /*남는 공간 모두 차지해서 푸터 밀어냄*/
+}
+.bg-box1 {
+  background: linear-gradient(
+    180deg,
+    #effff5 0%,
+    #dcffe9 40.92%,
+    #8cd4a7 181.08%
+  );
+  box-shadow: 0px 3px 11.4px 0px rgba(0, 0, 0, 0.15);
+  height: 452px;
+  padding-top: 70px;
+}
+.bg-box2 {
+  height: 600px;
+}
+.slogan {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 500;
+}
+.input-box {
+  width: 752px;
+  height: 615px;
+  border-radius: 40px;
+  background: #fff;
+  box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 44px 150px;
+  /* 패딩 수정 필요 */
+  box-sizing: border-box;
+  position: absolute;
+  top: 420px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.input-box h3 {
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+.input-box h1 {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.login-form label {
+  font-size: 16px;
+  font-weight: 500;
+}
+input {
+  width: 451px;
+  height: 57px;
+  border-radius: 9px;
+  padding: 0 25px;
+  box-sizing: border-box;
+  border: 1px solid #9ca3af;
+  margin-top: 10px;
+}
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.btn-login:hover {
+  background-color: #37694a;
+}
+.input-box h2 {
+  color: #626262;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 5px;
+}
+.signup {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 16px;
+}
+footer {
+  position: relative;
+  height: 272px;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+}
+.logo2 {
+  margin-top: 45px;
+  width: 55px; 
+}
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+footer .logo3 {
+  margin-top: -45px;
+}
