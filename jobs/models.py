@@ -72,8 +72,22 @@ class JobPost(models.Model):
         ('public', '공공기관'),
     ]
     company_size = models.CharField(max_length=20, choices=COMPANY_SIZE_CHOICES)
+
+    company_logo = models.ImageField(verbose_name = "company_logo", null=True, blank=True)
+
+    link = models.URLField(blank=True, null=True)
     
 
     def __str__(self):
         return self.title
+
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        # 경력이 'exp'일 때만 career_years 입력 가능
+        if self.career == 'exp':
+            if self.career_years is None:
+                raise ValidationError({'career_years': '경력이 있을 경우 경력 연차를 입력해야 합니다.'})
+        else:
+            if self.career_years not in (None, 0):
+                raise ValidationError({'career_years': '경력이 없거나 신입일 경우 경력 연차를 입력할 수 없습니다.'})
 
