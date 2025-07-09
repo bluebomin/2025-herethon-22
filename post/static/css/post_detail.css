@@ -1,0 +1,202 @@
+* {
+  padding: 0;
+  margin: 0;
+  color: #333333;
+}
+section {
+  background-color: rgb(248, 248, 248);
+  padding-bottom: 30px;
+}
+/* 헤더 */
+header {
+  display: flex;
+  width: 100%;
+  height: 87px;
+  position: sticky;
+  box-shadow: 0px 3px 11.4px 0px rgba(0, 0, 0, 0.15);
+}
+#HderLogos {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  white-space: nowrap;
+}
+#HdLogoTT {
+  width: 40%;
+  min-width: 30px;
+}
+#HdLogoKTT {
+  width: 35%;
+  min-width: 25px;
+}
+
+.HdA {
+  white-space: nowrap;
+  margin: 0 30px;
+}
+#menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+#HdScetion {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 50px;
+}
+
+a {
+  text-decoration: none; /* 밑줄 제거 */
+}
+#login {
+  width: 67%;
+  min-width: 80px;
+}
+#UserImg,
+#BellImg {
+  width: 48%;
+  margin-right: 30px;
+}
+#SearchImg {
+  width: 10%;
+  margin-bottom: 5px;
+}
+
+#user-actions {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  font-weight: 500;
+}
+nav a:hover {
+  color: #727272;
+}
+/* 헤더 */
+
+#title {
+  margin: 0px 35px;
+  padding: 25px 0 15px 0;
+  border-bottom: 1px solid #a8a8a8;
+}
+
+#HdImg {
+  width: 13%;
+}
+#titleDt {
+  font-size: 12.7px;
+  padding-top: 3px;
+}
+
+#writeButton {
+  color: #fff;
+  font-weight: 300;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #427d58;
+  float: right;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+}
+#writeButton:hover {
+  background-color: #3c7150;
+}
+#writeBtP {
+  overflow: hidden;
+  margin: 13px 35px;
+}
+
+article {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.storyCt {
+  padding: 20px;
+  width: 70%;
+  height: auto;
+  margin: 20px;
+  border-radius: 10px;
+  /* 배경색 지정(변경가능성) */
+  background: linear-gradient(135deg, #ffffff 50%, #e6f5e6 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+.story {
+  font-size: 19px;
+  font-weight: 500;
+  color: #434d38;
+}
+.profile {
+  width: 32px;
+  height: 32px;
+}
+.storyIf {
+  display: flex;
+  margin-top: 5%;
+  align-items: center;
+}
+.userIf {
+  margin-left: 10px;
+}
+.userSt {
+  display: flex;
+  align-items: center;
+}
+.userName {
+  font-size: 13px;
+  font-weight: 500;
+}
+.userT {
+  font-size: 12px;
+  padding-right: 3px;
+  border-right: 1px solid rgb(67, 67, 67);
+}
+.userJ {
+  font-size: 12px;
+  margin-left: 3px;
+}
+
+#storyMove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#mvF,
+#mvB,
+#mvN,
+#mvE {
+  width: 18px;
+  height: 18px;
+  margin: 30px 3px 30px 5px;
+}
+#thisPage {
+  font-size: 13px;
+  color: #427d58;
+  font-weight: 500;
+}
+
+/* 푸터 */
+footer {
+  height: 100%;
+  text-align: center;
+  background-color: #427d58;
+}
+.logo2 {
+  margin-top: 25px;
+  width: 40px;
+}
+footer .logo3 {
+  width: 35%;
+  margin-bottom: 50px;
+}
+/* 푸터 */
