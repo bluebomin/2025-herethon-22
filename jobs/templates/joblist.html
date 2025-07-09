@@ -10,7 +10,7 @@
     <div class="wrapper">
       <!-- 헤더 -->
       <header>
-        <a href="/login/templates/login.html" class="logo">
+        <a href="../login/templates/login.html" class="logo">
           <img src="../static/img/logo1.svg" alt="로고" />
           <img src="../static/img/logo4.svg" alt="로고" />
         </a>
@@ -53,7 +53,7 @@
         <p>회원님만의 맞춤 채용 정보를 틈틈이 준비했어요.</p>
         <hr />
         <!-- 검색 조건 필터 -->
-        <form action="/job_list/" method="GET" class="search-filter">
+        <form action="/jobs/job_list/" method="GET" class="search-filter">
           <div class="kw-wrapper">
             <span>검색 키워드</span>
             <input
@@ -326,7 +326,7 @@
                 alt="로고"
                 class="sample-logo"
               />
-              <a href="{{ job.link }}" target="_blank" class="card-link">
+              <a href="/jobs/{{ job.id }}/go/" target="_blank" class="card-link">
                 <h2>{{ job.title }}</h2>
               </a>
               <p class="subtitle">{{ job.company }}</p>
@@ -338,7 +338,6 @@
               class="scrap"
               data-job-id="{{ job.id }}"
             />
-            <!-- js로 토글 구현 -->
           </div>
           {% endfor %}
         </div>
