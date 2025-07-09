@@ -1,0 +1,79 @@
+{% load static %} 
+{% block style %}<link href="{% static 'css/LandingPage.css' %}" rel="stylesheet"/>{% endblock %}
+{% block body %}
+<body>
+<header>
+  <!--경로수정-->
+  <div id="HderLogos">
+    <a href="{% url 'accounts:login' %}" class="logo">
+      <img id="HdLogoTT" src="{% static 'img/Group 315.png' %}" alt="로고" />
+      <img id="HdLogoKTT" src="{% static 'img/Group 318.png' %}" alt="로고" />
+    </a>
+  </div>
+  <div id="HdScetion">
+    <nav id="menu">
+      <div class="theNav">
+        <p class="HdA" href="">틈틈이공유</p>
+        <div class="theSe">
+          <p>최신 채용 정보</p>
+          <p>틈틈러 재도전 이야기</p>
+        </div>
+      </div>
+      <div class="theNav">
+        <p class="HdA" href="">틈틈이정보</p>
+        <div class="theSe">
+          <p>온라인 강의 큐레이션</p>
+          <p>나의 재도전 계획</p>
+        </div>
+      </div>
+      <div class="theNav">
+        <p class="HdA" href="">틈틈이계획</p>
+        <div class="theSe">
+          <p>틈틈 상담소</p>
+          <p>선배 틈틈러의 이야기</p>
+        </div>
+      </div>
+    </nav>
+    <nav id="user-actions">
+      
+      <a href="{% url 'accounts:login' %}">
+        <!-- 로그인 후 스타일 변경 -->
+        <img src="{% static 'img/Group 243.png' %}" alt="로그인" id="login" />
+      </a>
+      <div id="LoginUserIf">
+        <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+        <p id="LoginUsertxt">
+          <span id="LoginUserName">신명서</span> 님 안녕하세요!
+        </p>
+      </div>
+      <!-- 추후 경로 페이지 수정 -->
+      <a href="/mypage/"
+        ><img id="UserImg" src="{% static 'img/User.png' %}" alt="마이페이지"
+      /></a>
+      <div id="bell-wrapper"
+        ><img id="BellImg" src="{% static 'img/Bell.png' %}" alt="알림" />
+        <div id="notif-box">
+          <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
+          <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+          <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+          <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+          <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+          <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+          <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+        </div>
+      </div>
+      <div id="search-container" style="display: none">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="검색어를 입력해주세요"
+        />
+      </div>
+      <img id="SearchImg" src="{% static 'img/Search.png' %}" alt="검색" />
+    </nav>
+  </div>
+
+</header>
+  <script src="{% static 'js/LandingPage.js' %}"></script>
+</body>
+{% endblock %}
