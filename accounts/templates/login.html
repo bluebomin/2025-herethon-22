@@ -79,12 +79,15 @@
                 required
               />
             </div>
+            {% if error %}
+            <p class="error-message">{{error }}</p>  
+            {% endif %}
 
             <button type="submit" class="btn-login">로그인</button>
           </form>
 
           <h2>아직 틈틈의 회원이 아니신가요?</h2>
-          <a href="/login/templates/signup.html" class="signup">회원가입</a>
+          <a href="signup.html" class="signup">회원가입</a>
         </div>
       </main>
       <!-- 푸터 -->

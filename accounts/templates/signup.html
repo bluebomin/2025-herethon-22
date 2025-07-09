@@ -19,7 +19,7 @@
             <!-- 추후 경로 페이지 수정 -->
             <li><a href="">틈틈이공유</a></li>
             <li><a href="">틈틈이정보</a></li>
-            <li><a href="">틈틈이계획</a></li> 
+            <li><a href="">틈틈이계획</a></li>
           </ul>
         </nav>
         <nav class="user-actions">
@@ -102,11 +102,15 @@
                 />
               </div>
             </div>
+            {% if error %}
+            <p class="error-message">{{ error }}</p>
+            {% endif %}
 
             <button type="submit" class="btn-signup">회원가입</button>
           </form>
+          <!-- 랜딩페이지로 연결시키기 -->
           <h2>이미 틈틈의 회원이신가요?</h2>
-          <a href="/login" class="login">로그인</a>
+          <a href="login.html" class="login">로그인</a>
         </div>
       </main>
 
