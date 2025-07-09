@@ -57,6 +57,7 @@ document.querySelectorAll(".scrap").forEach((button) => {
       });
   });
 });
+
 //버튼 클릭시 채워진 이미지로 변경
  document.addEventListener("DOMContentLoaded", function () {
    const scrapButtons = document.querySelectorAll(".scrap");
