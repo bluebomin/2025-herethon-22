@@ -39,9 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const hasNotification = true; //false면 알람표시x
 
   if (hasNotification) {
-    BellImg.src = "/img/Group 327.png"; // 알림 온 상태 이미지
+    BellImg.src = "/LandingPage/img/Group 327.png"; // 알림 온 상태 이미지
   } else {
-    BellImg.src = "/img/Bell.png"; // 기본 종 이미지
+    BellImg.src = "/LandingPage/img/Bell.png"; // 기본 종 이미지
   }
 });
 
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginImg = document.getElementById("login");
   const userImg = document.getElementById("UserImg");
   const bellIcon = document.getElementById("BellImg");
-
+  const loginUser = document.getElementById("LoginUserIf");
   let isSearchOpen = false;
 
   searchIcon.addEventListener("click", function () {
@@ -80,11 +80,13 @@ document.addEventListener("DOMContentLoaded", function () {
       loginImg.style.display = "none";
       userImg.style.display = "none";
       bellIcon.style.display = "none";
+      loginUser.style.display = "none";
     } else {
       searchContainer.style.display = "none";
       loginImg.style.display = "inline";
       userImg.style.display = "inline";
       bellIcon.style.display = "inline";
+      loginUser.style.display = "inline";
     }
     isSearchOpen = !isSearchOpen;
   });
@@ -102,5 +104,61 @@ document.addEventListener("DOMContentLoaded", function () {
       searchInput.style.color = "  #9ca3af";
       searchInput.style.fontWeight = "300";
     }
+  });
+});
+
+//로그인 유저 이름 반환
+
+// 전역 로그인 상태 (연동 전 임시로 true)
+const isLoggedIn = true;
+const userName = "신명서";
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 요소 선언
+  const loginIcon = document.getElementById("login");
+  const loginUserBox = document.getElementById("LoginUserIf");
+  const userNameText = document.getElementById("LoginUserName");
+  const searchIcon = document.getElementById("SearchImg");
+  const searchContainer = document.getElementById("search-container");
+  const userImg = document.getElementById("UserImg");
+  const bellIcon = document.getElementById("BellImg");
+
+  //로그인 상태 설정
+  if (isLoggedIn) {
+    loginIcon.style.display = "none";
+    loginUserBox.style.display = "flex";
+    userNameText.textContent = userName;
+  } else {
+    loginIcon.style.display = "inline";
+    loginUserBox.style.display = "none";
+  }
+
+  // 돋보기 토글
+  let isSearchOpen = false;
+
+  searchIcon.addEventListener("click", function () {
+    if (!isSearchOpen) {
+      searchContainer.style.display = "flex";
+      loginIcon.style.display = "none";
+      loginUserBox.style.display = "none";
+      userImg.style.display = "none";
+      bellIcon.style.display = "none";
+    } else {
+      searchContainer.style.display = "none";
+
+      //로그인 상태 고려하여 UI 복원
+      if (isLoggedIn) {
+        loginIcon.style.display = "none";
+        loginUserBox.style.display = "flex";
+      } else {
+        loginIcon.style.display = "inline";
+        loginUserBox.style.display = "none";
+      }
+
+      userImg.style.display = "inline";
+      bellIcon.style.display = "inline";
+    }
+
+    isSearchOpen = !isSearchOpen;
   });
 });
