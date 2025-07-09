@@ -21,8 +21,8 @@
 }
 
 @font-face {
-  font-family: "Pretendard--SemiBold";
-  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard--SemiBold.woff")
+  font-family: "Pretendard-SemiBold";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
     format("woff");
   font-weight: 600;
   font-style: normal;
@@ -126,8 +126,9 @@ nav a:hover {
   padding: 48px 80px;
   background: #fafafa;
 }
-p{
-    font-size: 24px;
+p {
+  font-size: 24px;
+  font-weight: 500;
 }
 .content h2 {
   font-family: "Paperlogy-6SemiBold";
@@ -146,11 +147,12 @@ hr {
   flex-direction: column;
   gap: 24px;
 }
-label {
+span {
   font-family: "Pretendard-SemiBold";
   font-weight: 600;
   font-size: 24px;
   margin-right: 40px;
+  width: 115px;
 }
 input {
   width: 865px;
@@ -160,30 +162,64 @@ input {
   border-radius: 11px;
   border: 2px solid #e5e7eb;
   font-size: 20px;
+  outline: none;
 }
-.job-wrapper {
+input:focus {
+  border: 2px solid #90cfa8; /* 클릭 시 테두리 색 변경 */
+}
+.job-wrapper,
+.location-wrapper,
+.available-wrapper,
+.career-wrapper,
+.education-wrapper,
+.cpsize-wrapper {
   display: flex;
+  align-items: center;
 }
 ::placeholder {
   color: #9ca3af;
 }
-.dropdown {
-  position: relative;
-  display: inline-block;
+.dropdown-container {
+  display: flex;
+  width: 201px;
+  height: 64px;
+  padding: 16px 22px;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 12px;
+  border-radius: 11px;
+  border: 2px solid #e5e7eb;
+  background: #fff;
+  font-size: 20px;
+  font-family: "Pretendard-Regular";
+  font-weight: 400;
+  color: #9ca3af;
+  position: relative; /* 기준 부모 지정*/
 }
 
+.dropdown {
+  display: inline-block;
+  width: 200px;
+}
 .dropdown-menu {
   display: none;
+  position: absolute; /*떠있는 요소로 설정*/
   grid-template-columns: repeat(4, 1fr); /* 4열 */
-  gap: 20px 0px; /* 세로, 가로 간격 */
-  width: 696px;
-  height: 196px;
+  gap: 20px 22px;
+  width: auto;
   padding: 26px 22px;
   justify-content: center;
   align-items: flex-start;
   border-radius: 11px;
   border: 2px solid #e5e7eb;
   background: #fff;
+  z-index: 1000;
+  top: 100%;
+  left: 0;
+  box-sizing: border-box;
+}
+.dropdown-container.active .dropdown-menu {
+  display: grid;
 }
 
 .dropdown-menu label {
@@ -195,6 +231,9 @@ input {
   gap: 6px;
   cursor: pointer;
   margin: 0;
+  color: #333;
+  white-space: nowrap;
+  width: auto;
 }
 input[type="checkbox"] {
   appearance: none; /* 기본 체크박스 없애기 */
@@ -204,37 +243,127 @@ input[type="checkbox"] {
   border: 2px solid #427d58;
   cursor: pointer;
   display: inline-block;
+  position: relative;
+  flex-shrink: 0;
   padding: 0;
-}
-input[type="checkbox"]:checked {
-  background-color: #427d58;
 }
 
 input[type="checkbox"]:checked::after {
-  /* content: '✔'; 수정 필요 */
-  color: white;
+  content: "✔";
+  color: #90cfa8;
   font-size: 16px;
   position: absolute;
   top: 0;
   left: 5px;
 }
-#dropdownButton {
-  display: flex;
-  width: 201px;
-  height: 64px;
-  padding: 16px 22px;
-  align-items: center;
-  gap: 12px;
-  border-radius: 11px;
-  border: 2px solid #e5e7eb;
-  background: #fff;
-  font-size: 20px;
+.dropdownBtn {
   cursor: pointer;
-  font-family: "Pretendard-Regular";
-  font-weight: 400;
-  color: #9ca3af;
 }
 
+.dropdown-container.active .dropdownBtn {
+  transform: rotate(180deg); /* 토글 버튼 클릭시 위아래 회전 */
+}
+
+label {
+  font-family: "Pretendard-Regular";
+  font-size: 24px;
+  display: flex;
+  gap: 8px;
+}
+.available-wrapper input,
+.career-wrapper input {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  border: 2px solid #e5e7eb;
+  background: #fff;
+}
+
+.searchbtn {
+  display: flex;
+  width: 740px;
+  padding: 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 11px;
+  font-size: 28px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Pretendard-SemiBold";
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  justify-content: center;
+  align-items: center;
+}
+.searchbtn:hover {
+  background-color: #37694a;
+}
+/* 카드 리스트 */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 40px;
+}
+.card {
+  display: flex;
+  width: 606px;
+  height: 227px;
+  border-radius: 16px;
+  box-shadow: 3px 4px 21.7px 0px rgba(0, 0, 0, 0.1);
+  background: var(--card-1, linear-gradient(98deg, #fff 0.68%, #f7fffa 97.75%));
+  box-sizing: border-box;
+  padding: 30px;
+  align-items: start;
+  justify-content: space-between;
+}
+.card img {
+  width: 130px;
+}
+.card-content {
+  text-align: left;
+}
+.card h2 {
+  font-family: "Pretendard-SemiBold";
+  font-size: 32px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.card p {
+  margin: 0;
+}
+.card .scrap {
+  width: 52px;
+  cursor: pointer;
+}
+.card .subtitle {
+  font-size: 20px;
+  margin-top: 16px;
+  font-weight: 500;
+}
+.card .category {
+  font-size: 16px;
+  margin-top: 4px;
+  font-weight: 400;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  cursor: pointer;
+  margin-top: 75px;
+}
+.prevbtn,
+.nextbtn {
+  width: auto;
+  height: 26px;
+}
+.nextbtn {
+  transform: rotate(180deg);
+}
 /* 푸터 */
 footer {
   position: relative;

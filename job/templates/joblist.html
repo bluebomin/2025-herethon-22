@@ -51,12 +51,11 @@
       <main class="content">
         <h2>최신 채용 정보</h2>
         <p>회원님만의 맞춤 채용 정보를 틈틈이 준비했어요.</p>
-        <!-- 위에꺼 폰트 적용하기 -->
         <hr />
         <!-- 검색 조건 필터 -->
-        <form action="" method="POST" class="search-filter">
+        <form action="/job_list/" method="GET" class="search-filter">
           <div class="kw-wrapper">
-            <label for="keyword">검색 키워드</label>
+            <span>검색 키워드</span>
             <input
               type="text"
               id="keyword"
@@ -67,153 +66,295 @@
           </div>
 
           <div class="job-wrapper">
-            <label>직종</label>
-            <div class="dropdown">
-              <button id="dropdownButton">직종 선택</button>
-              <!-- 여기에 커스텀 화살표  -->
-              <div class="dropdown-menu" id="dropdownMenu">
+            <span>직종</span>
+            <div class="dropdown-container">
+              <div class="dropdown">직종 선택</div>
+              <img
+                src="../static/img/dropdown.svg"
+                alt="화살표"
+                class="dropdownBtn"
+              />
+              <div class="dropdown-menu">
                 <label
-                  ><input type="checkbox" name="job" value="기획·전략" />
+                  ><input type="checkbox" name="job_type" value="planning" />
                   기획·전략</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="IT·개발·데이터" />
+                  ><input type="checkbox" name="job_type" value="development" />
                   IT·개발·데이터</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="생산·제조" />
+                  ><input
+                    type="checkbox"
+                    name="job_type"
+                    value="manufacturing"
+                  />
                   생산·제조</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="콘텐츠·미디어" />
+                  ><input type="checkbox" name="job_type" value="contents" />
                   콘텐츠·미디어</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="마케팅·홍보·MD" />
+                  ><input type="checkbox" name="job_type" value="marketing" />
                   마케팅·홍보·MD</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="고객상담·CS" />
+                  ><input
+                    type="checkbox"
+                    name="job_type"
+                    value="customer_service"
+                  />
                   고객상담·CS</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="건축·시설관리" />
+                  ><input
+                    type="checkbox"
+                    name="job_type"
+                    value="construction"
+                  />
                   건축·시설관리</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="금융·보험" />
+                  ><input type="checkbox" name="job_type" value="finance" />
                   금융·보험</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="회계·세무·재무" />
+                  ><input type="checkbox" name="job_type" value="accounting" />
                   회계·세무·재무</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="물류·운송" />
+                  ><input type="checkbox" name="job_type" value="logistics" />
                   물류·운송</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="의료·간호" />
+                  ><input type="checkbox" name="job_type" value="healthcare" />
                   의료·간호</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="공공·복지" />
+                  ><input type="checkbox" name="job_type" value="public" />
                   공공·복지</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="디자인" />
+                  ><input type="checkbox" name="job_type" value="design" />
                   디자인</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="운영·서비스업" />
+                  ><input type="checkbox" name="job_type" value="operation" />
                   운영·서비스업</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="교육·강의" />
+                  ><input type="checkbox" name="job_type" value="education" />
                   교육·강의</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="인사·사무·총무" />
+                  ><input type="checkbox" name="job_type" value="hr" />
                   인사·사무·총무</label
                 >
               </div>
             </div>
           </div>
 
-           <div class="location-wrapper">
-            <label>지역</label>
-            <div class="dropdown">
-              <button id="dropdownButton">직종 선택</button>
-              <!-- 여기에 커스텀 화살표  -->
-              <div class="dropdown-menu" id="dropdownMenu">
+          <div class="location-wrapper">
+            <span>지역</span>
+            <div class="dropdown-container">
+              <div class="dropdown">지역 선택</div>
+              <img
+                src="../static/img/dropdown.svg"
+                alt="화살표"
+                class="dropdownBtn"
+              />
+              <div class="dropdown-menu">
                 <label
-                  ><input type="checkbox" name="job" value="기획·전략" />
-                  기획·전략</label
+                  ><input type="checkbox" name="region" value="seoul" />
+                  서울</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="IT·개발·데이터" />
-                  IT·개발·데이터</label
+                  ><input type="checkbox" name="region" value="gyeonggi" />
+                  경기/인천</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="생산·제조" />
-                  생산·제조</label
+                  ><input type="checkbox" name="region" value="busan" />
+                  부산/울산/경남</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="콘텐츠·미디어" />
-                  콘텐츠·미디어</label
+                  ><input type="checkbox" name="region" value="daegu" />
+                  대구/경북</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="마케팅·홍보·MD" />
-                  마케팅·홍보·MD</label
+                  ><input type="checkbox" name="region" value="gwangju" />
+                  광주/전남/전북</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="고객상담·CS" />
-                  고객상담·CS</label
+                  ><input type="checkbox" name="region" value="daejeon" />
+                  대전/충남/충북</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="건축·시설관리" />
-                  건축·시설관리</label
+                  ><input type="checkbox" name="region" value="gangwon" />
+                  강원</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="금융·보험" />
-                  금융·보험</label
+                  ><input type="checkbox" name="region" value="jeju" />
+                  제주</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="available-wrapper">
+            <span>재택 근무 가능 여부</span>
+            <label
+              ><input type="checkbox" name="remote_available" /> 재택 근무
+              가능</label
+            >
+          </div>
+          <div class="career-wrapper">
+            <span>경력</span>
+            <label
+              ><input type="checkbox" name="career" value="new" /> 신입</label
+            >
+            <label
+              ><input type="checkbox" name="career" value="none" /> 없음</label
+            >
+            <label
+              ><input type="checkbox" name="career" value="exp" /> 경력</label
+            >
+            <label
+              ><input type="checkbox" name="career" value="exp" />
+              관계없음</label
+            >
+          </div>
+
+          <div class="education-wrapper">
+            <span>학력</span>
+            <div class="dropdown-container">
+              <div class="dropdown">학력 조건</div>
+              <img
+                src="../static/img/dropdown.svg"
+                alt="화살표"
+                class="dropdownBtn"
+              />
+              <div class="dropdown-menu">
+                <label
+                  ><input
+                    type="checkbox"
+                    name="education"
+                    value="high_school"
+                  />
+                  고등학교 졸업</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="회계·세무·재무" />
-                  회계·세무·재무</label
+                  ><input
+                    type="checkbox"
+                    name="education"
+                    value="associate_degree"
+                  />
+                  전문대학 졸업</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="물류·운송" />
-                  물류·운송</label
+                  ><input
+                    type="checkbox"
+                    name="education"
+                    value="bachelor_degree"
+                  />
+                  학사 학위</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="의료·간호" />
-                  의료·간호</label
+                  ><input
+                    type="checkbox"
+                    name="education"
+                    value="master_degree"
+                  />
+                  석사 학위</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="공공·복지" />
-                  공공·복지</label
+                  ><input type="checkbox" name="education" value="doctorate" />
+                  박사 학위</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="cpsize-wrapper">
+            <span>기업 규모</span>
+            <div class="dropdown-container">
+              <div class="dropdown">기업 규모</div>
+              <img
+                src="../static/img/dropdown.svg"
+                alt="화살표"
+                class="dropdownBtn"
+              />
+              <div class="dropdown-menu">
+                <label
+                  ><input type="checkbox" name="company_size" value="small" />
+                  소기업</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="디자인" />
-                  디자인</label
+                  ><input type="checkbox" name="company_size" value="medium" />
+                  중기업</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="운영·서비스업" />
-                  운영·서비스업</label
+                  ><input type="checkbox" name="company_size" value="large" />
+                  대기업</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="교육·강의" />
-                  교육·강의</label
+                  ><input type="checkbox" name="company_size" value="startup" />
+                  스타트업</label
                 >
                 <label
-                  ><input type="checkbox" name="job" value="인사·사무·총무" />
-                  인사·사무·총무</label
+                  ><input type="checkbox" name="company_size" value="public" />
+                  공공기관</label
                 >
               </div>
             </div>
           </div>
         </form>
+
+        <button type="submit" class="searchbtn">조회하기</button>
+        <hr />
+        <p>총 1,472건의 채용정보가 있어요.</p>
+        <!-- 카드 목록 -->
+        <div class="card-container">
+          {% for job in jobs %}
+          <div class="card">
+            <div class="card-content">
+              <img
+                src="{{ job.company_logo.url }}"
+                alt="로고"
+                class="sample-logo"
+              />
+              <a href="{{ job.link }}" target="_blank" class="card-link">
+                <h2>{{ job.title }}</h2>
+              </a>
+              <p class="subtitle">{{ job.company }}</p>
+              <p class="category">{{ job.get_job_type_display }}</p>
+            </div>
+            <img src="../static/img/scrapbtn.svg" alt="스크랩" class="scrap" />
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="pagination">
+          <img src="../static/img/arrow1.svg" alt="첫페이지" class="prevbtn" />
+          <img
+            src="../static/img/arrow2.svg"
+            alt="이전페이지"
+            class="prevbtn"
+          />
+          <p class="pagenumber">1</p>
+          <p class="pagenumber">2</p>
+          <p class="pagenumber">3</p>
+          <img
+            src="../static/img/arrow2.svg"
+            alt="다음페이지"
+            class="nextbtn"
+          />
+          <img
+            src="../static/img/arrow1.svg"
+            alt="마지막페이지"
+            class="nextbtn"
+          />
+        </div>
       </main>
       <!-- 푸터 -->
       <footer>
