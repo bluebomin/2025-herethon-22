@@ -326,7 +326,7 @@
                 alt="로고"
                 class="sample-logo"
               />
-              <a href="/jobs/{{ job.id }}/go/" target="_blank" class="card-link">
+              <a href="{% url 'jobs:job_redirect' job.id %}" target="_blank" class="card-link">
                 <h2>{{ job.title }}</h2>
               </a>
               <p class="subtitle">{{ job.company }}</p>
