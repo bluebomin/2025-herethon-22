@@ -15,57 +15,56 @@ def job_list(request):
         jobs = jobs.filter(title__icontains=query)
     
     #2. 직종 필터
-    job_type_filter = request.GET.get('job_type')
+    job_type_filter = request.GET.getlist('job_type_filter') 
     if job_type_filter:
-        jobs = jobs.filter(job_type=job_type_filter)
+        jobs = jobs.filter(job_type__in=job_type_filter)
     
     #3. 지역 필터
-    region_filter = request.GET.get('region')
+    region_filter = request.GET.getlist('region_filter') 
     if region_filter:
-        jobs = jobs.filter(region=region_filter)
+        jobs = jobs.filter(region__in=region_filter)
     
     #4. 재택 가능 여부
-    remote_available_filter = request.GET.get('remote_available')
+    remote_available_filter = request.GET.get('remote_available_filter') 
     if remote_available_filter in ['true', 'True', '1']:
-        jobs = jobs.filter(remote_available_filter=True)
+        jobs = jobs.filter(remote_available=True) 
     
     #5. 경력 필트
     career_filters_selected = request.GET.getlist('career_filter')
     start_year = request.GET.get('start_year')
     end_year = request.GET.get('end_year')
-
     if 'total' not in career_filters_selected and career_filters_selected:
         career_q = Q()
 
         if 'new' in career_filters_selected:
             career_q |= Q(career='new')
         if 'none' in career_filters_selected:
-            career_q |= Q(career="none ")
+            career_q |= Q(career="none")
         if 'exp' in career_filters_selected and start_year and end_year:
             try:
                 start_y = int(start_year)
                 end_y = int(end_year)
                 exp_years = start_y - end_y
-                career_q |= Q(career='exp', career_years__lte = exp_years) #연차를 계산하여 연차보다 같거나 적은 경력 요구 필터링
+                career_q |= Q(career='exp', career_years__lte = exp_years) 
             except ValueError:
                 pass
         
         jobs = jobs.filter(career_q)
     
     #6. 학력 필터
-    education_filter = request.GET.get('education')
+    education_filter = request.GET.getlist('education_filter') 
     if education_filter:
-        jobs = jobs.filter(education=education_filter)
+        jobs = jobs.filter(education__in=education_filter) 
 
     #7. 기업 규모 필터
-    company_size_filter = request.GET.get('company_size')
+    company_size_filter = request.GET.getlist('company_size_filter') 
     if company_size_filter:
-        jobs = jobs.filter(company_size = company_size_filter)
+        jobs = jobs.filter(company_size__in=company_size_filter) 
     
     #북마크
     user_bookmarked_job_ids = []
     if request.user.is_authenticated:
-        user_bookmarked_job_ids = request.user.bookmark_set.value_list('job_post_id', flat=True)
+        user_bookmarked_job_ids = request.user.bookmark_set.all().values_list('job_post_id', flat=True)
     
     context = {
         'jobs':jobs,
@@ -73,7 +72,7 @@ def job_list(request):
         'user_bookmarked_job_ids': list(user_bookmarked_job_ids),
 
     }
-    return render(request, 'job_list.html', context) #html 이름 다를 시 변경
+    return render(request, 'job_list.html', context) 
 
 
 
