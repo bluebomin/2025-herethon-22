@@ -19,13 +19,14 @@
             <!-- 추후 경로 페이지 수정 -->
             <li><a href="">틈틈이공유</a></li>
             <li><a href="">틈틈이정보</a></li>
-            <li><a href="">틈틈이계획</a></li> 
+            <li><a href="">틈틈이계획</a></li>
           </ul>
         </nav>
         <nav class="user-actions">
           <ul>
             <li>
-              <a href="/login/"
+              <!-- 로그인 버튼 클릭 시 로그인 페이지로 이동 -->
+              <a href="login.html"
                 ><img
                   src="../static/img/loginbtn.svg"
                   alt="로그인"
@@ -56,7 +57,7 @@
           <h3>틈틈이 처음이시군요. 반가워요!</h3>
           <h1>회원가입</h1>
           <!-- 회원가입 입력폼 -->
-          <form action="/signup" method="POST" class="signup-form">
+          <form action="/accounts/signup/" method="POST" class="signup-form">
             <div class="form-grid">
               <div class="name-wrapper">
                 <label for="user-id">이름</label>
@@ -101,11 +102,15 @@
                 />
               </div>
             </div>
+            {% if error %}
+            <p class="error-message">{{ error }}</p>
+            {% endif %}
 
             <button type="submit" class="btn-signup">회원가입</button>
           </form>
+          <!-- 랜딩페이지로 연결시키기 -->
           <h2>이미 틈틈의 회원이신가요?</h2>
-          <a href="/login" class="login">로그인</a>
+          <a href="login.html" class="login">로그인</a>
         </div>
       </main>
 
