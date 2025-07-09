@@ -1,0 +1,449 @@
+* {
+  padding: 0;
+  margin: 0;
+  color: #333333;
+}
+body {
+  overflow-x: hidden;
+}
+/* 헤더 */
+header {
+  display: flex;
+  width: 100%;
+  height: 87px;
+  position: sticky;
+  box-shadow: 0px 3px 11.4px 0px rgba(0, 0, 0, 0.15);
+  /*고정*/
+  /* position: fixed;
+  background-color: #ffffff;
+  z-index: 9999; */
+}
+
+/* 돋보기 */
+#search-container {
+  display: flex;
+  align-items: center;
+  border: 3px solid #4a7154;
+  border-radius: 999px;
+  padding: 8px 16px;
+  width: 100%;
+  max-width: 600px;
+  margin-right: 10px;
+}
+
+#search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #4a7154;
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 300;
+}
+
+#search-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #4a7154;
+}
+/* 까지 */
+
+#HderLogos {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  white-space: nowrap;
+}
+#HdLogoTT {
+  width: 40%;
+  min-width: 30px;
+}
+#HdLogoKTT {
+  width: 35%;
+  min-width: 25px;
+}
+
+.HdA {
+  white-space: nowrap;
+  margin: 0 30px;
+}
+#menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+#HdScetion {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 50px;
+}
+
+a {
+  text-decoration: none; /* 밑줄 제거 */
+}
+#login {
+  width: 67%;
+  min-width: 80px;
+}
+#UserImg {
+  width: 52%;
+  margin-right: 30px;
+}
+#BellImg {
+  width: 48%;
+  margin-right: 30px;
+}
+#BellImg {
+  cursor: pointer;
+}
+#SearchImg {
+  width: 10%;
+  margin-bottom: 5px;
+  cursor: pointer;
+  min-width: 30px;
+}
+
+#bell-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* 스크롤 */
+#notif-box {
+  position: absolute;
+  top: 120%; /* 종 아이콘 바로 아래로 */
+  right: 0; /* 오른쪽 정렬 */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 10px 15px;
+  width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* z-index: 99900; */
+  /* 처음엔 숨겨둠 */
+  display: none;
+}
+
+/* 고정 */
+notif-box {
+  position: fixed; /*반드시 fixed*/
+  top: 90px; /* 헤더 아래 정도로 */
+  right: 90px; /* 종 아이콘에 맞춰 위치 조정 */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 15px 20px;
+  width: 330px;
+  max-height: 300px;
+  margin-top: -20px;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  /* display: none; 기본은 숨김 */
+  /* 알림스크롤 */
+  max-height: 120px; /* 높이 고정 */
+  overflow-y: auto;
+}
+
+#notif-box p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+#user-actions {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  font-weight: 500;
+}
+nav a:hover {
+  color: #727272;
+}
+/* 헤더 */
+
+/* 푸터 */
+footer {
+  height: 100%;
+  text-align: center;
+  background-color: #427d58;
+}
+.logo2 {
+  margin-top: 25px;
+  width: 40px;
+}
+footer .logo3 {
+  width: 35%;
+  margin-bottom: 50px;
+}
+/* 푸터 */
+
+/* 랜딩css */
+#Lsection {
+  background: linear-gradient(
+    180deg,
+    #effff5 0%,
+    #dcffe9 10%,
+    #8cd4a7 30%,
+    #8cd4a7 100%
+  );
+  padding-top: 87px;
+}
+#Lhd {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+#mainTT {
+  width: 10%;
+  margin-top: 20px;
+}
+#subTT {
+  width: 22%;
+  margin: 18px 0 20px 0;
+}
+
+#LBg {
+  background-color: #fafafa;
+  padding: 0 35px;
+  padding-bottom: 60px;
+}
+#Larticle1 {
+  width: 150%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 270px;
+  background-color: white;
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    180deg,
+    #ffffff 30%,
+    #daffe8 100%,
+    #417555 50%,
+    #609e78 100%
+  );
+  display: flex;
+  justify-content: center;
+}
+#LarLarticle1PP {
+  position: relative;
+  overflow: hidden;
+}
+#Ltop1 {
+  margin: 47px 50px 0px 50px;
+}
+#Ltop2 {
+  margin: 28px 50px 0px 50px;
+}
+#Ltop3 {
+  margin: 40px 50px 0px 50px;
+}
+
+#LtopImg1,
+#LtopImg2,
+#LtopImg3,
+#LtopT1,
+#LtopT2,
+#LtopT3 {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+#LtopImg1 {
+  width: 130px;
+}
+#LtopImg2 {
+  width: 120px;
+}
+#LtopImg3 {
+  width: 120px;
+}
+
+#LtopT1 {
+  width: 170px;
+}
+#LtopT2 {
+  width: 120px;
+}
+#LtopT3 {
+  width: 208px;
+}
+.LtopM {
+  color: #676767;
+  text-align: center;
+  font-weight: 560;
+  font-size: 13px;
+}
+
+#AMid {
+  padding: 83px 0 30px 0;
+}
+#ATT {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+}
+#AMidText {
+  text-align: center;
+  margin: 12px 0 20px 0;
+  font-size: 13px;
+}
+
+#reArr {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.reMact,
+.reMactName {
+  font-size: 1.2vw;
+}
+
+.reCo {
+  margin: 0 28px;
+  /* width: 19%; */
+  height: 230px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  border-radius: 16px;
+  padding: 24px;
+  border: 0.8px solid #fff;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e5fff6 0%, #e2ffe8 23%, #befbcc 100%);
+}
+.reT {
+  font-size: 20px;
+  font-weight: 600;
+  color: #434d38;
+  text-align: center;
+  border-bottom: 1px solid #60894993;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+.reTCt {
+  display: flex;
+  margin: 13px 0;
+  justify-content: space-between;
+}
+.reTCtMenu {
+  font-weight: 600;
+  color: #434d38;
+}
+#MenuTxt2 {
+  margin-right: 40px;
+}
+#MenuTxt3,
+#MenuTxt4 {
+  margin-right: 80px;
+}
+
+.reMact {
+  font-weight: 600;
+  color: #434d38;
+  margin-bottom: 10px;
+  white-space: nowrap; /* 줄바꿈 없이 한 줄로 */
+  overflow: hidden; /* 넘치는 글자 숨김 */
+  text-overflow: ellipsis;
+}
+.reMactName {
+  font-size: 14px;
+  margin-bottom: 2px;
+  font-size: 1.2vw;
+}
+
+#reLinkCt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.reLink {
+  border-radius: 20px;
+  display: inline-block;
+  padding: 5px 30px;
+  color: #fff;
+  background-color: #427d58;
+  border: none;
+  cursor: pointer;
+  font-weight: 350;
+  width: 36%;
+  text-align: center;
+  margin-left: 24%;
+  height: 25px;
+}
+.reLink:hover {
+  background-color: #3c7150;
+}
+.T {
+  width: 27%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 330px;
+}
+
+#LeImg {
+  width: 30%;
+  display: block;
+  margin: 70px auto 0 auto;
+}
+#LeTxt {
+  text-align: center;
+  margin: 10px 0 50px 0;
+  font-size: 13px;
+}
+
+#TeachVi {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+#TeachBox {
+  width: 70%;
+  height: 65%;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ffffff 50%, #efffef 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px 24px 24px 28px;
+  max-width: 500px;
+  margin: 10px auto;
+}
+#TcTop {
+  display: flex;
+  justify-content: space-between;
+}
+#TcProfile {
+  max-width: 90px;
+  aspect-ratio: 3 / 1;
+  object-fit: contain;
+}
+.Tcstar {
+  width: 38px;
+  height: 38px;
+}
+#CtT {
+  font-size: 18px;
+  font-weight: 600;
+  color: #434d38;
+  margin: 10px 0;
+}
+#CtLo {
+  font-size: 15px;
+  font-weight: 450;
+}
+#CtTy {
+  font-size: 13px;
+}
