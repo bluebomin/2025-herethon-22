@@ -411,15 +411,19 @@
           <div class="card">
             <div class="card-content">
               <img
-                src="{{ job.company_logo.url }}"
+                src="{{ job.company_logo }}"
                 alt="로고"
                 class="sample-logo"
               />
+<<<<<<< HEAD:jobs/templates/joblist.html
               <a
                 href="{% url 'jobs:job_redirect' job.id %}"
                 target="_blank"
                 class="card-link"
               >
+=======
+              <a href="{% url 'jobs:job_redirect' job.id %}" target="_blank" class="card-link">
+>>>>>>> main:jobs/templates/job_list.html
                 <h2>{{ job.title }}</h2>
               </a>
               <p class="subtitle">{{ job.company }}</p>
