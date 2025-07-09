@@ -65,7 +65,7 @@ def job_list(request):
     #북마크
     user_bookmarked_job_ids = []
     if request.user.is_authenticated:
-        user_bookmarked_job_ids = request.user.bookmark_set.value_list('job_post_id', flat=True)
+        user_bookmarked_job_ids = request.user.bookmark_set.all().values_list('job_post_id', flat=True)
     
     context = {
         'jobs':jobs,
