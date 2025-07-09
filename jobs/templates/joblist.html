@@ -26,7 +26,7 @@
           <ul>
             <li>
               <!-- 추후 경로 페이지 수정 -->
-              <a href="/login/"
+              <a href="../accounts/templates/login.html"
                 ><img
                   src="../static/img/loginbtn.svg"
                   alt="로그인"
@@ -219,10 +219,13 @@
             <label
               ><input type="checkbox" name="career" value="exp" /> 경력</label
             >
-            <label
-              ><input type="checkbox" name="career" value="exp" />
-              관계없음</label
+            <!-- <label
+              ><input type="text" name="career" value="exp" /> 년  ~</label
             >
+            <label
+              ><input type="text" name="career" value="exp" /> 년</label
+            > -->
+            <label><input type="checkbox" name="career" /> 관계없음</label>
           </div>
 
           <div class="education-wrapper">
@@ -329,7 +332,13 @@
               <p class="subtitle">{{ job.company }}</p>
               <p class="category">{{ job.get_job_type_display }}</p>
             </div>
-            <img src="../static/img/scrapbtn.svg" alt="스크랩" class="scrap" data-id="{{ job_post_id }}" />
+            <img
+              src="../static/img/scrapbtn.svg"
+              alt="스크랩"
+              class="scrap"
+              data-job-id="{{ job.id }}"
+            />
+            <!-- js로 토글 구현 -->
           </div>
           {% endfor %}
         </div>

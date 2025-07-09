@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownContainers = document.querySelectorAll(".dropdown-container");
 
+  //드롭다운 메뉴
   dropdownContainers.forEach((container) => {
     const btn = container.querySelector(".dropdownBtn");
     const menu = container.querySelector(".dropdown-menu");
@@ -35,20 +36,41 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-//버튼 클릭시 채워진 이미지로 변경
-document.addEventListener("DOMContentLoaded", function () {
-  const scrapButtons = document.querySelectorAll(".scrap");
+//스크랩 버튼 클릭 시 서버에 해당 카드 id 전송
+document.querySelectorAll(".scrap").forEach((button) => {
+  button.addEventListener("click", function () {
+    const jobId = this.dataset.id;
 
-  scrapButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      const isFilled = btn.getAttribute("src").includes("scrapbtn-filled.svg");
-
-      btn.setAttribute(
-        "src",
-        isFilled
-          ? "../static/img/scrapbtn.svg"
-          : "../static/img/scrapbtn-filled.svg"
-      );
-    });
+    fetch(`/bookmark/${jobId}/toggle/`, {
+      method: "GET",
+      credentials: "include", // 로그인 정보 함께 전송 (로그인 여부 체크용)
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("북마크 요청 성공");
+        } else {
+          console.error("북마크 요청 실패");
+        }
+      })
+      .catch((error) => {
+        console.error("에러 발생:", error);
+      });
   });
 });
+//버튼 클릭시 채워진 이미지로 변경
+ document.addEventListener("DOMContentLoaded", function () {
+   const scrapButtons = document.querySelectorAll(".scrap");
+
+   scrapButtons.forEach(function (btn) {
+     btn.addEventListener("click", function () {
+       const isFilled = btn.getAttribute("src").includes("scrapbtn-filled.svg");
+
+       btn.setAttribute(
+         "src",
+         isFilled
+           ? "../static/img/scrapbtn.svg"
+           : "../static/img/scrapbtn-filled.svg"
+       );
+     });
+   });
+ });
