@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class JobPost(models.Model):
     title = models.CharField(max_length=200)
@@ -92,3 +92,13 @@ class JobPost(models.Model):
             if self.career_years not in (None, 0):
                 raise ValidationError({'career_years': '경력이 없거나 신입일 경우 경력 연차를 입력할 수 없습니다.'})
 
+class Bookmark(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    job_post = models.ForeignKey(JobPost, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'job_post')
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.job_post.title}"

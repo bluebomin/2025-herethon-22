@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
-from .models import JobPost
+from .models import JobPost, Bookmark
 from .forms import JobPostForm
 
 # Create your views here.
@@ -61,9 +61,19 @@ def job_list(request):
     company_size_filter = request.GET.get('company_size')
     if company_size_filter:
         jobs = jobs.filter(company_size = company_size_filter)
-        
-    return render(request, 'job_list.html', {'jobs': jobs, 
-                                             'career_filters_selected': career_filters_selected,}) #html 이름 다를 시 변경
+    
+    #북마크
+    user_bookmarked_job_ids = []
+    if request.user.is_authenticated:
+        user_bookmarked_job_ids = request.user.bookmark_set.value_list('job_post_id', flat=True)
+    
+    context = {
+        'jobs':jobs,
+        'career_filters_selected': career_filters_selected,
+        'user_bookmarked_job_ids': list(user_bookmarked_job_ids),
+
+    }
+    return render(request, 'job_list.html', context) #html 이름 다를 시 변경
 
 
 
@@ -74,3 +84,16 @@ def redirect_to_job_link(request, pk):
         return redirect(job.link)
     else:
         return redirect('job_list')
+    
+#북마크 토글 뷰 함수
+@login_required
+def toggle_bookmark(request, job_post_id):
+    job_post = get_object_or_404(JobPost, id=job_post_id)
+
+    bookmark, created = Bookmark.objects.get_or_create(user=request.user, job_post=job_post)
+
+    if not created:
+        bookmark.delete()
+    else:
+        pass 
+    return redirect(request.META.get('HTTP_REFERER', 'jobs:job_list'))
