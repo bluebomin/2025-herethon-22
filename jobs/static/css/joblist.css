@@ -154,7 +154,7 @@ span {
   margin-right: 40px;
   width: 115px;
 }
-input {
+#keyword {
   width: 865px;
   height: 64px;
   padding: 16px 22px;
@@ -235,6 +235,15 @@ input:focus {
   white-space: nowrap;
   width: auto;
 }
+.year {
+  margin-left: 10px;
+}
+.year-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
 input[type="checkbox"] {
   appearance: none; /* 기본 체크박스 없애기 */
   width: 24px;
@@ -269,6 +278,20 @@ label {
   font-size: 24px;
   display: flex;
   gap: 8px;
+}
+.check-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2열 */
+  gap: 20px;
+}
+.exp-container {
+  display: flex;
+}
+.exp-label{
+    margin-right:30px;
+}
+.career-wrapper {
+  align-items: start;
 }
 .available-wrapper input,
 .career-wrapper input {

@@ -57,20 +57,21 @@ document.querySelectorAll(".scrap").forEach((button) => {
       });
   });
 });
+
 //버튼 클릭시 채워진 이미지로 변경
- document.addEventListener("DOMContentLoaded", function () {
-   const scrapButtons = document.querySelectorAll(".scrap");
+document.addEventListener("DOMContentLoaded", function () {
+  const scrapButtons = document.querySelectorAll(".scrap");
 
-   scrapButtons.forEach(function (btn) {
-     btn.addEventListener("click", function () {
-       const isFilled = btn.getAttribute("src").includes("scrapbtn-filled.svg");
+  scrapButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const isFilled = btn.getAttribute("src").includes("scrapbtn-filled.svg");
 
-       btn.setAttribute(
-         "src",
-         isFilled
-           ? "../static/img/scrapbtn.svg"
-           : "../static/img/scrapbtn-filled.svg"
-       );
-     });
-   });
- });
+      btn.setAttribute(
+        "src",
+        isFilled
+          ? "../static/img/scrapbtn.svg"
+          : "../static/img/scrapbtn-filled.svg"
+      );
+    });
+  });
+});

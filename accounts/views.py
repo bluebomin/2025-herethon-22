@@ -3,6 +3,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 
 def login(request):
@@ -13,7 +14,7 @@ def login(request):
         if user is not None:
             auth_login(request, user)
             print('로그인 성공!')
-            return redirect('home')  
+            return redirect('accounts:home')   #랜딩페이지로 변경
         else:
             error_message = "아이디 또는 비밀번호가 잘못되었습니다."
             return render(request, 'login.html', {'error': error_message})
@@ -22,13 +23,13 @@ def login(request):
     
 def logout(request):
     auth_logout(request)
-    return redirect('home')  # 홈 페이지로 리다이렉트
+    return redirect('accounts:home')  # 랜딩페이지로 변경
 
 def signup(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        repeat_password = request.POST['repeat'] 
+        repeat_password = request.POST['password_confirm'] 
         email = request.POST['email'] 
         
         # 1. 비밀번호 일치 여부 확인
@@ -49,7 +50,7 @@ def signup(request):
             )
             
             print(f'회원가입 성공: {new_user.username}')
-            return redirect('accounts:login') # 성공적으로 생성된 경우에만 리다이렉트
+            return redirect('accounts:login') 
             
         except IntegrityError:
             # 3. 중복 아이디 처리
@@ -71,3 +72,11 @@ def signup(request):
     else:
         # GET 요청일 경우
         return render(request, 'signup.html')
+    
+
+@login_required # 로그인한 사용자만 접근 가능하도록 설정
+def home(request):
+    """
+    로그인 성공 후 보여줄 메인 페이지 뷰.
+    """
+    return render(request, 'home.html', {'user': request.user}) #추후 랜딩페이지로 변경 
