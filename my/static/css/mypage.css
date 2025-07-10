@@ -190,7 +190,7 @@ h3 {
   width: 749px;
   height: 351px;
   border-radius: 32px;
-  background: var(--card-1, linear-gradient(98deg, #fff 0.68%, #f7fffa 97.75%));
+  background: linear-gradient(to top, #f7fffa 0%, #ffffff 100%);
   box-shadow: 3px 4px 21.7px 0px rgba(0, 0, 0, 0.1);
   padding: 30px;
   box-sizing: border-box;
@@ -207,6 +207,12 @@ h3 {
   font-family: "Pretendard-SemiBold";
   font-size: 32px;
   color: #427d58;
+  cursor: pointer;
+}
+.right-wrapper {
+  display: flex; /* 또는 display: grid */
+  flex-direction: column; /* 세로 정렬 시 */
+  gap: 47px;
 }
 .class-wrapper {
   margin-top: 60px;
@@ -232,7 +238,62 @@ h3 {
   font-weight: 400;
   margin: 0;
 }
+.plan-card,
+.jobinfo-card {
+  width: 100%;
+  border-radius: 32px;
+  background: linear-gradient(to top, #f7fffa 0%, #ffffff 100%);
+  box-shadow: 3px 4px 21.7px 0px rgba(0, 0, 0, 0.1);
+  padding: 43px;
+  box-sizing: border-box;
+  margin-top: 47px;
+}
 
+.item-container {
+  display: flex;
+  gap: 140px;
+  margin-top: 30px;
+}
+.item-wrapper {
+  display: flex;
+  gap: 30px;
+}
+.subtitle {
+  width: 89px;
+  display: flex;
+  align-items: center;
+  font-family: "Pretendard-SemiBold";
+  font-size: 24px;
+}
+.goals {
+  border: 2px solid #90cfa8;
+  border-radius: 11px;
+  width: 792px;
+  padding: 16px 22px;
+}
+.goals ul li::marker {
+  font-size: 0.8em;
+}
+.goals ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 20px;
+  font-family: "Pretendard-Regular";
+}
+
+.skills {
+  width: auto;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  border-radius: 97px;
+  border: 2px solid #90cfa8;
+  box-sizing: border-box;
+}
 footer {
   position: relative;
   height: 272px;

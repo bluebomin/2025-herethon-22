@@ -10,6 +10,7 @@
     <div class="wrapper">
       <!-- 헤더 -->
       <header>
+        <!-- URL 수정하기(템플릿방식) -->
         <a href="/login/templates/login.html" class="logo">
           <img src="../static/img/logo1.svg" alt="로고" />
           <span class="title">틈틈</span>
@@ -47,6 +48,7 @@
           </ul>
         </nav>
       </header>
+
       <main>
         <h1>마이페이지</h1>
         <h3>{{username}}님, 환영해요! 오늘도 틈틈이 준비를 해볼까요?</h3>
@@ -80,9 +82,9 @@
           <div class="right-wrapper">
             <!-- 스크랩 온라인 강의 -->
             <section class="onlineclass">
-                <div class="title-header">
-              <h1 class="title">스크랩한 온라인 강의</h1>
-              <div class="more">+</div>
+              <div class="title-header">
+                <h1 class="title">스크랩한 온라인 강의</h1>
+                <div class="more">+</div>
               </div>
               <div class="class-wrapper">
                 <div class="class-item">
@@ -112,8 +114,77 @@
                 </div>
               </div>
             </section>
+            <section class="onlineclass">
+              <div class="title-header">
+                <h1 class="title">스크랩한 게시물</h1>
+                <div class="more">+</div>
+              </div>
+              <div class="class-wrapper">
+                <div class="class-item">
+                  <p class="classtitle1">[틈틈러 재도전 이야기]</p>
+                  <p class="classtitle2">
+                    포트폴리오를 다시 만들고 싶은데 감각이 없어진 분...
+                  </p>
+                </div>
+                <div class="class-item">
+                  <p class="classtitle1">[틈틈러 재도전 이야기]</p>
+                  <p class="classtitle2">
+                    포트폴리오를 다시 만들고 싶은데 감각이 없어진 분...
+                  </p>
+                </div>
+                <div class="class-item">
+                  <p class="classtitle1">[틈틈러 재도전 이야기]</p>
+                  <p class="classtitle2">
+                    포트폴리오를 다시 만들고 싶은데 감각이 없어진 분...
+                  </p>
+                </div>
+                <div class="class-item">
+                  <p class="classtitle1">[틈틈러 재도전 이야기]</p>
+                  <p class="classtitle2">
+                    포트폴리오를 다시 만들고 싶은데 감각이 없어진 분...
+                  </p>
+                </div>
+                <div class="class-item">
+                  <p class="classtitle1">[틈틈러 재도전 이야기]</p>
+                  <p class="classtitle2">
+                    포트폴리오를 다시 만들고 싶은데 감각이 없어진 분...
+                  </p>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
+        <section class="plan-card">
+          <div class="title-header">
+            <h1 class="title">나의 계획서</h1>
+            <div class="more">+</div>
+          </div>
+          <div class="item-container">
+            <div class="subtitle">보유 역량</div>
+            <div class="item-wrapper">
+              <!-- 백엔드 연결 전 임시 더미데이터 -->
+              <div class="skills">국가공인 마케팅 관리사 1급</div>
+              <div class="skills">TOEIC</div>
+              <div class="skills">컴퓨터활용능력 1급</div>
+            </div>
+          </div>
+
+          <div class="item-container">
+            <div class="subtitle">목표</div>
+            <div class="goals">
+              <ul>
+                <li>온라인 강의 2개 수강 완료 후 콘텐츠 포트폴리오 제작하기</li>
+                <li>구글 애널리틱스(GA4) 자격증 취득</li>
+                <li>인스타그램/블로그 운영 실습 프로젝트 시작</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="jobinfo-card">
+          <div class="title-header">
+            <h1 class="title">관심 채용 정보</h1>
+            <div class="more">+</div>
+          </div>
       </main>
       <!-- 푸터 -->
       <footer>
