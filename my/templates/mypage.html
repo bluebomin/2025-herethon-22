@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/mypage.css" />
+    <link rel="stylesheet" href={% static 'css/mypage.css' %}  />
     <title>마이페이지</title>
   </head>
   <body>
@@ -11,9 +12,9 @@
       <!-- 헤더 -->
       <header>
         <!-- URL 수정하기(템플릿방식) -->
-        <a href="/login/templates/login.html" class="logo">
-          <img src="../static/img/logo1.svg" alt="로고" />
-          <img src="../static/img/logo4.svg" alt="로고" />
+        <a href={%url 'accounts:login'%} class="logo">
+          <img src={% static 'img/logo1.svg' %}  alt="로고" />
+          <img src={% static 'img/logo4.svg' %} alt="로고" />
         </a>
         <nav class="menu">
           <ul>
@@ -30,43 +31,43 @@
             </li>
             <li>
               <a href="/mypage/"
-                ><img src="../static/img/mypage.svg" alt="마이페이지"
+                ><img src={% static 'img/mypage.svg' %} alt="마이페이지"
               /></a>
             </li>
             <li>
               <a href="/alert/"
-                ><img src="../static/img/alert.svg" alt="알림"
+                ><img src={% static 'img/alert.svg' %}  alt="알림"
               /></a>
             </li>
-            <li><img src="../static/img/search.svg" alt="검색" /></li>
+            <li><img src={% static 'img/search.svg' %}  alt="검색" /></li>
           </ul>
         </nav>
       </header>
 
       <main>
         <h1>마이페이지</h1>
-        <h3>{{username}}님, 환영해요! 오늘도 틈틈이 준비를 해볼까요?</h3>
+        <h3>신명서 님, 환영해요! 오늘도 틈틈이 준비를 해볼까요?</h3> <!--이름 데이터 수정 필요-->
         <hr />
         <div class="cards-container">
           <!-- 프로필카드 -->
           <section class="profile-card">
-            <img src="../static/img/profile.svg" />
-            <h1 class="username">{{username}}</h1>
+            <img src={% static 'img/profile.svg' %} />
+            <h1 class="username">신명서</h1> <!--이름 데이터 수정 필요-->
             <div class="info-item">
               <div class="info-key">희망 직종</div>
-              <div class="info-value">{{}}</div>
+              <div class="info-value">{{my.desired_job}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">희망 지역</div>
-              <div class="info-value">{{}}</div>
+              <div class="info-value">{{my.desired_region}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">보유 역량 개수</div>
-              <div class="info-value">{{}}</div>
+              <div class="info-value">{{my.strengths}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">경력 단절 기간</div>
-              <div class="info-value">{{}}</div>
+              <div class="info-value">{{my.career_gap_years}}</div>
             </div>
             <h1 class="type">"재취업 도전 틈틈러"</h1>
           </section>
@@ -106,6 +107,7 @@
                 </div>
               </div>
             </section>
+            <!-- 더미데이터 (추후 백엔드에서 가져오도록 수정) -->
             <section class="onlineclass">
               <div class="title-header">
                 <h1 class="title">스크랩한 게시물</h1>
@@ -211,11 +213,11 @@
       </main>
       <!-- 푸터 -->
       <footer>
-        <img src="../static/img/logo2.svg" alt="로고" class="logo2" />
+        <img src={% static 'img/logo2.svg' %} alt="로고" class="logo2" />
 
         <div class="footer-bottom">
           <h1>단절의 시간을 기회의 시간으로 바꾸는 플랫폼,</h1>
-          <img src="../static/img/logo3.svg" class="logo3" />
+          <img src={% static 'img/logo3.svg' %}class="logo3" />
         </div>
       </footer>
     </div>
