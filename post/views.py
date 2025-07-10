@@ -51,3 +51,22 @@ def comment_create(request, pk):
             comment.save()
             return redirect('post:post_detail', pk=pk)
     return redirect('post:post_detail', pk=pk)
+
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    comments = post.comments.all().order_by('created_at')
+    comment_form = CommentForm()
+
+    #이전 글: 현재보다 pk가 작은 것 중 가장 큰 글
+    prev_post = Post.objects.filter(pk__lt=post.pk).order_by('-pk').first()
+    #다음 글: 현재보다 pk가 큰 것 중 가장 작은 글
+    next_post = Post.objects.filter(pk__gt=post.pk).order_by('pk').first()
+
+    return render(request, 'post/post_detail.html', {
+        'post': post,
+        'comments': comments,
+        'comment_form': comment_form,
+        'prev_post': prev_post,
+        'next_post': next_post,
+    })
