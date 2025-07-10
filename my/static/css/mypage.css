@@ -182,7 +182,7 @@ h3 {
   font-size: 28px;
   margin: 28px;
 }
-.card-container {
+.cards-container {
   display: flex;
   justify-content: space-between;
 }
@@ -298,6 +298,75 @@ h3 {
   border: 2px solid #90cfa8;
   box-sizing: border-box;
 }
+
+/* 카드 리스트 */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 65px;
+  margin-top: 40px;
+}
+.card {
+  display: flex;
+  width: 606px;
+  height: 227px;
+  border-radius: 16px;
+  box-shadow: 3px 4px 21.7px 0px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to top, #f7fffa 0%, #ffffff 100%);
+  box-sizing: border-box;
+  padding: 30px;
+  align-items: start;
+  justify-content: space-between;
+}
+.card img {
+  width: 130px;
+}
+.card-content {
+  text-align: left;
+}
+.card h2 {
+  font-family: "Pretendard-SemiBold";
+  font-size: 32px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.card p {
+  margin: 0;
+}
+.card .scrap {
+  width: 52px;
+  cursor: pointer;
+}
+.card .subtitle {
+  font-size: 20px;
+  margin-top: 16px;
+  font-weight: 500;
+}
+.card .category {
+  font-size: 16px;
+  margin-top: 4px;
+  font-weight: 400;
+}
+.button {
+  font-size: 28px;
+  color: #fff;
+  text-align: center;
+  background: #427d58;
+  display: flex;
+  width: 794px;
+  height: 65px;
+  padding: 16px 27px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 177px;
+  margin-top: 140px;
+  box-sizing: border-box;
+  border-radius: 11px;
+  font-family: "Pretendard-SemiBold";
+  cursor: pointer;
+}
+/* 푸터 */
 footer {
   position: relative;
   height: 272px;

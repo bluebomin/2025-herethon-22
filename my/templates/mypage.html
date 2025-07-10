@@ -53,7 +53,7 @@
         <h1>마이페이지</h1>
         <h3>{{username}}님, 환영해요! 오늘도 틈틈이 준비를 해볼까요?</h3>
         <hr />
-        <div class="card-container">
+        <div class="cards-container">
           <!-- 프로필카드 -->
           <section class="profile-card">
             <img src="../static/img/profile.svg" />
@@ -121,7 +121,8 @@
                 <div class="class-item">
                   <p class="classtitle1">[틈틈러 재도전 이야기]</p>
                   <p class="classtitle2">
-                    포트폴리오를 다시 만들고 싶은데 감각이 없어진 분들 어떻게 하시나요?
+                    포트폴리오를 다시 만들고 싶은데 감각이 없어진 분들 어떻게
+                    하시나요?
                   </p>
                 </div>
                 <div class="class-item">
@@ -132,7 +133,9 @@
                 </div>
                 <div class="class-item">
                   <p class="classtitle1">[틈틈러 재도전 이야기]</p>
-                  <p class="classtitle2">2년 간 공백기 가진 후 재취업 준비 중인데 너무 막막합니다</p>
+                  <p class="classtitle2">
+                    2년 간 공백기 가진 후 재취업 준비 중인데 너무 막막합니다
+                  </p>
                 </div>
                 <div class="class-item">
                   <p class="classtitle1">[틈틈러 재도전 이야기]</p>
@@ -180,6 +183,137 @@
             <div class="more">+</div>
           </div>
         </section>
+        <!-- 카드 목록 -->
+        <section class="card-container">
+          <div class="card">
+            <div class="card-content">
+              <img
+                src="../static/img/sample-logo.png"
+                alt="로고"
+                class="sample-logo"
+              />
+              <a
+                href="{% url 'jobs:job_redirect' job.id %}"
+                target="_blank"
+                class="card-link"
+              >
+                <h2>job.title</h2>
+              </a>
+              <p class="subtitle">job.company</p>
+              <p class="category">job.get_job_type_display</p>
+            </div>
+            <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
+            <img
+              src="../static/img/scrapbtn-filled.svg"
+              alt="스크랩"
+              class="scrap"
+              data-job-id="{{ job.id }}"
+            />
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <img
+                src="../static/img/sample-logo.png"
+                alt="로고"
+                class="sample-logo"
+              />
+              <a
+                href="{% url 'jobs:job_redirect' job.id %}"
+                target="_blank"
+                class="card-link"
+              >
+                <h2>job.title</h2>
+              </a>
+              <p class="subtitle">job.company</p>
+              <p class="category">job.get_job_type_display</p>
+            </div>
+            <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
+            <img
+              src="../static/img/scrapbtn-filled.svg"
+              alt="스크랩"
+              class="scrap"
+              data-job-id="{{ job.id }}"
+            />
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <img
+                src="../static/img/sample-logo.png"
+                alt="로고"
+                class="sample-logo"
+              />
+              <a
+                href="{% url 'jobs:job_redirect' job.id %}"
+                target="_blank"
+                class="card-link"
+              >
+                <h2>job.title</h2>
+              </a>
+              <p class="subtitle">job.company</p>
+              <p class="category">job.get_job_type_display</p>
+            </div>
+            <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
+            <img
+              src="../static/img/scrapbtn-filled.svg"
+              alt="스크랩"
+              class="scrap"
+              data-job-id="{{ job.id }}"
+            />
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <img
+                src="../static/img/sample-logo.png"
+                alt="로고"
+                class="sample-logo"
+              />
+              <a
+                href="{% url 'jobs:job_redirect' job.id %}"
+                target="_blank"
+                class="card-link"
+              >
+                <h2>job.title</h2>
+              </a>
+              <p class="subtitle">job.company</p>
+              <p class="category">job.get_job_type_display</p>
+            </div>
+            <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
+            <img
+              src="../static/img/scrapbtn-filled.svg"
+              alt="스크랩"
+              class="scrap"
+              data-job-id="{{ job.id }}"
+            />
+          </div>
+          <!--{% for job in jobs %}
+          <div class="card">
+            <div class="card-content">
+              <img
+                src="{{ job.company_logo }}"
+                alt="로고"
+                class="sample-logo"
+              />
+              <a
+                href="{% url 'jobs:job_redirect' job.id %}"
+                target="_blank"
+                class="card-link"
+              >
+                <h2>{{ job.title }}</h2>
+              </a>
+              <p class="subtitle">{{ job.company }}</p>
+              <p class="category">{{ job.get_job_type_display }}</p>
+            </div>
+            스크랩 유무에 따른 버튼 이미지 변경 
+            <img
+              src={% static 'img/scrapbtn-filled.svg' %}
+              alt="스크랩"
+              class="scrap"
+              data-job-id="{{ job.id }}"
+            />
+          </div>
+          {% endfor %} -->
+        </section>
+        <div class="button">취업 성공 인증하기</div>
       </main>
       <!-- 푸터 -->
       <footer>
