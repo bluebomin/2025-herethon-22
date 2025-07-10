@@ -62,9 +62,12 @@
       <!-- <form id="stSubF">
         <input id="stSubmit" type="submit" value="등록하기" />
       </form> -->
-      <div id="stSubF">
-        <a href="./StoryDetail.html" id="stSubmit">등록하기</a>
-      </div>
+      <!--      <form method="post" id="stSubF">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="등록하기" id="writeButton">
+      </form> 이런 식으로 바꿔주시면 좋을 것 같습니다(보민) -->
+
     </section>
     <!-- 푸터 -->
     <footer>
@@ -73,6 +76,6 @@
         <img src="/img/Group 320.png" class="logo3" />
       </div>
     </footer>
-    <script src="../js/StoryWrite.js" defer></script>
+    <script src="../js/post_form.js" defer></script>
   </body>
 </html>
