@@ -2,9 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from plan.models import Plan
 
 def post_list(request):
     posts = Post.objects.all().order_by('-created_at')
+    for post in posts:
+        try:
+            post.author_plan = Plan.objects.get(user=post.author)
+        except Plan.DoesNotExist:
+            post.author_plan = None
     return render(request, 'post/post_list.html', {'posts': posts})
 
 
