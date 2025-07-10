@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href={%static "css/LandingPage.css"%} rel="stylesheet" />
+    <link href={%static "css/home.css"%} rel="stylesheet" />
     <title>랜딩</title>
   </head>
   <body>
@@ -43,7 +43,7 @@
         </nav>
         <nav id="user-actions">
           <!-- 추후 경로 페이지 수정 -->
-          <a href="/login/">
+          <a href={%url "accounts:login"%}>
             <!-- 로그인 후 스타일 변경 -->
             <img src={%static "img/Group 243.png"%} alt="로그인" id="login" />
           </a>
