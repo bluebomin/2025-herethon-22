@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/post_form.css' %}" />    
+    <link rel="stylesheet" href="{% static 'css/post_form.css' %}" />
     <title>틈틈러 재도전 이야기</title>
   </head>
   <body>
@@ -12,9 +12,17 @@
     <header>
       <!--경로수정-->
       <div id="HderLogos">
-        <a href="/login/templates/login.html" class="logo">
-          <img id="HdLogoTT" src="/img/Group 315.png" alt="로고" />
-          <img id="HdLogoKTT" src="/img/Group 318.png" alt="로고" />
+        <a href="{% url 'accounts:login' %}" class="logo">
+          <img
+            id="HdLogoTT"
+            src="{% static 'img/Group 315.png' %}"
+            alt="로고"
+          />
+          <img
+            id="HdLogoKTT"
+            src="{% static 'img/Group 318.png' %}"
+            alt="로고"
+          />
         </a>
       </div>
       <div id="HdScetion">
@@ -25,23 +33,30 @@
           <a class="HdA" href="">틈틈이계획</a>
         </nav>
         <nav id="user-actions">
-          <!-- 추후 경로 페이지 수정 -->
-          <a href="/login/">
-            <img src="/img/Group 243.png" alt="로그인" id="login" />
+          <a href="{% url 'accounts:login' %}">
+            <img
+              src="{% static 'img/Group 243.png' %}"
+              alt="로그인"
+              id="login"
+            />
           </a>
+          <!-- 추후 경로 페이지 수정 -->
           <a href="/mypage/"
-            ><img id="UserImg" src="/img/User.png" alt="마이페이지"
+            ><img
+              id="UserImg"
+              src="{% static 'img/User.png' %}"
+              alt="마이페이지"
           /></a>
-          <a href="/alert/"
-            ><img id="BellImg" src="/img/Bell.png" alt="알림"
-          /></a>
-          <img id="SearchImg" src="/img/Search.png" alt="검색" />
+          <div>
+            <img id="BellImg" src="{% static 'img/Bell.png ' %}" alt="알림" />
+          </div>
+          <img id="SearchImg" src="{% static 'img/Search.png' %}" alt="검색" />
         </nav>
       </div>
     </header>
     <section>
       <div id="title">
-        <img id="HdImg" src="/img/틈틈러 재도전 이야기.png" />
+        <img id="HdImg" src="{% static 'img/틈틈러 재도전 이야기.png' %}" />
         <p id="titleDt">재취업에 도전하는 틈틈러들과 이야기를 나누어 보아요.</p>
       </div>
       <div class="wrT">
@@ -62,20 +77,19 @@
       <!-- <form id="stSubF">
         <input id="stSubmit" type="submit" value="등록하기" />
       </form> -->
-      <!--      <form method="post" id="stSubF">
+      <form method="post" id="stSubF">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="등록하기" id="writeButton">
-      </form> 이런 식으로 바꿔주시면 좋을 것 같습니다(보민) -->
-
+      </form>
     </section>
     <!-- 푸터 -->
     <footer>
-      <img src="/img/Group 319.png" alt="로고" class="logo2" />
+      <img src="{% static 'img/Group 319.png' %}" alt="로고" class="logo2" />
       <div>
-        <img src="/img/Group 320.png" class="logo3" />
+        <img src="{% static 'img/Group 320.png' %}" class="logo3" />
       </div>
     </footer>
-    <script src="../js/post_form.js" defer></script>
+    <script src="{% static 'js/post_form' %}" defer></script>
   </body>
 </html>

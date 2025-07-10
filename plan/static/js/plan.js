@@ -260,3 +260,56 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// 스크랩(class 사용)
+document.addEventListener("DOMContentLoaded", function () {
+  const starImgs = document.querySelectorAll(".Tcstar");
+
+  const fStarImg = [
+    "/plan/static/img/Star 1.png",
+    "/plan/static/img/fStar 1.png",
+  ];
+
+  starImgs.forEach((starImg) => {
+    let current = 0;
+
+    starImg.addEventListener("click", function () {
+      current = (current + 1) % fStarImg.length;
+      starImg.src = fStarImg[current];
+    });
+  });
+});
+
+//목록 js
+document.addEventListener("DOMContentLoaded", function () {
+  const jobTypes = document.querySelectorAll(
+    "input[name='job_type_filter']:checked"
+  );
+  const skillInput = document.getElementById("skillInput");
+  const resumeInput = document.querySelector("input[type='file']");
+  const goalTextarea = document.getElementById("TA");
+
+  const sb = document.getElementById("Sb");
+  const sb2 = document.getElementById("Sb2");
+  const sb3 = document.getElementById("Sb3");
+
+  // 초기 숨기기
+  sb.style.display = "none";
+  sb2.style.display = "none";
+  sb3.style.display = "none";
+
+  const isJobTypeEmpty =
+    document.querySelectorAll("input[name='job_type_filter']:checked")
+      .length === 0;
+  const isSkillEmpty = skillInput.value.trim() === "";
+  const isResumeEmpty = !resumeInput.files || resumeInput.files.length === 0;
+  const isGoalEmpty = goalTextarea.value.trim() === "";
+
+  if (isJobTypeEmpty && isSkillEmpty && isResumeEmpty && isGoalEmpty) {
+    sb3.style.display = "block";
+  } else if (isJobTypeEmpty || isSkillEmpty || isResumeEmpty) {
+    sb2.style.display = "block";
+  } else if (isGoalEmpty) {
+    sb.style.display = "block";
+  }
+});
