@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import path, include  
 from django.conf import settings
 from django.conf.urls.static import static
-from accounts.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),              
@@ -10,7 +9,7 @@ urlpatterns = [
     path('post/', include('post.urls')),            
     path('plan/', include('plan.urls')),            
     path('jobs/', include('jobs.urls')), 
-    path('', home, name= 'home'),           
+    path('', include('home.urls')),          
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
