@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/mypage.css" />
+    <title>마이페이지</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 헤더 -->
+      <header>
+        <a href="/login/templates/login.html" class="logo">
+          <img src="../static/img/logo1.svg" alt="로고" />
+          <span class="title">틈틈</span>
+        </a>
+        <nav class="menu">
+          <ul>
+            <!-- 추후 경로 페이지 수정 -->
+            <li><a href="">틈틈이공유</a></li>
+            <li><a href="">틈틈이정보</a></li>
+            <li><a href="">틈틈이계획</a></li>
+          </ul>
+        </nav>
+        <nav class="user-actions">
+          <ul>
+            <li>
+              <!-- 추후 경로 페이지 수정 -->
+              <a href="/login/"
+                ><img
+                  src="../static/img/loginbtn.svg"
+                  alt="로그인"
+                  class="login"
+              /></a>
+            </li>
+            <li>
+              <a href="/mypage/"
+                ><img src="../static/img/mypage.svg" alt="마이페이지"
+              /></a>
+            </li>
+            <li>
+              <a href="/alert/"
+                ><img src="../static/img/alert.svg" alt="알림"
+              /></a>
+            </li>
+            <li><img src="../static/img/search.svg" alt="검색" /></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <h1>마이페이지</h1>
+        <h3>{{username}}님, 환영해요! 오늘도 틈틈이 준비를 해볼까요?</h3>
+        <hr />
+        <div class="card-container">
+          <!-- 이건 필요없나? -->
+
+          <!-- 프로필카드 -->
+          <section class="profile-card">
+            <img src="../static/img/profile.svg" />
+            <h1 class="username">{{username}}</h1>
+            <div class="info-item">
+              <div class="info-key">희망 직종</div>
+              <div class="info-value">{{}}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-key">희망 지역</div>
+              <div class="info-value">{{}}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-key">보유 역량 개수</div>
+              <div class="info-value">{{}}</div>
+            </div>
+            <div class="info-item">
+              <div class="info-key">경력 단절 기간</div>
+              <div class="info-value">{{}}</div>
+            </div>
+            <h1 class="type">"재취업 도전 틈틈러"</h1>
+          </section>
+
+          <div class="right-wrapper">
+            <!-- 스크랩 온라인 강의 -->
+            <section class="onlineclass">
+                <div class="title-header">
+              <h1 class="title">스크랩한 온라인 강의</h1>
+              <div class="more">+</div>
+              </div>
+              <div class="class-wrapper">
+                <div class="class-item">
+                  <p class="classtitle1">서비스 디자인 입문</p>
+                  <p class="classtitle2">K-MOOC (서울대)</p>
+                  <p class="classtitle3">입문</p>
+                </div>
+                <div class="class-item">
+                  <p class="classtitle1">마케팅 입문</p>
+                  <p class="classtitle2">K-MOOC (호서대)</p>
+                  <p class="classtitle3">입문</p>
+                </div>
+                <div class="class-item">
+                  <p class="classtitle1">문화창업마케팅</p>
+                  <p class="classtitle2">K-MOOC (호서대)</p>
+                  <p class="classtitle3">입문</p>
+                </div>
+                <div class="class-item">
+                  <p class="classtitle1">소비자행동심리학</p>
+                  <p class="classtitle2">K-MOOC (고려대)</p>
+                  <p class="classtitle3">입문</p>
+                </div>
+                <div class="class-item">
+                  <p class="classtitle1">디자인의 이해</p>
+                  <p class="classtitle2">K-MOOC (중앙대)</p>
+                  <p class="classtitle3">입문</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+      <!-- 푸터 -->
+      <footer>
+        <img src="../static/img/logo2.svg" alt="로고" class="logo2" />
+
+        <div class="footer-bottom">
+          <h1>단절의 시간을 기회의 시간으로 바꾸는 플랫폼,</h1>
+          <img src="../static/img/logo3.svg" class="logo3" />
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
