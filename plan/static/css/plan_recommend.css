@@ -1,3 +1,46 @@
+#TeachBox {
+  width: 70%;
+  height: 65%;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ffffff 50%, #efffef 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px 24px 24px 28px;
+  max-width: 500px;
+  margin: 10px auto;
+}
+#TcTop {
+  display: flex;
+  justify-content: space-between;
+}
+#TeachVi {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 30px;
+}
+#TcProfile {
+  max-width: 90px;
+  aspect-ratio: 3 / 1;
+  object-fit: contain;
+}
+.Tcstar {
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+}
+#CtT {
+  font-size: 18px;
+  font-weight: 600;
+  color: #434d38;
+  margin: 10px 0;
+}
+#CtLo {
+  font-size: 15px;
+  font-weight: 450;
+}
+#CtTy {
+  font-size: 13px;
+}
 * {
   padding: 0;
   margin: 0;
@@ -576,4 +619,53 @@ footer .logo3 {
 
 #SbRq > a {
   color: #fff;
+}
+
+.storyCt {
+  padding: 20px;
+  width: 70%;
+  height: auto;
+  margin: 20px;
+  border-radius: 10px;
+  /* 배경색 지정(변경가능성) */
+  background: linear-gradient(135deg, #ffffff 50%, #e6f5e6 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+.story {
+  font-size: 19px;
+  font-weight: 500;
+  color: #434d38;
+}
+.profile {
+  width: 32px;
+  height: 32px;
+}
+.storyIf {
+  display: flex;
+  margin-top: 5%;
+  align-items: center;
+}
+.userIf {
+  margin-left: 10px;
+}
+.userSt {
+  display: flex;
+  align-items: center;
+}
+.userName {
+  font-size: 13px;
+  font-weight: 500;
+}
+.userT {
+  font-size: 12px;
+  padding-right: 3px;
+  border-right: 1px solid rgb(67, 67, 67);
+}
+.userJ {
+  font-size: 12px;
+  margin-left: 3px;
 }
