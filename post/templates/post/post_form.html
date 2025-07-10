@@ -77,9 +77,11 @@
       <!-- <form id="stSubF">
         <input id="stSubmit" type="submit" value="등록하기" />
       </form> -->
-      <div id="stSubF">
-        <a href="{% url 'post:post_detail' %}" id="stSubmit">등록하기</a>
-      </div>
+      <form method="post" id="stSubF">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="등록하기" id="writeButton">
+      </form>
     </section>
     <!-- 푸터 -->
     <footer>

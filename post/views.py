@@ -16,7 +16,7 @@ def post_create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('post:post_list')
+            return redirect('post:post_detail', pk=post.pk)
     else:
         form = PostForm()
     return render(request, 'post/post_form.html', {'form': form})

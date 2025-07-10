@@ -8,5 +8,4 @@ class JobPostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'company']
     list_filter = ['career']
 
-
-admin.register(Bookmark)
+admin.site.register(Bookmark)
