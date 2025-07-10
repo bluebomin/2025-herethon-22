@@ -301,7 +301,7 @@
             <div class="dropdown-container">
               <div class="dropdown">학력 조건</div>
               <img
-                src={%static "../static/img/dropdown.svg"%}
+                src={%static "img/dropdown.svg"%}
                 alt="화살표"
                 class="dropdownBtn"
               />
@@ -389,11 +389,20 @@
           {% for job in jobs %}
           <div class="card">
             <div class="card-content">
-              <img
-                src="{{ job.company_logo.url }}"
-                alt="로고"
-                class="sample-logo"
-              />
+              {% if job.company_logo %} {# company_logo가 존재할 때만 표시 #}
+                <img
+                  src="{{ job.company_logo.url }}"
+                  alt="로고"
+                  class="sample-logo"
+                />
+              {% else %}
+                {# 로고가 없을 경우 보여줄 기본 이미지. 경로는 static 폴더 내에 해당 이미지가 있어야 합니다. #}
+                <img
+                  src="{% static 'img/default_company_logo.svg' %}"
+                  alt="기본 로고"
+                  class="sample-logo"
+                />
+              {% endif %}
               <a
                 href="{% url 'jobs:job_redirect' job.id %}"
                 target="_blank"
