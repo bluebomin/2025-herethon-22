@@ -1,0 +1,16 @@
+<h2>{{ post.title }}</h2>
+<p>{{ post.content }}</p>
+
+<h3>댓글</h3>
+<ul>
+  {% for comment in comments %}
+  <li>{{ comment.content }} - {{ comment.author.username }}</li>
+  {% empty %}
+  <li>댓글이 없습니다.</li>
+  {% endfor %}
+</ul>
+
+<form method="post" action="{% url 'post:comment_create' post.pk %}">
+  {% csrf_token %} {{ comment_form.as_p }}
+  <button type="submit">댓글 작성</button>
+</form>
