@@ -121,7 +121,8 @@ nav a:hover {
 }
 
 main {
-  margin: 48px 81px;
+  padding: 48px 81px;
+  background: #fafafa;
 }
 hr {
   border: none;
