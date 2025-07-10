@@ -27,12 +27,6 @@
           <ul>
             <li>
               <!-- 추후 경로 페이지 수정 -->
-              <!-- <a href="/login/"
-                ><img
-                  src="../static/img/loginbtn.svg"
-                  alt="로그인"
-                  class="login"
-              /></a> -->
             </li>
             <li>
               <a href="/mypage/"
@@ -185,107 +179,7 @@
         </section>
         <!-- 카드 목록 -->
         <section class="card-container">
-          <div class="card">
-            <div class="card-content">
-              <img
-                src="../static/img/sample-logo.png"
-                alt="로고"
-                class="sample-logo"
-              />
-              <a
-                href="{% url 'jobs:job_redirect' job.id %}"
-                target="_blank"
-                class="card-link"
-              >
-                <h2>job.title</h2>
-              </a>
-              <p class="subtitle">job.company</p>
-              <p class="category">job.get_job_type_display</p>
-            </div>
-            <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
-            <img
-              src="../static/img/scrapbtn-filled.svg"
-              alt="스크랩"
-              class="scrap"
-              data-job-id="{{ job.id }}"
-            />
-          </div>
-          <div class="card">
-            <div class="card-content">
-              <img
-                src="../static/img/sample-logo.png"
-                alt="로고"
-                class="sample-logo"
-              />
-              <a
-                href="{% url 'jobs:job_redirect' job.id %}"
-                target="_blank"
-                class="card-link"
-              >
-                <h2>job.title</h2>
-              </a>
-              <p class="subtitle">job.company</p>
-              <p class="category">job.get_job_type_display</p>
-            </div>
-            <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
-            <img
-              src="../static/img/scrapbtn-filled.svg"
-              alt="스크랩"
-              class="scrap"
-              data-job-id="{{ job.id }}"
-            />
-          </div>
-          <div class="card">
-            <div class="card-content">
-              <img
-                src="../static/img/sample-logo.png"
-                alt="로고"
-                class="sample-logo"
-              />
-              <a
-                href="{% url 'jobs:job_redirect' job.id %}"
-                target="_blank"
-                class="card-link"
-              >
-                <h2>job.title</h2>
-              </a>
-              <p class="subtitle">job.company</p>
-              <p class="category">job.get_job_type_display</p>
-            </div>
-            <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
-            <img
-              src="../static/img/scrapbtn-filled.svg"
-              alt="스크랩"
-              class="scrap"
-              data-job-id="{{ job.id }}"
-            />
-          </div>
-          <div class="card">
-            <div class="card-content">
-              <img
-                src="../static/img/sample-logo.png"
-                alt="로고"
-                class="sample-logo"
-              />
-              <a
-                href="{% url 'jobs:job_redirect' job.id %}"
-                target="_blank"
-                class="card-link"
-              >
-                <h2>job.title</h2>
-              </a>
-              <p class="subtitle">job.company</p>
-              <p class="category">job.get_job_type_display</p>
-            </div>
-            <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
-            <img
-              src="../static/img/scrapbtn-filled.svg"
-              alt="스크랩"
-              class="scrap"
-              data-job-id="{{ job.id }}"
-            />
-          </div>
-          <!--{% for job in jobs %}
+            {% for job in jobs %}
           <div class="card">
             <div class="card-content">
               <img
@@ -303,7 +197,7 @@
               <p class="subtitle">{{ job.company }}</p>
               <p class="category">{{ job.get_job_type_display }}</p>
             </div>
-            스크랩 유무에 따른 버튼 이미지 변경 
+            <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
             <img
               src={% static 'img/scrapbtn-filled.svg' %}
               alt="스크랩"
@@ -311,7 +205,7 @@
               data-job-id="{{ job.id }}"
             />
           </div>
-          {% endfor %} -->
+        {% endfor %} 
         </section>
         <div class="button">취업 성공 인증하기</div>
       </main>
