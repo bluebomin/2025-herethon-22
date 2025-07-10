@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'post',
     'my',
     'plan',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -134,4 +135,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # settings.py 파일
-LOGIN_REDIRECT_URL = 'accounts:home'
+LOGIN_REDIRECT_URL = 'home:home'

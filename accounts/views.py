@@ -14,7 +14,7 @@ def login(request):
         if user is not None:
             auth_login(request, user)
             print('로그인 성공!')
-            return redirect('templates.home.html')   #랜딩페이지로 변경
+            return redirect('home:home')   #랜딩페이지로 변경
         else:
             error_message = "아이디 또는 비밀번호가 잘못되었습니다."
             return render(request, 'login.html', {'error': error_message})
@@ -23,7 +23,7 @@ def login(request):
     
 def logout(request):
     auth_logout(request)
-    return redirect('home')  
+    return redirect('home:home')  
 
 def signup(request):
     if request.method == 'POST':
