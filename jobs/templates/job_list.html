@@ -389,6 +389,7 @@
           {% for job in jobs %}
           <div class="card">
             <div class="card-content">
+              <div class="logo-wrapper">
               {% if job.company_logo %} {# company_logo가 존재할 때만 표시 #}
                 <img
                   src="{{ job.company_logo.url }}"
@@ -403,6 +404,7 @@
                   class="sample-logo"
                 />
               {% endif %}
+              </div>
               <a
                 href="{% url 'jobs:job_redirect' job.id %}"
                 target="_blank"
@@ -415,7 +417,7 @@
             </div>
             <!-- 스크랩 유무에 따른 버튼 이미지 변경 -->
             <img
-              src="{% if job.id in user_bookmarked_job_ids %}{% static 'img/scrapbtn-filled.svg' %}{% else %}{% static 'img/scrapbtn.svg' %}{% endif %}"
+              src={%static 'img/scrapbtn.svg'%}
               alt="스크랩"
               class="scrap"
               data-job-id="{{ job.id }}"
