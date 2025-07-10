@@ -1,0 +1,389 @@
+@font-face {
+  font-family: "Paperlogy-5Medium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Paperlogy-6SemiBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pretendard-SemiBold";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+:root {
+  --text-color: #333; /* 기본 텍스트 컬러 */
+  --primary-color: #427d58; /* 메인 컬러 */
+  /* --font-body: "Pretendard-Regular"; body 폰트 */
+}
+
+html,
+body {
+  color: var(--text-color);
+  height: 100%;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /*전체를 감싸고 세로 정렬 */
+  max-width: 1440px;
+  width: 100%; /*뷰포트 너비에 맞춤*/
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  height: 129px;
+  padding: 82px;
+  align-items: center;
+  gap: 60px;
+  box-sizing: border-box;
+  position: sticky;
+  box-shadow: 0px 3px 11.4px 0px rgba(0, 0, 0, 0.15);
+  font-family: "Paperlogy-5Medium";
+  font-weight: 500;
+}
+
+nav {
+  display: flex;
+  font-size: 24px;
+  font-weight: 500;
+}
+.menu ul {
+  gap: 78px;
+}
+.title {
+  font-size: 40px;
+  font-weight: 600;
+}
+body {
+  margin: 0;
+}
+a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: var(--text-color); /* 파란색 링크 색 변경 */
+}
+a.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-color);
+  gap: 8px;
+}
+nav ul {
+  list-style: none; /* 동그라미 제거 */
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.user-actions ul {
+  gap: 20px;
+}
+nav ul li {
+  display: flex;
+  align-items: center;
+}
+nav a {
+  font-weight: 500;
+}
+nav a:hover {
+  color: #727272;
+}
+.user-actions {
+  margin-left: auto; /* 오른쪽으로 밀어냄 */
+}
+.user-actions img.login {
+  width: 137px;
+  height: auto;
+}
+.user-actions img {
+  display: flex;
+  width: 32px;
+  height: auto;
+  align-items: center; /* 아이콘들 세로 정렬 통일 */
+  cursor: pointer;
+}
+
+main {
+  margin: 48px 81px;
+}
+hr {
+  border: none;
+  border-top: 1px solid #a8a8a8;
+  margin: 32px 0;
+  width: 100%;
+}
+h1 {
+  font-family: "Paperlogy-6SemiBold";
+  font-size: 40px;
+  margin: 0;
+}
+h3 {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+  margin-top: 12px;
+}
+.profile-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 69px;
+  width: 488px;
+  height: 749px;
+  box-sizing: border-box;
+  border-radius: 32px;
+  background: var(
+    --card,
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+    linear-gradient(133deg, #dcffe9 -1.81%, #d7ffdc 51.13%, #aaf3c6 96.76%)
+  );
+  box-shadow: 3px 4px 21.7px 0px rgba(0, 0, 0, 0.1);
+}
+.profile-card img {
+  width: 247px;
+}
+.username {
+  margin: 35px;
+}
+.info-item {
+  display: flex;
+  gap: 18px;
+  font-size: 24px;
+  font-family: "Pretendard-SemiBold";
+}
+.info-key {
+  width: 136px;
+  text-align: left;
+  color: #434d38;
+  margin-bottom: 20px;
+}
+.info-value {
+  color: #333;
+  margin-bottom: 20px;
+}
+.type {
+  font-size: 28px;
+  margin: 28px;
+}
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+}
+.onlineclass {
+  width: 749px;
+  height: 351px;
+  border-radius: 32px;
+  background: linear-gradient(to top, #f7fffa 0%, #ffffff 100%);
+  box-shadow: 3px 4px 21.7px 0px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  box-sizing: border-box;
+}
+.title-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  font-size: 24px;
+}
+.more {
+  font-family: "Pretendard-SemiBold";
+  font-size: 32px;
+  color: #427d58;
+  cursor: pointer;
+}
+.right-wrapper {
+  display: flex; /* 또는 display: grid */
+  flex-direction: column; /* 세로 정렬 시 */
+  gap: 47px;
+}
+.class-wrapper {
+  margin-top: 60px;
+}
+.class-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.classtitle1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+.classtitle2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden; /* 넘치는 텍스트 숨김 */
+  text-overflow: ellipsis; /* 넘치는 부분 말줄임표 표시 */
+  max-width: 300px;
+}
+.classtitle3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+.plan-card,
+.jobinfo-card {
+  width: 100%;
+  border-radius: 32px;
+  background: linear-gradient(to top, #f7fffa 0%, #ffffff 100%);
+  box-shadow: 3px 4px 21.7px 0px rgba(0, 0, 0, 0.1);
+  padding: 43px;
+  box-sizing: border-box;
+  margin-top: 47px;
+}
+
+.item-container {
+  display: flex;
+  gap: 140px;
+  margin-top: 30px;
+}
+.item-wrapper {
+  display: flex;
+  gap: 30px;
+}
+.subtitle {
+  width: 89px;
+  display: flex;
+  align-items: center;
+  font-family: "Pretendard-SemiBold";
+  font-size: 24px;
+}
+.goals {
+  border: 2px solid #90cfa8;
+  border-radius: 11px;
+  width: 792px;
+  padding: 16px 22px;
+}
+.goals ul li::marker {
+  font-size: 0.8em;
+}
+.goals ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 20px;
+  font-family: "Pretendard-Regular";
+}
+
+.skills {
+  width: auto;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  border-radius: 97px;
+  border: 2px solid #90cfa8;
+  box-sizing: border-box;
+}
+
+/* 카드 리스트 */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 65px;
+  margin-top: 40px;
+}
+.card {
+  display: flex;
+  width: 606px;
+  height: 227px;
+  border-radius: 16px;
+  box-shadow: 3px 4px 21.7px 0px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to top, #f7fffa 0%, #ffffff 100%);
+  box-sizing: border-box;
+  padding: 30px;
+  align-items: start;
+  justify-content: space-between;
+}
+.card img {
+  width: 130px;
+}
+.card-content {
+  text-align: left;
+}
+.card h2 {
+  font-family: "Pretendard-SemiBold";
+  font-size: 32px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.card p {
+  margin: 0;
+}
+.card .scrap {
+  width: 52px;
+  cursor: pointer;
+}
+.card .subtitle {
+  font-size: 20px;
+  margin-top: 16px;
+  font-weight: 500;
+}
+.card .category {
+  font-size: 16px;
+  margin-top: 4px;
+  font-weight: 400;
+}
+.button {
+  font-size: 28px;
+  color: #fff;
+  text-align: center;
+  background: #427d58;
+  display: flex;
+  width: 794px;
+  height: 65px;
+  padding: 16px 27px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 177px;
+  margin-top: 140px;
+  box-sizing: border-box;
+  border-radius: 11px;
+  font-family: "Pretendard-SemiBold";
+  cursor: pointer;
+}
+/* 푸터 */
+footer {
+  position: relative;
+  height: 272px;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+}
+.logo2 {
+  margin-top: 45px;
+  width: 55px;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+footer .logo3 {
+  margin-top: -45px;
+}
