@@ -272,25 +272,28 @@
               근무 가능</label
             >
           </div>
+
           <div class="career-wrapper">
             <span>경력</span>
+            
+            <div class="check-container">
+            <label><input type="checkbox" name="career_filter" /> 전체</label>
+            <div class="exp-container">
             <label
+              class="exp-label"><input type="checkbox" name="career_filter" value="exp"  />
+              경력</label
+            >
+            <label><input type="text" name="start_year"  class="year"/>년 ~</label>
+            <label><input type="text" name="end_year" class="year"/> 년</label>
+            </div>
+             <label
               ><input type="checkbox" name="career_filter" value="new" />
               신입</label
             >
             <label
-              ><input type="checkbox" name="career_filter" value="none" />
-              없음</label
-            >
-            <label
-              ><input type="checkbox" name="career_filter" value="exp" />
-              경력</label
-            >
-            <label><input type="number" name="start_year" /> 년 ~</label>
-            <label><input type="number" name="end_year" /> 년</label>
-            <label
               ><input type="checkbox" name="career_filter" /> 관계없음</label
             >
+            </div>
           </div>
 
           <div class="education-wrapper">
@@ -336,11 +339,7 @@
                   석사 학위</label
                 >
                 <label
-                  ><input
-                    type="checkbox"
-                    name="education"
-                    value="doctorate"
-                  />
+                  ><input type="checkbox" name="education" value="doctorate" />
                   박사 학위</label
                 >
               </div>
@@ -358,43 +357,23 @@
               />
               <div class="dropdown-menu">
                 <label
-                  ><input
-                    type="checkbox"
-                    name="company_size"
-                    value="small"
-                  />
+                  ><input type="checkbox" name="company_size" value="small" />
                   소기업</label
                 >
                 <label
-                  ><input
-                    type="checkbox"
-                    name="company_size"
-                    value="medium"
-                  />
+                  ><input type="checkbox" name="company_size" value="medium" />
                   중기업</label
                 >
                 <label
-                  ><input
-                    type="checkbox"
-                    name="company_size"
-                    value="large"
-                  />
+                  ><input type="checkbox" name="company_size" value="large" />
                   대기업</label
                 >
                 <label
-                  ><input
-                    type="checkbox"
-                    name="company_size"
-                    value="startup"
-                  />
+                  ><input type="checkbox" name="company_size" value="startup" />
                   스타트업</label
                 >
                 <label
-                  ><input
-                    type="checkbox"
-                    name="company_size"
-                    value="public"
-                  />
+                  ><input type="checkbox" name="company_size" value="public" />
                   공공기관</label
                 >
               </div>
@@ -403,7 +382,6 @@
           <button type="submit" class="searchbtn">조회하기</button>
         </form>
 
-        
         <hr />
         <p>총 1,472건의 채용정보가 있어요.</p>
         <!-- 카드 목록 -->
