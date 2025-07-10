@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+  {%load static %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +11,7 @@
     <div class="wrapper">
       <!-- 헤더 -->
       <header>
-        <a href="../login/templates/login.html" class="logo">
+        <a href="{%url 'accounts:login' %}" class="logo">
           <img src="../static/img/logo1.svg" alt="로고" />
           <img src="../static/img/logo4.svg" alt="로고" />
         </a>

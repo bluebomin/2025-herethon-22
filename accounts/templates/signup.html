@@ -10,7 +10,7 @@
     <div class="wrapper">
       <!-- 헤더 -->
       <header>
-        <a href="/login.html" class="logo">
+        <a href={% url 'accounts:login' %} class="logo">
           <img src="../static/img/logo1.svg" alt="로고" />
           <span class="title">틈틈</span>
         </a>
@@ -26,7 +26,7 @@
           <ul>
             <li>
               <!-- 로그인 버튼 클릭 시 로그인 페이지로 이동 -->
-              <a href="login.html"
+              <a href={%url 'accounts:login' %}
                 ><img
                   src="../static/img/loginbtn.svg"
                   alt="로그인"
@@ -57,14 +57,15 @@
           <h3>틈틈이 처음이시군요. 반가워요!</h3>
           <h1>회원가입</h1>
           <!-- 회원가입 입력폼 -->
-          <form action="/accounts/signup/" method="POST" class="signup-form">
+          <form action={% url 'accounts:signup' %} method="POST" class="signup-form">
+            {% csrf_token %}
             <div class="form-grid">
               <div class="name-wrapper">
                 <label for="user-id">이름</label>
                 <input
                   type="text"
                   id="user-name"
-                  name="name"
+                  name="username"
                   placeholder="이름을 입력해주세요."
                   required
                 />
@@ -110,7 +111,7 @@
           </form>
           <!-- 랜딩페이지로 연결시키기 -->
           <h2>이미 틈틈의 회원이신가요?</h2>
-          <a href="login.html" class="login">로그인</a>
+          <a href={% url 'accounts:login' %} class="login">로그인</a>
         </div>
       </main>
 
