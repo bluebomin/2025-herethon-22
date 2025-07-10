@@ -9,6 +9,7 @@
   </head>
   <body>
     <!-- 헤더 -->
+    <!-- 헤더 -->
     <header>
       <!--경로수정-->
       <div id="HderLogos">
@@ -27,12 +28,31 @@
       </div>
       <div id="HdScetion">
         <nav id="menu">
-          <!-- 추후 경로 페이지 수정 -->
-          <a class="HdA" href="">틈틈이공유</a>
-          <a class="HdA" href="">틈틈이정보</a>
-          <a class="HdA" href="">틈틈이계획</a>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이공유</p>
+            <div class="theSe">
+              <p>최신 채용 정보</p>
+              <p>틈틈러 재도전 이야기</p>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이정보</p>
+            <div class="theSe">
+              <p>온라인 강의 큐레이션</p>
+              <p>나의 재도전 계획</p>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이계획</p>
+            <div class="theSe">
+              <p>틈틈 상담소</p>
+              <p>선배 틈틈러의 이야기</p>
+            </div>
+          </div>
         </nav>
         <nav id="user-actions">
+          <!-- 로그인 안 한 경우 -->
+          {% if not user.is_authenticated %}
           <a href="{% url 'accounts:login' %}">
             <img
               src="{% static 'img/Group 243.png' %}"
@@ -40,17 +60,43 @@
               id="login"
             />
           </a>
-          <!-- 추후 경로 페이지 수정 -->
-          <a href="/mypage/"
+          {% endif %}
+
+          <!-- 로그인 한 경우 -->
+          {% if user.is_authenticated %}
+          <div id="LoginUserIf" style="display: flex">
+            <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+            <a href="{% url 'post:post_create' %}" id="LoginUsertxt">
+              <span id="LoginUserName">{{ user.username }}</span> 님 안녕하세요!
+            </a>
+          </div>
+          {% endif %}
+          <a href="{%url 'my:mypage' %}"
             ><img
               id="UserImg"
-              src="{% static 'img/User.png' %}"
+              src="{%static 'img/User.png' %}"
               alt="마이페이지"
           /></a>
-          <div>
-            <img id="BellImg" src="{% static 'img/Bell.png ' %}" alt="알림" />
+          <a id="bell-wrapper"
+            ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
+            <div id="notif-box">
+              <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+            </div>
+          </a>
+          <div id="search-container" style="display: none">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="검색어를 입력해주세요"
+            />
           </div>
-          <img id="SearchImg" src="{% static 'img/Search.png' %}" alt="검색" />
+          <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
         </nav>
       </div>
     </header>
@@ -93,6 +139,6 @@
         <img src="{% static 'img/Group 320.png' %}" class="logo3" />
       </div>
     </footer>
-    <script src="{% static 'js/post_form.js' %}" defer></script>
+    <script src="{% static '/js/post_form.js' %}"></script>
   </body>
 </html>

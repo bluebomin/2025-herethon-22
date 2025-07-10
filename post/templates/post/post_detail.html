@@ -27,13 +27,31 @@
       </div>
       <div id="HdScetion">
         <nav id="menu">
-          <!-- 추후 경로 페이지 수정 -->
-          <a class="HdA" href="">틈틈이공유</a>
-          <a class="HdA" href="">틈틈이정보</a>
-          <a class="HdA" href="">틈틈이계획</a>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이공유</p>
+            <div class="theSe">
+              <p>최신 채용 정보</p>
+              <p>틈틈러 재도전 이야기</p>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이정보</p>
+            <div class="theSe">
+              <p>온라인 강의 큐레이션</p>
+              <p>나의 재도전 계획</p>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이계획</p>
+            <div class="theSe">
+              <p>틈틈 상담소</p>
+              <p>선배 틈틈러의 이야기</p>
+            </div>
+          </div>
         </nav>
         <nav id="user-actions">
-          <!-- 추후 경로 페이지 수정 -->
+          <!-- 로그인 안 한 경우 -->
+          {% if not user.is_authenticated %}
           <a href="{% url 'accounts:login' %}">
             <img
               src="{% static 'img/Group 243.png' %}"
@@ -41,16 +59,44 @@
               id="login"
             />
           </a>
-          <a href="/mypage/"
+          {% endif %}
+
+          <!-- 로그인 한 경우 -->
+          {% if user.is_authenticated %}
+          <div id="LoginUserIf" style="display: flex">
+            <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+            <a href="{% url 'post:post_create' %}" id="LoginUsertxt">
+              <span id="LoginUserName">{{ user.username }}</span> 님 안녕하세요!
+            </a>
+          </div>
+          {% endif %}
+
+          <a href="{%url 'my:mypage' %}"
             ><img
               id="UserImg"
-              src="{% static 'img/User.png' %}"
+              src="{%static 'img/User.png' %}"
               alt="마이페이지"
           /></a>
-          <a href="/alert/"
-            ><img id="BellImg" src="{% static 'img/Bell.png' %}" alt="알림"
-          /></a>
-          <img id="SearchImg" src="{% static 'img/Search.png' %}" alt="검색" />
+          <a id="bell-wrapper"
+            ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
+            <div id="notif-box">
+              <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+            </div>
+          </a>
+          <div id="search-container" style="display: none">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="검색어를 입력해주세요"
+            />
+          </div>
+          <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
         </nav>
       </div>
     </header>
@@ -73,7 +119,7 @@
             alt="프로필 이미지"
           />
           <div id="stLuserIf">
-            <p id="stLIfName">{{ post.author.username|slice:":1" }}</p>
+            <p id="stLIfName">{{ post.author.username|slice:":1" }}**</p>
             <div id="stLuserSt">
               <p id="stLuserT">경력 단절 정보</p>
               <p id="stLuserJ">직무 정보</p>
@@ -107,7 +153,7 @@
         <div id="comment">
           <div>
             <img id="coProfile" src="{% static 'img/profile.png' %}" />
-            <p id="coName">{{ comment.author.username|slice:":1" }}</p>
+            <p id="coName">{{ comment.author.username|slice:":1" }}**</p>
           </div>
           <div id="coConCt">
             <p>{{ comment.content }}</p>
@@ -116,7 +162,8 @@
         {% empty %}
         <p>댓글이 없습니다.</p>
         {% endfor %}
-
+        <!-- 댓글 -->
+        {% if user.is_authenticated %}
         <form
           id="coW"
           method="post"
@@ -127,25 +174,30 @@
           <input
             id="myCo"
             type="text"
-            id="id_content"
             name="content"
             placeholder="댓글로 당신이 알고 있는 정보를 공유해보세요!"
             required
           />
-
-          <!-- {{ comment_form.as_p }} -->
           <input id="coBt" type="submit" value="등록" />
         </form>
+        {% endif %}
       </div>
       <!-- a태그로 연결 -->
       <div class="Ct">
+        {% if next_post %}
         <div id="NrecoW">
           <p class="nextW">다음 글</p>
-          <p>기술 스택 어떤 걸 먼저 다시 공부해야 할까요?</p>
+          <a href="{% url 'post:post_detail' next_post.pk %}">
+            <p>{{ next_post.title }}</p>
+          </a>
         </div>
+        {% endif %} {% if prev_post %}
         <div id="BrecoW">
           <p class="nextW">이전 글</p>
-          <p>육아하면서 다시 외근직 할 수 있을지 고민돼요...</p>
+          <a href="{% url 'post:post_detail' prev_post.pk %}">
+            <p>{{ prev_post.title }}</p>
+          </a>
+          {% endif %}
         </div>
       </div>
       <div id="aList">
