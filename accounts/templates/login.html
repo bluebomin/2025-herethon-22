@@ -29,22 +29,22 @@
               <!-- 추후 경로 페이지 수정 -->
               <a href={%url 'accounts:login' %}
                 ><img
-                  src="../static/img/loginbtn.svg"
+                  src={%static "img/loginbtn.svg"%}
                   alt="로그인"
                   class="login"
               /></a>
             </li>
             <li>
               <a href="/mypage/"
-                ><img src="../static/img/mypage.svg" alt="마이페이지"
+                ><img src={%static "img/mypage.svg"%} alt="마이페이지"
               /></a>
             </li>
             <li>
               <a href="/alert/"
-                ><img src="../static/img/alert.svg" alt="알림"
+                ><img src={%static "img/alert.svg"%} alt="알림"
               /></a>
             </li>
-            <li><img src="../static/img/search.svg" alt="검색" /></li>
+            <li><img src={%static "img/search.svg"%} alt="검색" /></li>
           </ul>
         </nav>
       </header>
