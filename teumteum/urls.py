@@ -9,7 +9,8 @@ urlpatterns = [
     path('post/', include('post.urls')),            
     path('plan/', include('plan.urls')),            
     path('jobs/', include('jobs.urls')), 
-    path('', include('home.urls')),          
+    path('', include('home.urls')),
+    path('my/', include('my.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
