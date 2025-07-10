@@ -107,58 +107,32 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//로그인 유저 이름 반환
-
-// 전역 로그인 상태 (연동 전 임시로 true)
-const isLoggedIn = true;
-// const userName = "신명서";
-
 document.addEventListener("DOMContentLoaded", function () {
-  // 요소 선언
-  const loginIcon = document.getElementById("login");
-  const loginUserBox = document.getElementById("LoginUserIf");
-  const userNameText = document.getElementById("LoginUserName");
   const searchIcon = document.getElementById("SearchImg");
   const searchContainer = document.getElementById("search-container");
+  const loginIcon = document.getElementById("login");
   const userImg = document.getElementById("UserImg");
   const bellIcon = document.getElementById("BellImg");
+  const loginUserBox = document.getElementById("LoginUserIf");
 
-  //로그인 상태 설정
-  if (isLoggedIn) {
-    loginIcon.style.display = "none";
-    loginUserBox.style.display = "flex";
-    userNameText.textContent = userName;
-  } else {
-    loginIcon.style.display = "inline";
-    loginUserBox.style.display = "none";
-  }
-
-  // 돋보기 토글
   let isSearchOpen = false;
 
   searchIcon.addEventListener("click", function () {
     if (!isSearchOpen) {
+      // 검색창 열기
       searchContainer.style.display = "flex";
-      loginIcon.style.display = "none";
-      loginUserBox.style.display = "none";
-      userImg.style.display = "none";
-      bellIcon.style.display = "none";
+      if (loginIcon) loginIcon.style.display = "none";
+      if (userImg) userImg.style.display = "none";
+      if (bellIcon) bellIcon.style.display = "none";
+      if (loginUserBox) loginUserBox.style.display = "none";
     } else {
+      // 검색창 닫기
       searchContainer.style.display = "none";
-
-      //로그인 상태 고려하여 UI 복원
-      if (isLoggedIn) {
-        loginIcon.style.display = "none";
-        loginUserBox.style.display = "flex";
-      } else {
-        loginIcon.style.display = "inline";
-        loginUserBox.style.display = "none";
-      }
-
-      userImg.style.display = "inline";
-      bellIcon.style.display = "inline";
+      if (loginIcon) loginIcon.style.display = "inline";
+      if (userImg) userImg.style.display = "inline";
+      if (bellIcon) bellIcon.style.display = "inline";
+      if (loginUserBox) loginUserBox.style.display = "flex";
     }
-
     isSearchOpen = !isSearchOpen;
   });
 });
