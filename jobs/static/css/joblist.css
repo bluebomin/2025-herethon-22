@@ -154,7 +154,7 @@ span {
   margin-right: 40px;
   width: 115px;
 }
-input {
+#keyword {
   width: 865px;
   height: 64px;
   padding: 16px 22px;
@@ -235,6 +235,17 @@ input:focus {
   white-space: nowrap;
   width: auto;
 }
+input.year {
+  margin-left: 10px;
+  width: 120px !important; /* 원하는 너비 */ 
+  box-sizing: border-box;
+}
+.year-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 20px;
+}
 input[type="checkbox"] {
   appearance: none; /* 기본 체크박스 없애기 */
   width: 24px;
@@ -269,6 +280,20 @@ label {
   font-size: 24px;
   display: flex;
   gap: 8px;
+}
+.check-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2열 */
+  gap: 20px;
+}
+.exp-container {
+  display: flex;
+}
+.exp-label {
+  margin-right: 30px;
+}
+.career-wrapper {
+  align-items: start;
 }
 .available-wrapper input,
 .career-wrapper input {
@@ -319,8 +344,19 @@ label {
   align-items: start;
   justify-content: space-between;
 }
-.card img {
-  width: 130px;
+.logo-wrapper {
+  width: 149px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.sample-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;  /* 비율 유지하면서 박스 안에 딱 맞게 */
+  display: block;
 }
 .card-content {
   text-align: left;

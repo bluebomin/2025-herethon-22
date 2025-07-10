@@ -29,26 +29,36 @@ def job_list(request):
     if remote_available_filter in ['true', 'True', '1']:
         jobs = jobs.filter(remote_available=True) 
     
-    #5. 경력 필트
+    #5. 경력 필터
     career_filters_selected = request.GET.getlist('career_filter')
     start_year = request.GET.get('start_year')
     end_year = request.GET.get('end_year')
-    if 'total' not in career_filters_selected and career_filters_selected:
+
+    if 'total' in career_filters_selected or not career_filters_selected:
+        pass
+    else:
         career_q = Q()
 
         if 'new' in career_filters_selected:
             career_q |= Q(career='new')
         if 'none' in career_filters_selected:
             career_q |= Q(career="none")
-        if 'exp' in career_filters_selected and start_year and end_year:
-            try:
-                start_y = int(start_year)
-                end_y = int(end_year)
-                exp_years = start_y - end_y
-                career_q |= Q(career='exp', career_years__lte = exp_years) 
-            except ValueError:
+        if 'exp' in career_filters_selected: 
+            if start_year and end_year: 
+                try:
+                    start_y = int(start_year)
+                    end_y = int(end_year)
+                
+                    if start_y <= end_y:
+                        exp_years = end_y - start_y
+                        career_q |= Q(career='exp', career_years__lte=exp_years)
+                    else:
+                        print("경력 시작 연도는 종료 연도보다 클 수 없습니다.")
+                except ValueError:
+                    print("유효하지 않은 연도 형식입니다.")
+            else:
                 pass
-        
+    
         jobs = jobs.filter(career_q)
     
     #6. 학력 필터
