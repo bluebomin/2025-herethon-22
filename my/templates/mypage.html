@@ -46,28 +46,28 @@
 
       <main>
         <h1>마이페이지</h1>
-        <h3>신명서 님, 환영해요! 오늘도 틈틈이 준비를 해볼까요?</h3> <!--이름 데이터 수정 필요-->
+        <h3>{{ user.username }}님, 환영해요! 오늘도 틈틈이 준비를 해볼까요?</h3> <!--이름 데이터 수정 필요-->
         <hr />
         <div class="cards-container">
           <!-- 프로필카드 -->
           <section class="profile-card">
             <img src={% static 'img/profile.svg' %} />
-            <h1 class="username">신명서</h1> <!--이름 데이터 수정 필요-->
+            <h1 class="username">{{ user.username }} </h1> <!--이름 데이터 수정 필요-->
             <div class="info-item">
               <div class="info-key">희망 직종</div>
-              <div class="info-value">{{my.desired_job}}</div>
+              <div class="info-value">{{my_plan.desired_job}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">희망 지역</div>
-              <div class="info-value">{{my.desired_region}}</div>
+              <div class="info-value">{{my_plan.desired_region}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">보유 역량 개수</div>
-              <div class="info-value">{{my.strengths}}</div>
+              <div class="info-value">{{my_plan.strengths}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">경력 단절 기간</div>
-              <div class="info-value">{{my.career_gap_years}}</div>
+              <div class="info-value">{{my_plan.career_gap_years}}</div>
             </div>
             <h1 class="type">"재취업 도전 틈틈러"</h1>
           </section>
