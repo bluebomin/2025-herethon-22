@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/login.css" />
+    <link rel="stylesheet" href={% static 'css/signup.css' %} />
     <title>로그인</title>
   </head>
   <body>
@@ -11,7 +12,7 @@
       <!-- 헤더 -->
       <header>
         <a href={%url 'accounts:login'%} class="logo">
-          <img src="../static/img/logo1.svg" alt="로고" />
+          <img src={% static "img/logo1.svg"%} alt="로고" />
           <span class="title">틈틈</span>
         </a>
         <nav class="menu">
@@ -26,7 +27,7 @@
           <ul>
             <li>
               <!-- 추후 경로 페이지 수정 -->
-              <a href="/login/"
+              <a href={%url 'accounts:login' %}
                 ><img
                   src="../static/img/loginbtn.svg"
                   alt="로그인"
