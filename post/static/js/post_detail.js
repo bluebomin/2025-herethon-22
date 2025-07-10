@@ -1,55 +1,94 @@
-// // 뒤로가기,앞으로가기, 페이지 추가...
+// 댓글 작성하면 댓글 +1개 (완)
+// 공감 누르면 사진 교체 (완)
 
-// const urlParams = new URLSearchParams(window.location.search);
-// const page = parseInt(urlParams.get("page")) || 1;
+// 좋아요
+document.addEventListener("DOMContentLoaded", function () {
+  const likeImg = document.getElementById("likeImg");
 
-// const stories = JSON.parse(localStorage.getItem("stories")) || [];
-// const postsPerPage = 10;
-// const start = (page - 1) * postsPerPage;
-// const end = start + postsPerPage;
+  const flikeImg = [
+    "/static/img/like.png", // 현재 이미지
+    "/static/img/flike.png", // 교체 이미지
+  ];
 
-// const visibleStories = stories.slice(start, end);
-// const article = document.querySelector("article");
-// article.innerHTML = ""; // 기존 글 지우기
+  let current = 0;
 
-// visibleStories.forEach((story) => {
-//   const div = document.createElement("div");
-//   div.className = "storyCt";
-//   div.innerHTML = `
-//     <p class="story">${story.content}</p>
-//     <div class="storyIf">
-//       <img class="profile" src="/img/profile.png" alt="프로필 이미지" />
-//       <div class="userIf">
-//         <p class="userName">익명</p>
-//         <div class="userSt">
-//           <p class="userT">경력 단절 N년</p>
-//           <p class="userJ">직무 미입력</p>
-//         </div>
-//       </div>
-//     </div>
-//   `;
-//   article.appendChild(div);
-// });
-
-// 페이지 번호 출력
-const totalPages = Math.ceil(stories.length / postsPerPage);
-const thisPage = document.getElementById("thisPage");
-thisPage.textContent = `${page}`;
-
-// 다음 페이지 버튼 기능
-document.getElementById("mvN").addEventListener("click", () => {
-  if (page < totalPages) {
-    window.location.href = `StoryDetail.html?page=${page + 1}`;
-  }
+  likeImg.addEventListener("click", function () {
+    current = (current + 1) % flikeImg.length;
+    likeImg.src = flikeImg[current];
+  });
 });
-document.getElementById("mvB").addEventListener("click", () => {
-  if (page > 1) {
-    window.location.href = `StoryDetail.html?page=${page - 1}`;
-  }
+// 응원해요
+document.addEventListener("DOMContentLoaded", function () {
+  const goodImg = document.getElementById("goodImg");
+
+  const fgoodImg = [
+    "/static/img/good.png", // 현재 이미지
+    "/static/img/fgood.png", // 교체 이미지
+  ];
+
+  let current = 0;
+
+  goodImg.addEventListener("click", function () {
+    current = (current + 1) % fgoodImg.length;
+    goodImg.src = fgoodImg[current];
+  });
 });
-document.getElementById("mvF").addEventListener("click", () => {
-  window.location.href = `StoryDetail.html?page=1`;
+// 도움이 됐어요
+document.addEventListener("DOMContentLoaded", function () {
+  const smileImg = document.getElementById("smileImg");
+
+  const fsmImg = [
+    "/static/img/smile.png", // 현재 이미지
+    "/static/img/fsm.png", // 교체 이미지
+  ];
+
+  let current = 0;
+
+  smileImg.addEventListener("click", function () {
+    current = (current + 1) % fsmImg.length;
+    smileImg.src = fsmImg[current];
+  });
 });
-document.getElementById("mvE").addEventListener("click", () => {
-  window.location.href = `StoryDetail.html?page=${totalPages}`;
+//스크랩
+document.addEventListener("DOMContentLoaded", function () {
+  const starImg = document.getElementById("star");
+
+  const fStarImg = [
+    "/static/img/Star 1.png", // 현재 이미지
+    "/static/img/fStar 1.png", // 교체 이미지
+  ];
+
+  let current = 0;
+
+  starImg.addEventListener("click", function () {
+    current = (current + 1) % fStarImg.length;
+    starImg.src = fStarImg[current];
+  });
+});
+
+// // 댓글 기능
+document.addEventListener("DOMContentLoaded", function () {
+  const commentForm = document.getElementById("coW");
+  const commentInput = document.getElementById("myCo");
+  const commentCountSpan = document.querySelector("#coTitle span");
+
+  commentForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const commentText = commentInput.value.trim();
+    if (commentText === "") return;
+
+    // //alert 창에 표시
+    // alert("입력한 댓글: " + commentText);
+
+    // 댓글 수 +1
+    let count = parseInt(commentCountSpan.innerText);
+    commentCountSpan.innerText = count + 1;
+
+    // // 콘솔출력
+    // console.log(`댓글 ${count + 1}개`);
+    // console.log(`작성한 내용: ${commentText}`);
+
+    commentInput.value = "";
+  });
 });
