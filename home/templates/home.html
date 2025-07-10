@@ -12,9 +12,17 @@
     <header>
       <!--경로수정-->
       <div id="HderLogos">
-        <a href={%url "accounts:login"%} class="logo">
-          <img id="HdLogoTT" src={% static "img/Group 315.png"%} alt="로고" />
-          <img id="HdLogoKTT" src={% static "img/Group 318.png"%} alt="로고" />
+        <a href="{% url 'accounts:login' %}" class="logo">
+          <img
+            id="HdLogoTT"
+            src="{% static 'img/Group 315.png' %}"
+            alt="로고"
+          />
+          <img
+            id="HdLogoKTT"
+            src="{% static 'img/Group 318.png' %}"
+            alt="로고"
+          />
         </a>
       </div>
       <div id="HdScetion">
@@ -42,22 +50,35 @@
           </div>
         </nav>
         <nav id="user-actions">
-          <!-- 추후 경로 페이지 수정 -->
-          <a href={%url "accounts:login"%}>
-            <!-- 로그인 후 스타일 변경 -->
-            <img src={%static "img/Group 243.png"%} alt="로그인" id="login" />
+          <!-- 로그인 안 한 경우 -->
+          {% if not user.is_authenticated %}
+          <a href="{% url 'accounts:login' %}">
+            <img
+              src="{% static 'img/Group 243.png' %}"
+              alt="로그인"
+              id="login"
+            />
           </a>
-          <div id="LoginUserIf">
-            <img id="LoginPenImg" src={%static "img/pen.png"%}/>
-            <p id="LoginUsertxt">
-              <span id="LoginUserName">신명서</span> 님 안녕하세요!
-            </p>
+          {% endif %}
+
+          <!-- 로그인 한 경우 -->
+          {% if user.is_authenticated %}
+          <div id="LoginUserIf" style="display: flex">
+            <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+            <a href="{% url 'post:post_create' %}" id="LoginUsertxt">
+              <span id="LoginUserName">{{ user.username }}</span> 님 안녕하세요!
+            </a>
           </div>
-          <a href={%url "my:mypage"%}
-            ><img id="UserImg" src={%static "img/User.png"%} alt="마이페이지"
+          {% endif %}
+
+          <a href="{%url 'my:mypage' %}"
+            ><img
+              id="UserImg"
+              src="{%static 'img/User.png' %}"
+              alt="마이페이지"
           /></a>
           <a id="bell-wrapper"
-            ><img id="BellImg" src={%static "img/Bell.png"%} alt="알림" />
+            ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
             <div id="notif-box">
               <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
               <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
@@ -75,39 +96,39 @@
               placeholder="검색어를 입력해주세요"
             />
           </div>
-          <img id="SearchImg" src={%static "img/Search.png"%} alt="검색" />
+          <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
         </nav>
       </div>
     </header>
     <section id="Lsection">
       <div id="Lhd">
-        <img id="mainTT" src={%static "img/With “TeumTeum”.png"%} />
-        <img id="subTT" src={%static "img/Group 237.png"%} />
+        <img id="mainTT" src="{%static 'img/With “TeumTeum”.png'%}" />
+        <img id="subTT" src="{%static 'img/Group 237.png'%}" />
       </div>
       <div id="Larticle1P">
         <article id="Larticle1">
           <div id="Ltop1">
             <img
               id="LtopImg1"
-              src={%static "img/laptop with graduate hat.png"%}
+              src="{%static 'img/laptop with graduate hat.png'%}"
             />
-            <img id="LtopT1" src={%static "img/Header1.png"%} />
+            <img id="LtopT1" src="{%static 'img/Header1.png' %}" />
             <p class="LtopM">
               맞춤 자격증 정보부터, 채용 소식까지 한눈에!<br />꼭 필요한 정보만
               쏙쏙 제공해드려요.
             </p>
           </div>
           <div id="Ltop2">
-            <img id="LtopImg2" src={%static "img/job resume.png"%} />
-            <img id="LtopT2" src={%static "img/Headerplan.png"%} />
+            <img id="LtopImg2" src="{%static 'img/job resume.png'%}" />
+            <img id="LtopT2" src="{%static 'img/Headerplan.png'%}" />
             <p class="LtopM">
               혼자 준비하기 막막한 재취업 계획!<br />
               ‘틈틈’이 준비한 가이드로 계획서를 만들어보아요.
             </p>
           </div>
           <div id="Ltop3">
-            <img id="LtopImg3" src={%static "img/two speech bubbles.png"%} />
-            <img id="LtopT3" src={%static "img/Header2.png"%} />
+            <img id="LtopImg3" src="{%static 'img/two speech bubbles.png'%}" />
+            <img id="LtopT3" src="{%static 'img/Header2.png'%}" />
             <p class="LtopM">
               취업에 성공한 선배 틈틈러들의 생생한 이야기! <br />
               그들의 조언과 따뜻한 응원이 도움이 될 거예요.
@@ -121,7 +142,7 @@
           <div id="AMid">
             <img
               id="ATT"
-              src={%static "img/틈틈이 제공하는 다양한 정보들이에요..png"%}
+              src="{%static 'img/틈틈이 제공하는 다양한 정보들이에요..png'%}"
             />
             <p id="AMidText">
               재취업 정보부터 재도전 계획 가이드까지, 재취업에 필요한 다양한
@@ -132,7 +153,9 @@
           <div id="reArr">
             <div class="T">
               <div class="reCo">
-                <p class="reT"><span>신명서</span> 님의 재도전 현황</p>
+                <p class="reT">
+                  <span>{{ user.username }}</span> 님의 재도전 현황
+                </p>
                 <div class="reTCt">
                   <p class="reTCtMenu">희망 직종</p>
                   <p id="MenuTxt1">마케팅.홍보.MD</p>
@@ -201,38 +224,95 @@
 
           <img
             id="LeImg"
-            src={%static "img/오늘은 이 온라인 강의를 들어볼까요_.png"%}
+            src="{%static 'img/오늘은 이 온라인 강의를 들어볼까요_.png'%}"
           />
           <p id="LeTxt">
             다양한 사이트에서 제공하는 온라인 강의로 회원님의 역량을 키워보세요!
           </p>
           <article id="TeachVi">
+            <!-- 외부강의 url연결 -->
             <div id="TeachBox">
-              <div id="TcTop">
-                <img id="TcProfile" src={%static "img/image 7.png"%} />
-                <img class="Tcstar" src={%static "img/Star 1.png"%} />
-              </div>
-              <p id="CtT">서비스 디자인 입문</p>
-              <p id="CtLo">K-MOOC (서울대)</p>
-              <p id="CtTy">입문</p>
+              <a href="https://house.eduwill.net/sites/freelec/444">
+                <div id="TcTop">
+                  <img id="TcProfile" src="{%static 'img/image 9.png'%}" />
+                  <img class="Tcstar" src="{%static 'img/Star 1.png'%}" />
+                </div>
+
+                <p id="CtT">주택관리사 관리실무 기초이론</p>
+                <p id="CtLo">에듀윌</p>
+                <p id="CtTy">초급</p>
+              </a>
             </div>
+            <!-- 외부강의 url연결 -->
             <div id="TeachBox">
               <div id="TcTop">
-                <img id="TcProfile" src={%static "img/image 7.png"%} />
-                <img class="Tcstar" src={%static "img/Star 1.png"%} />
+                <img id="TcProfile" src="{%static 'img/image 7.png'%}" />
+                <img class="Tcstar" src="{%static 'img/Star 1.png'%}" />
               </div>
-              <p id="CtT">서비스 디자인 입문</p>
-              <p id="CtLo">K-MOOC (서울대)</p>
-              <p id="CtTy">입문</p>
+              <a
+                href="https://www.kmooc.kr/view/course/detail/16309?tm=20250711033834"
+              >
+                <p id="CtT">서비스 디자인 입문</p>
+                <p id="CtLo">K-MOOC (서울대)</p>
+                <p id="CtTy">입문</p>
+              </a>
             </div>
+            <!-- 외부강의 url연결 -->
             <div id="TeachBox">
               <div id="TcTop">
-                <img id="TcProfile" src={%static "img/image 7.png"%} />
-                <img class="Tcstar" src={%static "img/Star 1.png"%} />
+                <img id="TcProfile" src="{%static 'img/image 8.png'%}" />
+                <img class="Tcstar" src="{%static 'img/Star 1.png'%}" />
               </div>
-              <p id="CtT">서비스 디자인 입문</p>
-              <p id="CtLo">K-MOOC (서울대)</p>
-              <p id="CtTy">입문</p>
+              <a
+                href="https://www.ebs.co.kr/package/jobpackage/ebspackage/job/450093"
+              >
+                <p id="CtT">2025 물류관리사</p>
+                <p id="CtLo">EBS</p>
+                <p id="CtTy">벼락치기</p>
+              </a>
+            </div>
+            <!-- 외부강의 url연결 -->
+            <div id="TeachBox">
+              <div id="TcTop">
+                <img id="TcProfile" src="{%static 'img/image 9.png'%}" />
+                <img class="Tcstar" src="{%static 'img/Star 1.png'%}" />
+              </div>
+              <a
+                href="https://www.kmooc.kr/view/course/detail/16309?tm=20250711033834"
+              >
+                <p id="CtT">민법 기초 이론</p>
+                <p id="CtLo">에듀윌</p>
+                <p id="CtTy">기초</p>
+              </a>
+            </div>
+            <!-- 외부강의 url연결 -->
+            <div id="TeachBox">
+              <div id="TcTop">
+                <img id="TcProfile" src="{%static 'img/image 7.png'%}" />
+                <img class="Tcstar" src="{%static 'img/Star 1.png'%}" />
+              </div>
+              <a
+                href="https://www.kmooc.kr/view/course/detail/15001?tm=20250711035914"
+              >
+                <p id="CtT">의료 인공지능 개론</p>
+                <p id="CtLo">K-MOOC (KAIST)</p>
+                <p id="CtTy">중급</p>
+              </a>
+            </div>
+
+            <!-- 외부강의 url연결 -->
+            <div id="TeachBox">
+              <div id="TcTop">
+                <img id="TcProfile" src="{%static 'img/image 8.png'%}" />
+                <img class="Tcstar" src="{%static 'img/Star 1.png'%}" />
+              </div>
+              <a
+                href="https://www.ebs.co.kr/package/jobpackage/ebspackage/job/448525"
+              >
+                <p id="CtT">ITQ/오피스실무</p>
+                <p id="CtLo">EBS</p>
+                <p id="CtTy">초급 패키지</p>
+              </a>
             </div>
           </article>
         </article>
@@ -240,11 +320,11 @@
     </section>
     <!-- 푸터 -->
     <footer>
-      <img src={%static "img/Group 319.png"%} alt="로고" class="logo2" />
+      <img src="{%static 'img/Group 319.png'%}" alt="로고" class="logo2" />
       <div>
-        <img src={%static "img/Group 320.png"%} class="logo3" />
+        <img src="{%static 'img/Group 320.png'%}" class="logo3" />
       </div>
     </footer>
-    <script src={%static "js/home.js"%} defer></script>
+    <script src="{%static 'js/home.js'%}" defer></script>
   </body>
 </html>

@@ -164,21 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//검색어 입력시 변화
-document.addEventListener("DOMContentLoaded", function () {
-  const searchInput = document.getElementById("search-input");
-
-  searchInput.addEventListener("input", function () {
-    if (searchInput.value.trim() !== "") {
-      searchInput.style.color = "black";
-      searchInput.style.fontWeight = "400";
-    } else {
-      searchInput.style.color = "  #9ca3af";
-      searchInput.style.fontWeight = "300";
-    }
-  });
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   const searchIcon = document.getElementById("SearchImg");
   const searchContainer = document.getElementById("search-container");
