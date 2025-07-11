@@ -313,3 +313,36 @@ document.addEventListener("DOMContentLoaded", function () {
     sb.style.display = "block";
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const checkboxes = document.querySelectorAll('input[name="job_type_filter"]');
+  const hiddenInput = document.getElementById("desiredJobInput");
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      const selected = Array.from(checkboxes)
+        .filter((cb) => cb.checked)
+        .map((cb) => cb.value);
+      hiddenInput.value = selected.join(",");
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const jobCheckboxes = document.querySelectorAll(".job-checkbox");
+  const jobInput = document.getElementById("desiredJobInput");
+
+  function updateJobInput() {
+    const selectedJobs = Array.from(jobCheckboxes)
+      .filter((cb) => cb.checked)
+      .map((cb) => cb.value);
+    jobInput.value = selectedJobs.join(",");
+  }
+
+  jobCheckboxes.forEach((cb) => {
+    cb.addEventListener("change", updateJobInput);
+  });
+
+  // 초기 로딩 시 반영
+  updateJobInput();
+});
