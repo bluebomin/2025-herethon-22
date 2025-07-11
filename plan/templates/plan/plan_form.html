@@ -133,7 +133,7 @@
           </p>
         </div>
         <form
-          action="{% url 'plan:myplan' %}"
+          action="{% url 'plan:plan_recommend' %}"
           method="post"
           class="search-filter"
           enctype="multipart/form-data"
@@ -142,14 +142,13 @@
           <div class="job-wrapper">
             <span>희망 직종</span>
             <input type="hidden" name="desired_job" id="desiredJobInput" />
-            <!-- <div class="dropdown-container">
+            <div class="dropdown-container">
               <div class="dropdown">직종 선택</div>
               <img
                 src="{% static 'img/Vector 4.png' %}"
                 alt="화살표"
                 class="dropdownBtn"
-              /> -->
-              
+              />
               <div class="dropdown-menu">
                 <label
                   ><input
@@ -281,8 +280,8 @@
 
           <div class="location-wrapper">
             <span>희망 근무 지역</span>
-            {{ form.desired_region }}
-            <!-- <div class="dropdown-container">
+            <input type="hidden" name="desired_job" id="desiredJobInput" />
+            <div class="dropdown-container">
               <div class="dropdown">지역 선택</div>
               <img
                 src="{% static 'img/Vector 4.png' %}"
@@ -339,7 +338,7 @@
                   제주</label
                 >
               </div>
-            </div> -->
+            </div>
           </div>
           <div class="career-wrapper">
             <span>경력 단절 기간</span>
@@ -376,14 +375,15 @@
               value="+"
             />
           </div>
+          <!-- 하나만 유자 -->
           <div
             id="skillTags"
             style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px"
           ></div>
-          <div
+          <!-- <div
             id="skillTags"
             style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px"
-          ></div>
+          ></div> -->
           <div class="cpsize-wrapper">
             <span>이력서</span>
             {{ form.resume }}
@@ -394,26 +394,23 @@
                 type="file"
                 placeholder="이력서를 첨부해주세요. (hwp, pdf)"
               />
-            </label>
+            </label> -->
             <button id="CtFile" type="button">찾아보기</button>
           </div>
           <div class="cpsize-wrapper">
             <span>목표</span>
             {{ form.goal }}
-            <textarea
+            <!-- <textarea
               id="TA"
               placeholder="재취업 목표를 작성해 보세요. :)"
             ></textarea> -->
           </div>
 
-          <button
-            href="{% url 'plan:plan_recommend' %}"
-            id="SUb"
-            style="width: 40%; margin: 0 auto"
-            type="submit"
-          >
-            저장하기
-          </button>
+          <label>
+            <button id="SUb" style="width: 40%; margin: 0 auto" type="submit">
+              저장하기
+            </button>
+          </label>
         </form>
       </main>
       <!-- 푸터 -->
