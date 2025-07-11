@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/post_form.css' %}" />
+    <title>틈틈러 재도전 이야기</title>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <!-- 헤더 -->
+    <header>
+      <!--경로수정-->
+      <div id="HderLogos">
+        <a href="{% url 'accounts:login' %}" class="logo">
+          <img
+            id="HdLogoTT"
+            src="{% static 'img/Group 315.png' %}"
+            alt="로고"
+          />
+          <img
+            id="HdLogoKTT"
+            src="{% static 'img/Group 318.png' %}"
+            alt="로고"
+          />
+        </a>
+      </div>
+      <div id="HdScetion">
+        <nav id="menu">
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이공유</p>
+            <div class="theSe">
+              <a href="{% url 'jobs:job_list' %}">
+                <p>최신 채용 정보</p>
+              </a>
+              <a href="{% url 'post:post_list' %}">
+                <p>틈틈러 재도전 이야기</p>
+              </a>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이정보</p>
+            <div class="theSe">
+              <p>온라인 강의 큐레이션</p>
+              <a href="{% url 'plan:myplan' %}">
+                <p>나의 재도전 계획</p>
+              </a>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이계획</p>
+            <div class="theSe">
+              <a href="{% url 'counsel:counsel_list' %}">
+                <p>틈틈 상담소</p>
+              </a>
+              <a href="{% url 'alumna:alumna_list' %}">
+                <p>선배 틈틈러의 이야기</p>
+              </a>
+            </div>
+          </div>
+        </nav>
+        <nav id="user-actions">
+          <!-- 로그인 안 한 경우 -->
+          {% if not user.is_authenticated %}
+          <a href="{% url 'accounts:login' %}">
+            <img
+              src="{% static 'img/Group 243.png' %}"
+              alt="로그인"
+              id="login"
+            />
+          </a>
+          {% endif %}
+
+          <!-- 로그인 한 경우 -->
+          {% if user.is_authenticated %}
+          <div id="LoginUserIf" style="display: flex">
+            <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+            <a href="{% url 'post:post_list' %}" id="LoginUsertxt">
+              <span id="LoginUserName">{{ user.username }}</span> 님 안녕하세요!
+            </a>
+          </div>
+          {% endif %}
+          <a href="{%url 'my:mypage' %}"
+            ><img
+              id="UserImg"
+              src="{%static 'img/User.png' %}"
+              alt="마이페이지"
+          /></a>
+          <a id="bell-wrapper"
+            ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
+            <div id="notif-box">
+              <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+            </div>
+          </a>
+          <div id="search-container" style="display: none">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="검색어를 입력해주세요"
+            />
+          </div>
+          <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div id="title">
+        <img id="HdImg" src="{% static 'img/선배 틈틈러의 이야기.png' %}" />
+        <p id="titleDt">
+          새로운 도전 중인 틈틈러들을 위해 본인의 경험을 나누어주세요!
+        </p>
+      </div>
+      <form method="post" id="stSubF" action="{% url 'alumna:alumna_create' %}">
+        {% csrf_token %}
+
+        <div class="wrT">
+          <p id="wrTitle">제목</p>
+          <input
+            id="wrStoryTitle"
+            type="text"
+            name="title"
+            placeholder="제목을 작성해 주세요."
+            required
+          />
+        </div>
+        <div class="wrT">
+          <p id="wrTitleN">내용</p>
+          <textarea
+            name="content"
+            id="wrStoryN"
+            placeholder="재취업에 대한 고민, 궁금한 점, 어떤 이야기든 괜찮아요. 당신의 이야기를 들려주세요!"
+            required
+          ></textarea>
+        </div>
+        <div id="BtCtr">
+          <input id="stSubmit" type="submit" value="등록하기" />
+        </div>
+      </form>
+    </section>
+    <!-- 푸터 -->
+    <footer>
+      <img src="{% static 'img/Group 319.png' %}" alt="로고" class="logo2" />
+      <div>
+        <img src="{% static 'img/Group 320.png' %}" class="logo3" />
+      </div>
+    </footer>
+    <script src="{% static 'js/post_form.js' %}"></script>
+  </body>
+</html>
