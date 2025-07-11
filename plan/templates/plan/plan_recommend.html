@@ -371,34 +371,40 @@
             ></textarea>
           </div>
         </form>
+        <!-- 선배 -->
         <section id="Sb">
           <div id="PlanUSf">
             <p>
-              <span id="PlanUspan">신명서</span> 님의 재도전 계획서를 기반으로
-              다음 활동을 추천할게요!
+              <span id="PlanUspan">{{ user.username }}</span> 님의 재도전
+              계획서를 기반으로 다음 활동을 추천할게요!
             </p>
           </div>
           <div id="SubUsf">
             <p>
-              <span>신명서</span> 님! 아직 <span>이력서</span> 업로드를 하지
-              않으셨네요. 선배 틈틈러의 재취업 후기를 읽고 영감을 얻어보세요!
+              <span>{{ user.username }}</span> 님! 아직
+              <span>이력서</span> 업로드를 하지 않으셨네요. 선배 틈틈러의 재취업
+              후기를 읽고 영감을 얻어보세요!
             </p>
           </div>
           <div id="SbRq">
-            <a href="경로 수정">선배 틈틈러에게 조언 요청하러 가기</a>
+            <a href="{% url 'counsel:counsel_list' %}"
+              >선배 틈틈러에게 조언 요청하러 가기</a
+            >
           </div>
         </section>
+        <!-- 보유역량 -->
         <section id="Sb2">
           <div id="PlanUSf">
             <p>
-              <span id="PlanUspan">신명서</span> 님의 재도전 계획서를 기반으로
-              다음 활동을 추천할게요!
+              <span id="PlanUspan">{{ user.username }}</span> 님의 재도전
+              계획서를 기반으로 다음 활동을 추천할게요!
             </p>
           </div>
           <div id="SubUsf">
             <p>
-              <span>신명서</span> 님! 아직 재취업 <span>목표</span>가 없으신
-              건가요? 선배 틈틈러의 1:1 조언을 통해 목표를 완성해보세요!
+              <span>{{ user.username }}</span> 님! 신명서 님! 아직 재취업
+              <span>보유 역량</span> 을 더 키워보는 건 어떨까요? 다양한 온라인
+              강의들이 준비되어 있어요.
             </p>
           </div>
           <div>
@@ -463,17 +469,154 @@
             <a href="경로 수정">더 많은 정보 확인하러 가기</a>
           </div>
         </section>
+        <!-- 다른 틈틈러 -->
         <section id="Sb3">
           <div id="PlanUSf">
             <p>
-              <span id="PlanUspan">신명서</span> 님의 재도전 계획서를 기반으로
-              다음 활동을 추천할게요!
+              <span id="PlanUspan">{{ user.username }}</span> 님의 재도전
+              계획서를 기반으로 다음 활동을 추천할게요!
             </p>
           </div>
           <div id="SubUsf">
             <p>
-              <span>신명서</span> 님! 아직 <span>재도전 계획서</span>를 작성하지
-              않으셨네요. 다른 틈틈러들은 어떻게 준비하고 있는지 살펴볼까요?
+              <span>{{ user.username }}</span> 님! 다른 <span>틈틈러</span>들은
+              어떻게 준비하고 있는지 살펴볼까요?
+            </p>
+          </div>
+          <div>
+            <article id="TeachVi">
+              <div class="storyCt">
+                <p class="story">
+                  지금 최신 마케팅 공부하는데 너무 힘드네요.. 조언 부탁드려요.
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">김**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 5년</p>
+                      <p class="userJ">마케팅.홍보.MD</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  포트폴리오를 다시 만들고 싶은데 감각이 없어진 분들께 팁
+                  드릴게요
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">박**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 7년</p>
+                      <p class="userJ">디자인</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  지금 최신 마케팅 공부하는데 너무 힘드네요.. 조언 부탁드려요.
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">김**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 5년</p>
+                      <p class="userJ">마케팅.홍보.MD</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  아이 키우며 틈틈이 공부 잘 하는 방법 알려드릴게요!
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">한**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 4년</p>
+                      <p class="userJ">교육·강의</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  지금 최신 마케팅 공부하는데 너무 힘드네요.. 조언 부탁드려요.
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">이**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 2년</p>
+                      <p class="userJ">회계·세무·재무</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  관련 자격증은 땄는데 현장 복귀가 힘드네요.. 저만 이런가요?
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">정**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 1년</p>
+                      <p class="userJ">의료·간호</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div id="SbRq">
+            <a href="경로 수정">더 많은 정보 확인하러 가기</a>
+          </div>
+        </section>
+        <section id="Sb4">
+          <div id="PlanUSf">
+            <p>
+              <span id="PlanUspan">{{ user.username }}</span> 님의 재도전
+              계획서를 기반으로 다음 활동을 추천할게요!
+            </p>
+          </div>
+          <div id="SubUsf">
+            <p>
+              <span>{{ user.username }}</span> 님! 다른
+              <span>선배 틈틈러</span>의 재취업 후기를 읽고 영감을 얻어보세요!
             </p>
           </div>
           <div>
