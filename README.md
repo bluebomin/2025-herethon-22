@@ -108,16 +108,46 @@
   <td  align="center">백엔드</td>
      </tr>
       <tr width="100%">
-          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-           <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-           <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
-            <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>기획/디자인 A</p><p>와이어프레임</p><p>UI/UX 디자인</p></td>
+           <td  align="center"><p>로그인/회원가입 페이지</p><p>채용정보 페이지</p><p>마이페이지</p></td>
+          <td  align="center"><p>랜딩페이지</p><p재도전 계획/ 재도전 이야기 페이지</p><p>나의 계획서</p><p>상담소 페이지</p><p>선배 틈틈러의 이야기 페이지</p></td>
+           <td  align="center"><p>로그인/회원가입 페이지</p><p>채용정보 페이지</p><p>랜딩 페이지</p><p>마이페이지</p></td>
+            <td  align="center"><p>랜딩페이지</p><p재도전 계획/ 재도전 이야기 페이지</p><p>나의 계획서</p><p>상담소 페이지</p><p>선배 틈틈러의 이야기 페이지</p></td>
      </tr>
   </table>
 
 ---
+- **폴더 구조**
+📂 2025_HERETHON-22
+└─ teumteum
+   ├─ teumteum
+   │  ├─ __init__.py
+   │  ├─ asgi.py
+   │  ├─ settings.py
+   │  ├─ urls.py
+   │  └─ wsgi.py
+   ├─ accounts/
+   ├─ alumna/
+   ├─ counsel/
+   ├─ home/
+   ├─ jobs/
+   ├─ myplan/
+   ├─ post/
+   └─ manage.py
+## 🛠 개발 환경 실행 방법
+1. 프로젝트 클론
+```git clone https://github.com/your-username/2025_HERETHON-22.git
+cd 2025_HERETHON-22
+```
 
+2. 가상환경 생성 및 실행
+```source venv/bin/activate  ```
+
+3. 패키지 설치
+```pip install -r requirements.txt```
+
+4. 서버 실행
+```python manage.py runserver```
 ## 사용 기술 스택
 
 - **백엔드**: Django
