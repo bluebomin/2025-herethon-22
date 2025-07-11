@@ -4,75 +4,141 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/post_form.css' %}" />    
+    <link rel="stylesheet" href="{% static 'css/post_form.css' %}" />
     <title>틈틈러 재도전 이야기</title>
   </head>
   <body>
     <!-- 헤더 -->
+    <!-- 헤더 -->
     <header>
       <!--경로수정-->
       <div id="HderLogos">
-        <a href="/login/templates/login.html" class="logo">
-          <img id="HdLogoTT" src="/img/Group 315.png" alt="로고" />
-          <img id="HdLogoKTT" src="/img/Group 318.png" alt="로고" />
+        <a href="{% url 'accounts:login' %}" class="logo">
+          <img
+            id="HdLogoTT"
+            src="{% static 'img/Group 315.png' %}"
+            alt="로고"
+          />
+          <img
+            id="HdLogoKTT"
+            src="{% static 'img/Group 318.png' %}"
+            alt="로고"
+          />
         </a>
       </div>
       <div id="HdScetion">
         <nav id="menu">
-          <!-- 추후 경로 페이지 수정 -->
-          <a class="HdA" href="">틈틈이공유</a>
-          <a class="HdA" href="">틈틈이정보</a>
-          <a class="HdA" href="">틈틈이계획</a>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이공유</p>
+            <div class="theSe">
+              <p>최신 채용 정보</p>
+              <p>틈틈러 재도전 이야기</p>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이정보</p>
+            <div class="theSe">
+              <p>온라인 강의 큐레이션</p>
+              <p>나의 재도전 계획</p>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이계획</p>
+            <div class="theSe">
+              <p>틈틈 상담소</p>
+              <p>선배 틈틈러의 이야기</p>
+            </div>
+          </div>
         </nav>
         <nav id="user-actions">
-          <!-- 추후 경로 페이지 수정 -->
-          <a href="/login/">
-            <img src="/img/Group 243.png" alt="로그인" id="login" />
+          <!-- 로그인 안 한 경우 -->
+          {% if not user.is_authenticated %}
+          <a href="{% url 'accounts:login' %}">
+            <img
+              src="{% static 'img/Group 243.png' %}"
+              alt="로그인"
+              id="login"
+            />
           </a>
-          <a href="/mypage/"
-            ><img id="UserImg" src="/img/User.png" alt="마이페이지"
+          {% endif %}
+
+          <!-- 로그인 한 경우 -->
+          {% if user.is_authenticated %}
+          <div id="LoginUserIf" style="display: flex">
+            <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+            <a href="{% url 'post:post_create' %}" id="LoginUsertxt">
+              <span id="LoginUserName">{{ user.username }}</span> 님 안녕하세요!
+            </a>
+          </div>
+          {% endif %}
+          <a href="{%url 'my:mypage' %}"
+            ><img
+              id="UserImg"
+              src="{%static 'img/User.png' %}"
+              alt="마이페이지"
           /></a>
-          <a href="/alert/"
-            ><img id="BellImg" src="/img/Bell.png" alt="알림"
-          /></a>
-          <img id="SearchImg" src="/img/Search.png" alt="검색" />
+          <a id="bell-wrapper"
+            ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
+            <div id="notif-box">
+              <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+            </div>
+          </a>
+          <div id="search-container" style="display: none">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="검색어를 입력해주세요"
+            />
+          </div>
+          <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
         </nav>
       </div>
     </header>
     <section>
       <div id="title">
-        <img id="HdImg" src="/img/틈틈러 재도전 이야기.png" />
+        <img id="HdImg" src="{% static 'img/틈틈러 재도전 이야기.png' %}" />
         <p id="titleDt">재취업에 도전하는 틈틈러들과 이야기를 나누어 보아요.</p>
       </div>
-      <div class="wrT">
-        <p id="wrTitle">제목</p>
-        <input
-          id="wrStoryTitle"
-          type="text"
-          placeholder="제목을 작성해 주세요."
-        />
-      </div>
-      <div class="wrT">
-        <p id="wrTitleN">내용</p>
-        <textarea
-          id="wrStoryN"
-          placeholder="재취업에 대한 고민, 궁금한 점, 어떤 이야기든 괜찮아요. 당신의 이야기를 들려주세요!"
-        ></textarea>
-      </div>
-      <!-- <form id="stSubF">
-        <input id="stSubmit" type="submit" value="등록하기" />
-      </form> -->
-      <div id="stSubF">
-        <a href="./StoryDetail.html" id="stSubmit">등록하기</a>
-      </div>
+      <form method="post" id="stSubF" action="{% url 'post:post_create' %}">
+        {% csrf_token %}
+
+        <div class="wrT">
+          <p id="wrTitle">제목</p>
+          <input
+            id="wrStoryTitle"
+            type="text"
+            name="title"
+            placeholder="제목을 작성해 주세요."
+            required
+          />
+        </div>
+        <div class="wrT">
+          <p id="wrTitleN">내용</p>
+          <textarea
+            name="content"
+            id="wrStoryN"
+            placeholder="재취업에 대한 고민, 궁금한 점, 어떤 이야기든 괜찮아요. 당신의 이야기를 들려주세요!"
+            required
+          ></textarea>
+        </div>
+        <div id="BtCtr">
+          <input id="stSubmit" type="submit" value="등록하기" />
+        </div>
+      </form>
     </section>
     <!-- 푸터 -->
     <footer>
-      <img src="/img/Group 319.png" alt="로고" class="logo2" />
+      <img src="{% static 'img/Group 319.png' %}" alt="로고" class="logo2" />
       <div>
-        <img src="/img/Group 320.png" class="logo3" />
+        <img src="{% static 'img/Group 320.png' %}" class="logo3" />
       </div>
     </footer>
-    <script src="../js/StoryWrite.js" defer></script>
+    <script src="{% static '/js/post_form.js' %}"></script>
   </body>
 </html>

@@ -19,7 +19,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const starImgs = document.querySelectorAll(".Tcstar");
 
-  const fStarImg = ["/img/Star 1.png", "/img/fStar 1.png"];
+  const fStarImg = ["static/img/Star 1.png", "static/img/fStar 1.png"];
 
   starImgs.forEach((starImg) => {
     let current = 0;
@@ -39,9 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const hasNotification = true; //false면 알람표시x
 
   if (hasNotification) {
-    BellImg.src = "/img/Group 327.png"; // 알림 온 상태 이미지
+    BellImg.src = "static/img/Group 327.png"; // 알림 온 상태 이미지
   } else {
-    BellImg.src = "/img/Bell.png"; // 기본 종 이미지
+    BellImg.src = "static/LandingPage/img/Bell.png"; // 기본 종 이미지
   }
 });
 
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginImg = document.getElementById("login");
   const userImg = document.getElementById("UserImg");
   const bellIcon = document.getElementById("BellImg");
-
+  const loginUser = document.getElementById("LoginUserIf");
   let isSearchOpen = false;
 
   searchIcon.addEventListener("click", function () {
@@ -80,11 +80,13 @@ document.addEventListener("DOMContentLoaded", function () {
       loginImg.style.display = "none";
       userImg.style.display = "none";
       bellIcon.style.display = "none";
+      loginUser.style.display = "none";
     } else {
       searchContainer.style.display = "none";
       loginImg.style.display = "inline";
       userImg.style.display = "inline";
       bellIcon.style.display = "inline";
+      loginUser.style.display = "inline";
     }
     isSearchOpen = !isSearchOpen;
   });
@@ -102,5 +104,35 @@ document.addEventListener("DOMContentLoaded", function () {
       searchInput.style.color = "  #9ca3af";
       searchInput.style.fontWeight = "300";
     }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchIcon = document.getElementById("SearchImg");
+  const searchContainer = document.getElementById("search-container");
+  const loginIcon = document.getElementById("login");
+  const userImg = document.getElementById("UserImg");
+  const bellIcon = document.getElementById("BellImg");
+  const loginUserBox = document.getElementById("LoginUserIf");
+
+  let isSearchOpen = false;
+
+  searchIcon.addEventListener("click", function () {
+    if (!isSearchOpen) {
+      // 검색창 열기
+      searchContainer.style.display = "flex";
+      if (loginIcon) loginIcon.style.display = "none";
+      if (userImg) userImg.style.display = "none";
+      if (bellIcon) bellIcon.style.display = "none";
+      if (loginUserBox) loginUserBox.style.display = "none";
+    } else {
+      // 검색창 닫기
+      searchContainer.style.display = "none";
+      if (loginIcon) loginIcon.style.display = "inline";
+      if (userImg) userImg.style.display = "inline";
+      if (bellIcon) bellIcon.style.display = "inline";
+      if (loginUserBox) loginUserBox.style.display = "flex";
+    }
+    isSearchOpen = !isSearchOpen;
   });
 });

@@ -45,6 +45,7 @@ class JobPost(models.Model):
 
     #경력
     CAREER_TYPE_CHOICES = [
+        ('total', '전체'),
         ('new', '신입'),
         ('none', '없음'),
         ('exp', '경력'),
