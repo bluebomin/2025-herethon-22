@@ -296,6 +296,7 @@ h3 {
   font-size: 24px;
 }
 .goals {
+  list-style-type: none !important; /* 불릿(동그라미) 제거 */
   border: 2px solid #90cfa8;
   border-radius: 11px;
   width: 792px;
@@ -305,6 +306,9 @@ h3 {
   font-size: 0.8em;
 }
 .goals ul {
+  padding-left: 0;      /* 기본 리스트 들여쓰기 제거 */
+  margin-top: 0;
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;

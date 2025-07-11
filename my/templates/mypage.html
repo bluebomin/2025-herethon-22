@@ -72,19 +72,19 @@
             <h1 class="username">{{ user.username }} </h1> 
             <div class="info-item">
               <div class="info-key">희망 직종</div>
-              <div class="info-value">{{my_plan.desired_job}}</div>
+              <div class="info-value">{{my_plan.get_desired_job_display}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">희망 지역</div>
-              <div class="info-value">{{my_plan.desired_region}}</div>
+              <div class="info-value">{{my_plan.get_desired_region_display}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">보유 역량 개수</div>
-              <div class="info-value">{{my_plan.strengths_count}}</div>
+              <div class="info-value">3개</div>
             </div>
             <div class="info-item">
               <div class="info-key">경력 단절 기간</div>
-              <div class="info-value">{{my_plan.career_gap_years}}</div>
+              <div class="info-value">{{my_plan.career_gap_years}}년</div>
             </div>
             <h1 class="type">"재취업 도전 틈틈러"</h1>
           </section>
@@ -181,11 +181,9 @@
           <div class="item-container">
             <div class="subtitle">목표</div>
             <div class="goals">
-              <ul>
-                <li>온라인 강의 2개 수강 완료 후 콘텐츠 포트폴리오 제작하기</li>
-                <li>구글 애널리틱스(GA4) 자격증 취득</li>
-                <li>인스타그램/블로그 운영 실습 프로젝트 시작</li>
-              </ul>
+              {% for line in my_plan.goal.splitlines %}
+                    <li>{{ line }}</li>
+                {% endfor %}
             </div>
           </div>
         </section>
