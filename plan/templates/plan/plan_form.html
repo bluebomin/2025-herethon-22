@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,4 +14,416 @@
     <button type="submit">저장하기</button>
   </form>
 </body>
+</html> -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/plan.css' %}" />
+    <title>최신채용정보</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 헤더 -->
+      <header>
+        <!--경로수정-->
+        <div id="HderLogos">
+          <a href="{% url 'accounts:login' %}" class="logo">
+            <img
+              id="HdLogoTT"
+              src="{% static 'img/Group 315.png' %}"
+              alt="로고"
+            />
+            <img
+              id="HdLogoKTT"
+              src="{% static 'img/Group 318.png' %}"
+              alt="로고"
+            />
+          </a>
+        </div>
+        <div id="HdScetion">
+          <nav id="menu">
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이공유</p>
+              <div class="theSe">
+                <p>최신 채용 정보</p>
+                <p>틈틈러 재도전 이야기</p>
+              </div>
+            </div>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이정보</p>
+              <div class="theSe">
+                <p>온라인 강의 큐레이션</p>
+                <p>나의 재도전 계획</p>
+              </div>
+            </div>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이계획</p>
+              <div class="theSe">
+                <p>틈틈 상담소</p>
+                <p>선배 틈틈러의 이야기</p>
+              </div>
+            </div>
+          </nav>
+          <nav id="user-actions">
+            <!-- 로그인 안 한 경우 -->
+            {% if not user.is_authenticated %}
+            <a href="{% url 'accounts:login' %}">
+              <img
+                src="{% static 'img/Group 243.png' %}"
+                alt="로그인"
+                id="login"
+              />
+            </a>
+            {% endif %}
+
+            <!-- 로그인 한 경우 -->
+            {% if user.is_authenticated %}
+            <div id="LoginUserIf" style="display: flex">
+              <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+              <a href="{% url 'post:post_list' %}" id="LoginUsertxt">
+                <span id="LoginUserName">{{ user.username }}</span> 님
+                안녕하세요!
+              </a>
+            </div>
+            {% endif %}
+
+            <a href="{%url 'my:mypage' %}"
+              ><img
+                id="UserImg"
+                src="{%static 'img/User.png' %}"
+                alt="마이페이지"
+            /></a>
+            <a id="bell-wrapper"
+              ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
+              <div id="notif-box">
+                <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              </div>
+            </a>
+            <div id="search-container" style="display: none">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="검색어를 입력해주세요"
+              />
+            </div>
+            <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
+          </nav>
+        </div>
+      </header>
+      <!-- 채용정보 검색 -->
+      <main class="content">
+        <div id="title">
+          <img id="HdImg" src="{% static 'img/틈틈러 재도전 이야기.png' %}" />
+          <p id="titleDt">
+            재취업에 도전하는 틈틈러들과 이야기를 나누어 보아요.
+          </p>
+        </div>
+        <div id="PlanUS">
+          <p>
+            <span id="PlanUspan">{{ user.username }}</span>님의 재도전 계획서
+          </p>
+        </div>
+        <form
+          action="{% url 'plan:myplan' %}"
+          method="post"
+          class="search-filter"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <div class="job-wrapper">
+            <span>희망 직종</span>
+            <input type="hidden" name="desired_job" id="desiredJobInput" />
+            <!-- <div class="dropdown-container">
+              <div class="dropdown">직종 선택</div>
+              <img
+                src="{% static 'img/Vector 4.png' %}"
+                alt="화살표"
+                class="dropdownBtn"
+              /> -->
+              
+              <div class="dropdown-menu">
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="planning"
+                  />
+                  기획·전략</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="development"
+                  />
+                  IT·개발·데이터</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="manufacturing"
+                  />
+                  생산·제조</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="contents"
+                  />
+                  콘텐츠·미디어</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="marketing"
+                  />
+                  마케팅·홍보·MD</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="customer_service"
+                  />
+                  고객상담·CS</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="construction"
+                  />
+                  건축·시설관리</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="finance"
+                  />
+                  금융·보험</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="accounting"
+                  />
+                  회계·세무·재무</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="logistics"
+                  />
+                  물류·운송</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="healthcare"
+                  />
+                  의료·간호</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="public"
+                  />
+                  공공·복지</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="design"
+                  />
+                  디자인</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="operation"
+                  />
+                  운영·서비스업</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="education"
+                  />
+                  교육·강의</label
+                >
+                <label
+                  ><input type="checkbox" name="job_type_filter" value="hr" />
+                  인사·사무·총무</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="location-wrapper">
+            <span>희망 근무 지역</span>
+            {{ form.desired_region }}
+            <!-- <div class="dropdown-container">
+              <div class="dropdown">지역 선택</div>
+              <img
+                src="{% static 'img/Vector 4.png' %}"
+                alt="화살표"
+                class="dropdownBtn"
+              />
+              <div class="dropdown-menu">
+                <label
+                  ><input type="checkbox" name="region_filter" value="seoul" />
+                  서울</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="region_filter"
+                    value="gyeonggi"
+                  />
+                  경기/인천</label
+                >
+                <label
+                  ><input type="checkbox" name="region_filter" value="busan" />
+                  부산/울산/경남</label
+                >
+                <label
+                  ><input type="checkbox" name="region_filter" value="daegu" />
+                  대구/경북</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="region_filter"
+                    value="gwangju"
+                  />
+                  광주/전남/전북</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="region_filter"
+                    value="daejeon"
+                  />
+                  대전/충남/충북</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="region_filter"
+                    value="gangwon"
+                  />
+                  강원</label
+                >
+                <label
+                  ><input type="checkbox" name="region_filter" value="jeju" />
+                  제주</label
+                >
+              </div>
+            </div> -->
+          </div>
+          <div class="career-wrapper">
+            <span>경력 단절 기간</span>
+            <!-- <label>
+              <input type="number" name="start_year" />{{ form.start_year }} 년
+              ~
+            </label>
+            <label
+              ><input type="number" name="end_year" />{{ form.end_year }}
+              년</label
+            > -->
+            {{ form.start_year }} 년 ~ {{ form.end_year }} 년
+          </div>
+
+          <div class="education-wrapper">
+            <span>보유역량</span>
+            {{ form.strengths }}
+            <input
+              type="text"
+              id="skillInput"
+              class="dropdown"
+              placeholder="학력 조건"
+            />
+            <input
+              type="button"
+              class="dropdown"
+              style="
+                margin-left: 20px;
+                width: 70px;
+                background-color: #fff;
+                color: #9ca3af;
+              "
+              id="addBtn"
+              value="+"
+            />
+          </div>
+          <div
+            id="skillTags"
+            style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px"
+          ></div>
+          <div
+            id="skillTags"
+            style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px"
+          ></div>
+          <div class="cpsize-wrapper">
+            <span>이력서</span>
+            {{ form.resume }}
+            <!-- <label>
+              <div id="JobJp">이력서를 첨부해주세요. (hwp, pdf)</div>
+              <input
+                style="display: none"
+                type="file"
+                placeholder="이력서를 첨부해주세요. (hwp, pdf)"
+              />
+            </label>
+            <button id="CtFile" type="button">찾아보기</button>
+          </div>
+          <div class="cpsize-wrapper">
+            <span>목표</span>
+            {{ form.goal }}
+            <textarea
+              id="TA"
+              placeholder="재취업 목표를 작성해 보세요. :)"
+            ></textarea> -->
+          </div>
+
+          <button
+            href="{% url 'plan:plan_recommend' %}"
+            id="SUb"
+            style="width: 40%; margin: 0 auto"
+            type="submit"
+          >
+            저장하기
+          </button>
+        </form>
+      </main>
+      <!-- 푸터 -->
+      <footer>
+        <img src="{% static 'img/Group 319.png' %}" alt="로고" class="logo2" />
+        <div>
+          <img src="{% static 'img/Group 320.png' %}" class="logo3" />
+        </div>
+      </footer>
+    </div>
+    <script src="{% static 'js/plan.js' %}"></script>
+  </body>
 </html>

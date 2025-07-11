@@ -12,3 +12,6 @@ class Plan(models.Model):
 
     def __str__(self):
         return f"{self.user.username}의 재도전 계획"
+
+# class Plan(models.Model):
+#     desired_job = models.CharField(max_length=255, blank=True)
