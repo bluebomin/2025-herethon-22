@@ -184,11 +184,13 @@
           {% for bookmark in bookmarks %}
           <div class="card">
             <div class="card-content">
+              <div class="logo-wrapper">
               <img
                 src="{{ bookmark.job_post.company_logo.url }}"
                 alt="로고"
                 class="sample-logo"
               />
+              </div>
               <a
                 href="{% url 'jobs:job_redirect' bookmark.job_post.id %}"
                 target="_blank"
