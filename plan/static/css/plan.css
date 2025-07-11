@@ -179,7 +179,7 @@ label {
 .available-wrapper input,
 .career-wrapper input {
   display: flex;
-  width: 24px;
+  width: 100px;
   height: 24px;
   border-radius: 5px;
   border: 2px solid #e5e7eb;
