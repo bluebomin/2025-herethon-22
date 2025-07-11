@@ -111,11 +111,21 @@
           </p>
         </div>
         <div id="PlanUS">
-          <p><span id="PlanUspan">신명서</span>님의 재도전 계획서</p>
+          <p>
+            <span id="PlanUspan">{{ user.username }}</span>님의 재도전 계획서
+          </p>
         </div>
-        <form action="/jobs/job_list/" method="GET" class="search-filter">
+        <form
+          action="{% url 'plan:myplan' %}"
+          method="post"
+          class="search-filter"
+        >
+          <input type="hidden" name="desired_job" id="desiredJobInput" />
+
+          {% csrf_token %}
           <div class="job-wrapper">
             <span>희망 직종</span>
+            {{ form.desired_job }}
             <div class="dropdown-container">
               <div class="dropdown">직종 선택</div>
               <img
@@ -254,6 +264,7 @@
 
           <div class="location-wrapper">
             <span>희망 근무 지역</span>
+            {{ form.desired_region }}
             <div class="dropdown-container">
               <div class="dropdown">지역 선택</div>
               <img
@@ -315,7 +326,7 @@
           </div>
           <div class="career-wrapper">
             <span>경력 단절 기간</span>
-            <label><input type="number" name="start_year" /> 년 ~ </label>
+            <label>년 ~ </label>
             <label><input type="number" name="end_year" /> 년</label>
           </div>
 
@@ -367,14 +378,17 @@
               placeholder="재취업 목표를 작성해 보세요. :)"
             ></textarea>
           </div>
-          <a
-            href="plan_recommend.html"
-            id="SUb"
-            style="width: 40%; margin: 0 auto"
-            type="button"
-          >
-            저장하기</a
-          >
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %} {{ form.as_p }}
+            <button
+              href="{% url 'plan:plan_recommend' %}"
+              id="SUb"
+              style="width: 40%; margin: 0 auto"
+              type="submit"
+            >
+              저장하기
+            </button>
+          </form>
         </form>
       </main>
       <!-- 푸터 -->
@@ -385,6 +399,6 @@
         </div>
       </footer>
     </div>
-    <script src="{ static 'js/plan.js' %}"></script>
+    <script src="{% static 'js/plan.js' %}"></script>
   </body>
 </html>
