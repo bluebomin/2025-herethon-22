@@ -25,8 +25,26 @@
         </nav>
         <nav class="user-actions">
           <ul>
+            <!-- 로그인여부에 따라 버튼 UI 변경 -->
+             {% if user.is_authenticated %} 
+            <div id="LoginUserIf" style="display: flex">
+              <img id="LoginPenImg" src={% static 'img/pen.png' %} />
+              <a href="{% url 'post:post_list' %}" id="LoginUsertxt">
+                <div id="LoginUserName">{{user.username}}</div>
+                님 안녕하세요!
+              </a>
+            </div>
+            {% else %}
             <li>
+              <a href="{% url 'accounts:login' %}">
+                <img
+                  src={% static 'img/loginbtn.svg' %}
+                  alt="로그인"
+                  class="login"
+                />
+              </a>
             </li>
+            {% endif %}
             <li>
               <!-- 링크 이동 되는지 확인 필요 -->
               <a href={%url 'my:mypage'%} 
