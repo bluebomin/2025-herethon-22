@@ -128,7 +128,7 @@ nav a:hover {
   background-color: #427d58;
   border-radius: 100px;
   box-sizing: border-box;
-  margin:0 auto;
+  margin: 0 auto;
 }
 #LoginUsertxt {
   display: flex;
@@ -141,8 +141,8 @@ nav a:hover {
 #LoginUserName {
   color: #fff;
   font-size: 20px;
-  margin:0px;
-  margin-right:5px;
+  margin: 0px;
+  margin-right: 5px;
 }
 #LoginPenImg {
   width: 18px;
@@ -180,7 +180,12 @@ h3 {
   height: 749px;
   box-sizing: border-box;
   border-radius: 32px;
-  background: linear-gradient(133deg, #DCFFE9 -1.81%, #D7FFDC 51.13%, #AAF3C6 96.76%);
+  background: linear-gradient(
+    133deg,
+    #dcffe9 -1.81%,
+    #d7ffdc 51.13%,
+    #aaf3c6 96.76%
+  );
   box-shadow: 3px 4px 21.7px 0px rgba(0, 0, 0, 0.1);
 }
 .profile-card img {
@@ -191,19 +196,25 @@ h3 {
 }
 .info-item {
   display: flex;
-  gap: 18px;
+  gap: 38px;
   font-size: 24px;
   font-family: "Pretendard-SemiBold";
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 300px; /* 필요 시 조절 */
 }
+
 .info-key {
-  width: 136px;
-  text-align: left;
   color: #434d38;
-  margin-bottom: 20px;
+  text-align: left;
+  flex-shrink: 0;
+  width: 140px; /* 라벨 너비 고정 */
 }
+
 .info-value {
   color: #333;
-  margin-bottom: 20px;
+  text-align: left;
+  white-space: nowrap;
 }
 .type {
   font-size: 28px;
@@ -306,7 +317,7 @@ h3 {
   font-size: 0.8em;
 }
 .goals ul {
-  padding-left: 0;      /* 기본 리스트 들여쓰기 제거 */
+  padding-left: 0; /* 기본 리스트 들여쓰기 제거 */
   margin-top: 0;
   margin-bottom: 0;
   display: flex;
@@ -359,7 +370,7 @@ h3 {
 .sample-logo {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;  /* 비율 유지하면서 박스 안에 딱 맞게 */
+  object-fit: contain; /* 비율 유지하면서 박스 안에 딱 맞게 */
   display: block;
 }
 .card-content {
