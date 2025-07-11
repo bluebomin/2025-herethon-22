@@ -10,7 +10,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <a href="{%url 'accounts:login' %}" class="logo">
+        <a href="{%url 'home:home' %}" class="logo">
           <img src={% static "img/logo1.svg"%} alt="로고" />
           <img src={% static "img/logo4.svg"%} alt="로고" />
         </a>
@@ -32,7 +32,7 @@
               /></a>
             </li>
             <li>
-              <a href="/mypage/"
+              <a href="{%url 'my:mypage'%}"
                 ><img src={% static "img/mypage.svg"%} alt="마이페이지"
               /></a>
             </li>
@@ -302,7 +302,7 @@
           <div class="career-wrapper">
             <span>경력</span>
             <div class="check-container">
-            <label><input type="checkbox" name="career_filter" value="all" {% if "all" in career_filters_selected %}checked{% endif %}/> 전체</label>
+            <label><input type="checkbox" name="career_filter" value="total" {% if "total" in career_filters_selected %}checked{% endif %}/> 전체</label>
             <div class="exp-container">
             <label
               class="exp-label"><input type="checkbox" name="career_filter" value="exp" {% if "exp" in career_filters_selected %}checked{% endif %} />
@@ -316,7 +316,7 @@
                신입</label
              > 
              <label
-               ><input type="checkbox" name="career_filter" value="irrelevant" {% if "irrelevant" in career_filters_selected %}checked{% endif %} /> 관계없음</label
+               ><input type="checkbox" name="career_filter" value="none" {% if "none" in career_filters_selected %}checked{% endif %} /> 관계없음</label
              >
             </div>
           </div>
@@ -334,42 +334,42 @@
                 <label
                   ><input
                     type="checkbox"
-                    name="education"
+                    name="education_filter"
                     value="high_school"
-                    {% if "high_school" in request.GET.education %}checked{% endif %}
+                    {% if "high_school" in request.GET.education_filter %}checked{% endif %}
                   />
                   고등학교 졸업</label
                 >
                 <label
                   ><input
                     type="checkbox"
-                    name="education"
+                    name="education_filter"
                     value="associate_degree"
-                    {% if "associate_degree" in request.GET.education %}checked{% endif %}
+                    {% if "associate_degree" in request.GET.education_filter %}checked{% endif %}
                   />
                   전문대학 졸업</label
                 >
                 <label
                   ><input
                     type="checkbox"
-                    name="education"
+                    name="education_filter"
                     value="bachelor_degree"
-                    {% if "bachelor_degree" in request.GET.education %}checked{% endif %}
+                    {% if "bachelor_degree" in request.GET.education_filter %}checked{% endif %}
                   />
                   학사 학위</label
                 >
                 <label
                   ><input
                     type="checkbox"
-                    name="education"
+                    name="education_filter"
                     value="master_degree"
-                    {% if "master_degree" in request.GET.education %}checked{% endif %}
+                    {% if "master_degree" in request.GET.education_filter %}checked{% endif %}
                   />
                   석사 학위</label
                 >
                 <label
-                  ><input type="checkbox" name="education" value="doctorate"
-                    {% if "doctorate" in request.GET.education %}checked{% endif %}
+                  ><input type="checkbox" name="education_filter" value="doctorate"
+                    {% if "doctorate" in request.GET.education_filter %}checked{% endif %}
                   />
                   박사 학위</label
                 >
@@ -388,31 +388,31 @@
               />
               <div class="dropdown-menu">
                 <label
-                  ><input type="checkbox" name="company_size" value="small"
+                  ><input type="checkbox" name="company_size_filter" value="small"
                     {% if "small" in request.GET.company_size %}checked{% endif %}
                   />
                   소기업</label
                 >
                 <label
-                  ><input type="checkbox" name="company_size" value="medium"
+                  ><input type="checkbox" name="company_size_filter" value="medium"
                     {% if "medium" in request.GET.company_size %}checked{% endif %}
                   />
                   중기업</label
                 >
                 <label
-                  ><input type="checkbox" name="company_size" value="large"
+                  ><input type="checkbox" name="company_size_filter" value="large"
                     {% if "large" in request.GET.company_size %}checked{% endif %}
                   />
                   대기업</label
                 >
                 <label
-                  ><input type="checkbox" name="company_size" value="startup"
+                  ><input type="checkbox" name="company_size_filter" value="startup"
                     {% if "startup" in request.GET.company_size %}checked{% endif %}
                   />
                   스타트업</label
                 >
                 <label
-                  ><input type="checkbox" name="company_size" value="public"
+                  ><input type="checkbox" name="company_size_filter" value="public"
                     {% if "public" in request.GET.company_size %}checked{% endif %}
                   />
                   공공기관</label
