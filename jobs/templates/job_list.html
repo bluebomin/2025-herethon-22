@@ -9,15 +9,13 @@
   </head>
   <body>
     <div class="wrapper">
-      <!-- 헤더 -->
       <header>
-        <a href="{%url 'accounts:login' %}" class="logo">
+        <a href="{%url 'home:home' %}" class="logo">
           <img src={% static "img/logo1.svg"%} alt="로고" />
           <img src={% static "img/logo4.svg"%} alt="로고" />
         </a>
         <nav class="menu">
           <ul>
-            <!-- 추후 경로 페이지 수정 -->
             <li><a href="">틈틈이공유</a></li>
             <li><a href="">틈틈이정보</a></li>
             <li><a href="">틈틈이계획</a></li>
@@ -26,7 +24,6 @@
         <nav class="user-actions">
           <ul>
             <li>
-              <!-- 추후 경로 페이지 수정 -->
               <a href="{%url 'accounts:login' %}"
                 ><img
                   src={%static "img/loginbtn.svg"%}
@@ -35,7 +32,7 @@
               /></a>
             </li>
             <li>
-              <a href="/mypage/"
+              <a href="{%url 'my:mypage'%}"
                 ><img src={% static "img/mypage.svg"%} alt="마이페이지"
               /></a>
             </li>
@@ -48,12 +45,10 @@
           </ul>
         </nav>
       </header>
-      <!-- 채용정보 검색 -->
       <main class="content">
         <h2>최신 채용 정보</h2>
         <p>회원님만의 맞춤 채용 정보를 틈틈이 준비했어요.</p>
         <hr />
-        <!-- 검색 조건 필터 -->
         <form action="/jobs/job_list/" method="GET" class="search-filter">
           <div class="kw-wrapper">
             <span>검색 키워드</span>
@@ -62,6 +57,7 @@
               id="keyword"
               name="q"
               placeholder="관심 있는 채용 키워드를 입력해 주세요."
+              value="{{ request.GET.q|default:'' }}" {# Add this to keep the search term after submission #}
             />
           </div>
 
@@ -75,11 +71,13 @@
                 class="dropdownBtn"
               />
               <div class="dropdown-menu">
+                {# Loop through your actual job types if available, otherwise manually list #}
                 <label
                   ><input
                     type="checkbox"
                     name="job_type_filter"
                     value="planning"
+                    {% if "planning" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   기획·전략</label
                 >
@@ -88,6 +86,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="development"
+                    {% if "development" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   IT·개발·데이터</label
                 >
@@ -96,6 +95,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="manufacturing"
+                    {% if "manufacturing" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   생산·제조</label
                 >
@@ -104,6 +104,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="contents"
+                    {% if "contents" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   콘텐츠·미디어</label
                 >
@@ -112,6 +113,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="marketing"
+                    {% if "marketing" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   마케팅·홍보·MD</label
                 >
@@ -120,6 +122,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="customer_service"
+                    {% if "customer_service" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   고객상담·CS</label
                 >
@@ -128,6 +131,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="construction"
+                    {% if "construction" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   건축·시설관리</label
                 >
@@ -136,6 +140,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="finance"
+                    {% if "finance" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   금융·보험</label
                 >
@@ -144,6 +149,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="accounting"
+                    {% if "accounting" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   회계·세무·재무</label
                 >
@@ -152,6 +158,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="logistics"
+                    {% if "logistics" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   물류·운송</label
                 >
@@ -160,6 +167,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="healthcare"
+                    {% if "healthcare" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   의료·간호</label
                 >
@@ -168,6 +176,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="public"
+                    {% if "public" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   공공·복지</label
                 >
@@ -176,6 +185,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="design"
+                    {% if "design" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   디자인</label
                 >
@@ -184,6 +194,7 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="operation"
+                    {% if "operation" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   운영·서비스업</label
                 >
@@ -192,11 +203,14 @@
                     type="checkbox"
                     name="job_type_filter"
                     value="education"
+                    {% if "education" in request.GET.job_type_filter %}checked{% endif %}
                   />
                   교육·강의</label
                 >
                 <label
-                  ><input type="checkbox" name="job_type_filter" value="hr" />
+                  ><input type="checkbox" name="job_type_filter" value="hr" 
+                    {% if "hr" in request.GET.job_type_filter %}checked{% endif %}
+                  />
                   인사·사무·총무</label
                 >
               </div>
@@ -214,7 +228,9 @@
               />
               <div class="dropdown-menu">
                 <label
-                  ><input type="checkbox" name="region_filter" value="seoul" />
+                  ><input type="checkbox" name="region_filter" value="seoul"
+                    {% if "seoul" in request.GET.region_filter %}checked{% endif %}
+                  />
                   서울</label
                 >
                 <label
@@ -222,15 +238,20 @@
                     type="checkbox"
                     name="region_filter"
                     value="gyeonggi"
+                    {% if "gyeonggi" in request.GET.region_filter %}checked{% endif %}
                   />
                   경기/인천</label
                 >
                 <label
-                  ><input type="checkbox" name="region_filter" value="busan" />
+                  ><input type="checkbox" name="region_filter" value="busan"
+                    {% if "busan" in request.GET.region_filter %}checked{% endif %}
+                  />
                   부산/울산/경남</label
                 >
                 <label
-                  ><input type="checkbox" name="region_filter" value="daegu" />
+                  ><input type="checkbox" name="region_filter" value="daegu"
+                    {% if "daegu" in request.GET.region_filter %}checked{% endif %}
+                  />
                   대구/경북</label
                 >
                 <label
@@ -238,6 +259,7 @@
                     type="checkbox"
                     name="region_filter"
                     value="gwangju"
+                    {% if "gwangju" in request.GET.region_filter %}checked{% endif %}
                   />
                   광주/전남/전북</label
                 >
@@ -246,6 +268,7 @@
                     type="checkbox"
                     name="region_filter"
                     value="daejeon"
+                    {% if "daejeon" in request.GET.region_filter %}checked{% endif %}
                   />
                   대전/충남/충북</label
                 >
@@ -254,11 +277,14 @@
                     type="checkbox"
                     name="region_filter"
                     value="gangwon"
+                    {% if "gangwon" in request.GET.region_filter %}checked{% endif %}
                   />
                   강원</label
                 >
                 <label
-                  ><input type="checkbox" name="region_filter" value="jeju" />
+                  ><input type="checkbox" name="region_filter" value="jeju"
+                    {% if "jeju" in request.GET.region_filter %}checked{% endif %}
+                  />
                   제주</label
                 >
               </div>
@@ -268,31 +294,30 @@
           <div class="available-wrapper">
             <span>재택 근무 가능 여부</span>
             <label
-              ><input type="checkbox" name="remote_available_filter" /> 재택
+              ><input type="checkbox" name="remote_available_filter" {% if "on" in request.GET.remote_available_filter %}checked{% endif %}/> 재택
               근무 가능</label
             >
           </div>
 
           <div class="career-wrapper">
             <span>경력</span>
-            
             <div class="check-container">
-            <label><input type="checkbox" name="career_filter" /> 전체</label>
+            <label><input type="checkbox" name="career_filter" value="total" {% if "total" in career_filters_selected %}checked{% endif %}/> 전체</label>
             <div class="exp-container">
             <label
-              class="exp-label"><input type="checkbox" name="career_filter" value="exp"  />
+              class="exp-label"><input type="checkbox" name="career_filter" value="exp" {% if "exp" in career_filters_selected %}checked{% endif %} />
               경력</label
             >
-            <label><input type="text" name="start_year"  class="year"/>년 ~</label>
-            <label><input type="text" name="end_year" class="year"/> 년</label>
+            <label><input type="text" name="start_year" value="{{ request.GET.start_year|default:'' }}" class="year"/>년 ~</label>
+            <label><input type="text" name="end_year" value="{{ request.GET.end_year|default:'' }}" class="year"/> 년</label>
             </div>
+               <label
+               ><input type="checkbox" name="career_filter" value="new" {% if "new" in career_filters_selected %}checked{% endif %} />
+               신입</label
+             > 
              <label
-              ><input type="checkbox" name="career_filter" value="new" />
-              신입</label
-            > 
-            <label
-              ><input type="checkbox" name="career_filter" /> 관계없음</label
-            >
+               ><input type="checkbox" name="career_filter" value="none" {% if "none" in career_filters_selected %}checked{% endif %} /> 관계없음</label
+             >
             </div>
           </div>
 
@@ -309,37 +334,43 @@
                 <label
                   ><input
                     type="checkbox"
-                    name="education"
+                    name="education_filter"
                     value="high_school"
+                    {% if "high_school" in request.GET.education_filter %}checked{% endif %}
                   />
                   고등학교 졸업</label
                 >
                 <label
                   ><input
                     type="checkbox"
-                    name="education"
+                    name="education_filter"
                     value="associate_degree"
+                    {% if "associate_degree" in request.GET.education_filter %}checked{% endif %}
                   />
                   전문대학 졸업</label
                 >
                 <label
                   ><input
                     type="checkbox"
-                    name="education"
+                    name="education_filter"
                     value="bachelor_degree"
+                    {% if "bachelor_degree" in request.GET.education_filter %}checked{% endif %}
                   />
                   학사 학위</label
                 >
                 <label
                   ><input
                     type="checkbox"
-                    name="education"
+                    name="education_filter"
                     value="master_degree"
+                    {% if "master_degree" in request.GET.education_filter %}checked{% endif %}
                   />
                   석사 학위</label
                 >
                 <label
-                  ><input type="checkbox" name="education" value="doctorate" />
+                  ><input type="checkbox" name="education_filter" value="doctorate"
+                    {% if "doctorate" in request.GET.education_filter %}checked{% endif %}
+                  />
                   박사 학위</label
                 >
               </div>
@@ -357,23 +388,33 @@
               />
               <div class="dropdown-menu">
                 <label
-                  ><input type="checkbox" name="company_size" value="small" />
+                  ><input type="checkbox" name="company_size_filter" value="small"
+                    {% if "small" in request.GET.company_size %}checked{% endif %}
+                  />
                   소기업</label
                 >
                 <label
-                  ><input type="checkbox" name="company_size" value="medium" />
+                  ><input type="checkbox" name="company_size_filter" value="medium"
+                    {% if "medium" in request.GET.company_size %}checked{% endif %}
+                  />
                   중기업</label
                 >
                 <label
-                  ><input type="checkbox" name="company_size" value="large" />
+                  ><input type="checkbox" name="company_size_filter" value="large"
+                    {% if "large" in request.GET.company_size %}checked{% endif %}
+                  />
                   대기업</label
                 >
                 <label
-                  ><input type="checkbox" name="company_size" value="startup" />
+                  ><input type="checkbox" name="company_size_filter" value="startup"
+                    {% if "startup" in request.GET.company_size %}checked{% endif %}
+                  />
                   스타트업</label
                 >
                 <label
-                  ><input type="checkbox" name="company_size" value="public" />
+                  ><input type="checkbox" name="company_size_filter" value="public"
+                    {% if "public" in request.GET.company_size %}checked{% endif %}
+                  />
                   공공기관</label
                 >
               </div>
@@ -383,8 +424,7 @@
         </form>
 
         <hr />
-        <p>총 1,472건의 채용정보가 있어요.</p>
-        <!-- 카드 목록 -->
+        <p>총 {{ jobs|length }}건의 채용정보가 있어요.</p> {# Dynamically show count #}
         <div class="card-container">
           {% for job in jobs %}
           <div class="card">
@@ -415,13 +455,17 @@
               <p class="subtitle">{{ job.company }}</p>
               <p class="category">{{ job.get_job_type_display }}</p>
             </div>
-            <!-- 스크랩 유무에 따른 버튼 이미지 변경 -->
-            <img
-              src={%static 'img/scrapbtn.svg'%}
-              alt="스크랩"
-              class="scrap"
-              data-job-id="{{ job.id }}"
-            />
+            {% if user.is_authenticated %}
+                <a href="{% url 'jobs:toggle_bookmark' job.id %}" class="scrap-button" data-job-id="{{ job.id }}">
+                    {% if job.id in user_bookmarked_job_ids %}
+                        <img src="{% static 'img/scrapbtn-filled.svg' %}" alt="스크랩됨" class="scrap-icon" /> {# 스크랩된 이미지 #}
+                    {% else %}
+                        <img src="{% static 'img/scrapbtn.svg' %}" alt="스크랩" class="scrap-icon" /> {# 스크랩 안된 이미지 #}
+                    {% endif %}
+                </a>
+            {% else %}
+                <img src="{% static 'img/scrapbtn_disabled.svg' %}" alt="로그인 필요" class="scrap-icon disabled" title="로그인 후 스크랩 가능" />
+            {% endif %}
           </div>
           {% endfor %}
         </div>
@@ -448,7 +492,6 @@
           />
         </div>
       </main>
-      <!-- 푸터 -->
       <footer>
         <img src={%static "img/logo2.svg"%} alt="로고" class="logo2" />
 

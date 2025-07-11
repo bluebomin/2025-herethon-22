@@ -42,11 +42,13 @@ class PlanForm(forms.ModelForm):
         model = Plan
         fields = '__all__'
         widgets = {
+
             'desired_job': forms.Select(attrs={'class': 'dropdown'}),
             'desired_region': forms.Select(attrs={'class': 'dropdown'}),
             'start_year': forms.NumberInput(attrs={'class': 'input-year'}),
             'end_year': forms.NumberInput(attrs={'class': 'input-year'}),
             'strengths': forms.Textarea(attrs={'class': 'dropdown'}),
+
             'goal': forms.Textarea(attrs={
                 'class': 'textarea',
                 'id': 'TA',
@@ -57,4 +59,3 @@ class PlanForm(forms.ModelForm):
                 'class': 'file-input',
             }),
         }
-
