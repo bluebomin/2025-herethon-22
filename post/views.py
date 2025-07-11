@@ -4,15 +4,24 @@ from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from plan.models import Plan
 
+@login_required # 이 뷰가 로그인된 사용자만 접근 가능하도록 할 경우 추가
 def post_list(request):
-    posts = Post.objects.all().order_by('-created_at')
-    for post in posts:
-        try:
-            post.author_plan = Plan.objects.get(user=post.author)
-        except Plan.DoesNotExist:
-            post.author_plan = None
-    return render(request, 'post/post_list.html', {'posts': posts})
+    posts = Post.objects.all().order_by('-created_at') # 게시글 목록 불러오기 (예시)
 
+    my_plan = None
+    if request.user.is_authenticated:
+        try:
+            # 현재 로그인한 사용자의 Plan 객체를 가져옵니다.
+            my_plan = request.user.plan
+        except Plan.DoesNotExist:
+            # Plan 객체가 없는 경우 (아직 생성하지 않은 경우)
+            my_plan = None
+
+    context = {
+        'posts': posts,
+        'my_plan': my_plan, # my_plan 객체를 템플릿 컨텍스트에 추가
+    }
+    return render(request, 'post/post_list.html', context)
 
 @login_required
 def post_create(request):
