@@ -136,7 +136,7 @@ input:focus {
   font-size: 20px;
   font-family: "Pretendard-Regular";
   font-weight: 400;
-  color: #9ca3af;
+  color: #202021;
   position: relative; /* 기준 부모 지정*/
 }
 
@@ -474,6 +474,25 @@ a {
   height: 80%;
   justify-content: center;
   align-items: center;
+}
+
+#FileED {
+  width: 80px;
+  margin-left: 20px;
+  background-color: #38694a;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 300;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  border-radius: 10px;
+}
+
+#FileED:hover {
+  background-color: #274935;
 }
 
 .theNav {
