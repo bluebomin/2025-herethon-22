@@ -42,4 +42,3 @@ class Plan(models.Model):
 
     def __str__(self):
         return f"{self.user.username}의 재도전 계획"
-
