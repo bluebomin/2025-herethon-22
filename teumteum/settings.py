@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'my',
     'plan',
     'home',
+    'counsel',
+    'alumna',
 ]
 
 MIDDLEWARE = [

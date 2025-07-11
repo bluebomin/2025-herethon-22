@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}" />
+    <title>틈틈러 재도전 이야기</title>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header>
+      <!--경로수정-->
+      <div id="HderLogos">
+        <a href="{% url 'accounts:login' %}" class="logo">
+          <img
+            id="HdLogoTT"
+            src="{% static 'img/Group 315.png' %}"
+            alt="로고"
+          />
+          <img
+            id="HdLogoKTT"
+            src="{% static 'img/Group 318.png' %}"
+            alt="로고"
+          />
+        </a>
+      </div>
+      <div id="HdScetion">
+        <nav id="menu">
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이공유</p>
+            <div class="theSe">
+              <p>최신 채용 정보</p>
+              <p>틈틈러 재도전 이야기</p>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이정보</p>
+            <div class="theSe">
+              <p>온라인 강의 큐레이션</p>
+              <p>나의 재도전 계획</p>
+            </div>
+          </div>
+          <div class="theNav">
+            <p class="HdA" href="">틈틈이계획</p>
+            <div class="theSe">
+              <p>틈틈 상담소</p>
+              <p>선배 틈틈러의 이야기</p>
+            </div>
+          </div>
+        </nav>
+        <nav id="user-actions">
+          <!-- 로그인 안 한 경우 -->
+          {% if not user.is_authenticated %}
+          <a href="{% url 'accounts:login' %}">
+            <img
+              src="{% static 'img/Group 243.png' %}"
+              alt="로그인"
+              id="login"
+            />
+          </a>
+          {% endif %}
+
+          <!-- 로그인 한 경우 -->
+          {% if user.is_authenticated %}
+          <div id="LoginUserIf" style="display: flex">
+            <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+            <a href="{% url 'post:post_list' %}" id="LoginUsertxt">
+              <span id="LoginUserName">{{ user.username }}</span> 님 안녕하세요!
+            </a>
+          </div>
+          {% endif %}
+
+          <a href="{%url 'my:mypage' %}"
+            ><img
+              id="UserImg"
+              src="{%static 'img/User.png' %}"
+              alt="마이페이지"
+          /></a>
+          <a id="bell-wrapper"
+            ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
+            <div id="notif-box">
+              <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+            </div>
+          </a>
+          <div id="search-container" style="display: none">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="검색어를 입력해주세요"
+            />
+          </div>
+          <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
+        </nav>
+      </div>
+    </header>
+
+    <section>
+      <div id="title">
+        <img id="HdImg" src="{% static 'img/틈틈러 재도전 이야기.png' %}" />
+        <p id="titleDt">재취업에 도전하는 틈틈러들과 이야기를 나누어 보아요.</p>
+      </div>
+
+      <div class="Ct">
+        <div id="starCt">
+          <p id="CtTitle">{{ post.title }}</p>
+          <img id="star" src="{% static 'img/Star 1.png' %}" />
+        </div>
+        <div id="stLIf">
+          <img
+            id="stLprofile"
+            src="{% static 'img/profile.png' %}"
+            alt="프로필 이미지"
+          />
+          <div id="stLuserIf">
+            <p id="stLIfName">{{ post.author.username|slice:":1" }}**</p>
+            <div id="stLuserSt">
+              <p id="stLuserT">경력 단절 정보</p>
+              <p id="stLuserJ">직무 정보</p>
+            </div>
+          </div>
+        </div>
+        <div id="stLtxt">
+          <p>{{ post.content }}</p>
+        </div>
+        <div id="ems">
+          <div class="likeEm">
+            <img id="likeImg" src="{% static 'img/like.png' %}" />
+            <!-- 이미지 경로 수정 필요합니다 -->
+            <p class="txtEm">좋아요</p>
+          </div>
+          <div class="likeEm">
+            <img id="goodImg" src="{% static 'img/good.png' %}" />
+            <p class="txtEm">응원해요</p>
+          </div>
+          <div class="likeEm">
+            <img id="smileImg" src="{% static 'img/smile.png' %}" />
+            <p class="txtEm">도움이 됐어요</p>
+          </div>
+        </div>
+      </div>
+
+      <!--댓글시작-->
+      <div class="Ct">
+        <p id="coTitle">댓글 <span>{{ comments|length }}</span>개</p>
+        {% for comment in comments %}
+        <div id="comment">
+          <div>
+            <img id="coProfile" src="{% static 'img/profile.png' %}" />
+            <p id="coName">{{ comment.author.username|slice:":1" }}**</p>
+          </div>
+          <div id="coConCt">
+            <p>{{ comment.content }}</p>
+          </div>
+        </div>
+        {% empty %}
+        <p>댓글이 없습니다.</p>
+        {% endfor %}
+        <!-- 댓글 -->
+        {% if user.is_authenticated %}
+        <form
+          id="coW"
+          method="post"
+          action="{% url 'post:comment_create' post.pk %}"
+        >
+          {% csrf_token %}
+          <img id="mycoProfile" src="{% static 'img/profile.png' %}" />
+          <input
+            id="myCo"
+            type="text"
+            name="content"
+            placeholder="댓글로 당신이 알고 있는 정보를 공유해보세요!"
+            required
+          />
+          <input id="coBt" type="submit" value="등록" />
+        </form>
+        {% endif %}
+      </div>
+      <!-- a태그로 연결 -->
+      <div class="Ct">
+        {% if next_post %}
+        <div id="NrecoW">
+          <p class="nextW">다음 글</p>
+          <a href="{% url 'post:post_detail' next_post.pk %}">
+            <p>{{ next_post.title }}</p>
+          </a>
+        </div>
+        {% endif %} {% if prev_post %}
+        <div id="BrecoW">
+          <p class="nextW">이전 글</p>
+          <a href="{% url 'post:post_detail' prev_post.pk %}">
+            <p>{{ prev_post.title }}</p>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      <div id="aList">
+        <a href="{% url 'post:post_list' %}" id="list">목록</a>
+      </div>
+    </section>
+    <!-- 푸터 -->
+    <footer>
+      <img src="{% static 'img/Group 319.png' %}" alt="로고" class="logo2" />
+      <div>
+        <img src="{% static 'img/Group 320.png' %}" class="logo3" />
+      </div>
+    </footer>
+    <script src="{% static '/js/post_detail.js' %}"></script>
+  </body>
+</html>
