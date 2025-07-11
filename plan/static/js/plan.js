@@ -363,3 +363,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  const jobCheckboxes = document.querySelectorAll('input[name="job_type_filter"]');
+  const regionCheckboxes = document.querySelectorAll('input[name="region_filter"]');
+  const desiredJobInput = document.getElementById("desiredJobInput");
+  const desiredRegionInput = document.getElementById("desiredRegionInput");
+
+  form.addEventListener("submit", function () {
+    // 직종 체크박스 값 -> hidden input
+    const selectedJobs = Array.from(jobCheckboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+    if (desiredJobInput) desiredJobInput.value = selectedJobs.join(",");
+
+    // 지역 체크박스 값 -> hidden input
+    const selectedRegions = Array.from(regionCheckboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+    if (desiredRegionInput) desiredRegionInput.value = selectedRegions.join(",");
+  });
+});
