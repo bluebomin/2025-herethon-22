@@ -486,7 +486,7 @@ a {
   text-align: center;
   display: none;
 }
-.theSe > p:hover {
+.theSe p:hover {
   color: #427d58;
 }
 .theNav:hover .theSe {

@@ -30,22 +30,32 @@
           <div class="theNav">
             <p class="HdA" href="">틈틈이공유</p>
             <div class="theSe">
-              <p>최신 채용 정보</p>
-              <p>틈틈러 재도전 이야기</p>
+              <a href="{% url 'jobs:job_list' %}">
+                <p>최신 채용 정보</p>
+              </a>
+              <a href="{% url 'post:post_list' %}">
+                <p>틈틈러 재도전 이야기</p>
+              </a>
             </div>
           </div>
           <div class="theNav">
             <p class="HdA" href="">틈틈이정보</p>
             <div class="theSe">
               <p>온라인 강의 큐레이션</p>
-              <p>나의 재도전 계획</p>
+              <a href="{% url 'plan:myplan' %}">
+                <p>나의 재도전 계획</p>
+              </a>
             </div>
           </div>
           <div class="theNav">
             <p class="HdA" href="">틈틈이계획</p>
             <div class="theSe">
-              <p>틈틈 상담소</p>
-              <p>선배 틈틈러의 이야기</p>
+              <a href="{% url 'counsel:counsel_list' %}">
+                <p>틈틈 상담소</p>
+              </a>
+              <a href="{% url 'alumna:alumna_list' %}">
+                <p>선배 틈틈러의 이야기</p>
+              </a>
             </div>
           </div>
         </nav>
@@ -223,7 +233,7 @@
                   </p>
                 </div>
               </div>
-              <a href="{% url 'counsel:counsel_list' %}" class="reLink"
+              <a href="{% url 'alumna:alumna_list' %}" class="reLink"
                 >더 자세히 확인하기</a
               >
             </div>

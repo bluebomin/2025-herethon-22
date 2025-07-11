@@ -348,20 +348,28 @@ document.addEventListener("DOMContentLoaded", function () {
 //   });
 // });
 
-// 스크랩(class 사용)
+//랜덤 추천
 document.addEventListener("DOMContentLoaded", function () {
-  const starImgs = document.querySelectorAll(".Tcstar");
+  const sections = [
+    document.getElementById("Sb"),
+    document.getElementById("Sb2"),
+    document.getElementById("Sb3"),
+    document.getElementById("Sb4"),
+  ];
 
-  const fStarImg = ["/static/img/Star 1.png", "/static/img/fStar 1.png"];
-
-  starImgs.forEach((starImg) => {
-    let current = 0;
-
-    starImg.addEventListener("click", function () {
-      current = (current + 1) % fStarImg.length;
-      starImg.src = fStarImg[current];
-    });
+  // 모든 섹션 숨기기
+  sections.forEach((section) => {
+    if (section) {
+      section.style.display = "none";
+    }
   });
+
+  // 랜덤으로 하나만 보이기
+  const randomIndex = Math.floor(Math.random() * sections.length);
+  const selectedSection = sections[randomIndex];
+  if (selectedSection) {
+    selectedSection.style.display = "block";
+  }
 });
 
 document.addEventListener("DOMContentLoaded", function () {

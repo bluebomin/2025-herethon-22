@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,django,visualstudiocode,macos,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,django,visualstudiocode,macos,windows
 /myvenv
+*/migrations/[0-9]*.py
+!*/migrations/__init__.py
 
 ### Django ###
 *.log
@@ -20,6 +22,9 @@ media
 # Byte-compiled / optimized / DLL files
 *.py[cod]
 *$py.class
+
+*/migrations/[0-9]*.py
+!*/[migrations/__init__.py
 
 # C extensions
 *.so
