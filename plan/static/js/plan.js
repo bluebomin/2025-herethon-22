@@ -348,18 +348,48 @@ document.addEventListener("DOMContentLoaded", function () {
 //   });
 // });
 
-// 스크랩(class 사용)
+//랜덤 추천
 document.addEventListener("DOMContentLoaded", function () {
-  const starImgs = document.querySelectorAll(".Tcstar");
+  const sections = [
+    document.getElementById("Sb"),
+    document.getElementById("Sb2"),
+    document.getElementById("Sb3"),
+    document.getElementById("Sb4"),
+  ];
 
-  const fStarImg = ["/static/img/Star 1.png", "/static/img/fStar 1.png"];
+  // 모든 섹션 숨기기
+  sections.forEach((section) => {
+    if (section) {
+      section.style.display = "none";
+    }
+  });
 
-  starImgs.forEach((starImg) => {
-    let current = 0;
+  // 랜덤으로 하나만 보이기
+  const randomIndex = Math.floor(Math.random() * sections.length);
+  const selectedSection = sections[randomIndex];
+  if (selectedSection) {
+    selectedSection.style.display = "block";
+  }
+});
 
-    starImg.addEventListener("click", function () {
-      current = (current + 1) % fStarImg.length;
-      starImg.src = fStarImg[current];
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  const jobCheckboxes = document.querySelectorAll('input[name="job_type_filter"]');
+  const regionCheckboxes = document.querySelectorAll('input[name="region_filter"]');
+  const desiredJobInput = document.getElementById("desiredJobInput");
+  const desiredRegionInput = document.getElementById("desiredRegionInput");
+
+  form.addEventListener("submit", function () {
+    // 직종 체크박스 값 -> hidden input
+    const selectedJobs = Array.from(jobCheckboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+    if (desiredJobInput) desiredJobInput.value = selectedJobs.join(",");
+
+    // 지역 체크박스 값 -> hidden input
+    const selectedRegions = Array.from(regionCheckboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+    if (desiredRegionInput) desiredRegionInput.value = selectedRegions.join(",");
   });
 });
