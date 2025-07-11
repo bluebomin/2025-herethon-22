@@ -11,6 +11,8 @@ urlpatterns = [
     path('jobs/', include('jobs.urls')), 
     path('', include('home.urls')),
     path('my/', include('my.urls')),
+    path('counsel/', include('counsel.urls')),
+    path('alumna/', include('alumna.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
