@@ -116,7 +116,7 @@
           </p>
         </div>
         <form
-          action="{% url 'plan:myplan' %}"
+          action="{% url 'plan:plan_recommend' %}"
           method="post"
           class="search-filter"
           enctype="multipart/form-data"
@@ -263,7 +263,11 @@
 
           <div class="location-wrapper">
             <span>희망 근무 지역</span>
-            <input type="hidden" name="desired_region" id="desiredRegionInput" />
+            <input
+              type="hidden"
+              name="desired_region"
+              id="desiredRegionInput"
+            />
             <div class="dropdown-container">
               <div class="dropdown">지역 선택</div>
               <img
@@ -325,7 +329,7 @@
           </div>
           <div class="career-wrapper">
             <span>경력 단절 기간</span>
-            <input type="number" name="start_year" class="input-year" /> 년 ~ 
+            <input type="number" name="start_year" class="input-year" /> 년 ~
             <input type="number" name="end_year" class="input-year" /> 년
           </div>
 
@@ -362,7 +366,12 @@
           ></div> -->
           <div class="cpsize-wrapper">
             <span>이력서</span>
-            <input type="file" name="resume" id="resumeInput" class="file-input" />
+            <input
+              type="file"
+              name="resume"
+              id="resumeInput"
+              class="file-input"
+            />
             <button id="CtFile" type="button">찾아보기</button>
           </div>
           <div class="cpsize-wrapper">
