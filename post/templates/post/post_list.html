@@ -136,9 +136,9 @@
               <div class="userIf">
                 <p class="userName">{{ post.author.username|slice:":1" }}**</p>
                 <div class="userSt">
-                  <p class="userT">경력 단절 5년</p>
+                  <p class="userT">경력 단절 {{my_plan.career_gap_years}}년</p>
                   <!-- 수정필요 -->
-                  <p class="userJ">{{ post.category|default:"직무 미입력" }}</p>
+                  <p class="userJ">{{ my_plan.get_desired_job_display|default:"직무 미입력" }}</p>
                 </div>
               </div>
             </div>
