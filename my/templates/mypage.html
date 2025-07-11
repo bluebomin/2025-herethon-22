@@ -46,28 +46,28 @@
 
       <main>
         <h1>마이페이지</h1>
-        <h3>신명서 님, 환영해요! 오늘도 틈틈이 준비를 해볼까요?</h3> <!--이름 데이터 수정 필요-->
+        <h3>{{ user.username }}님, 환영해요! 오늘도 틈틈이 준비를 해볼까요?</h3> 
         <hr />
         <div class="cards-container">
           <!-- 프로필카드 -->
           <section class="profile-card">
             <img src={% static 'img/profile.svg' %} />
-            <h1 class="username">신명서</h1> <!--이름 데이터 수정 필요-->
+            <h1 class="username">{{ user.username }} </h1> 
             <div class="info-item">
               <div class="info-key">희망 직종</div>
-              <div class="info-value">{{my.desired_job}}</div>
+              <div class="info-value">{{my_plan.desired_job}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">희망 지역</div>
-              <div class="info-value">{{my.desired_region}}</div>
+              <div class="info-value">{{my_plan.desired_region}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">보유 역량 개수</div>
-              <div class="info-value">{{my.strengths}}</div>
+              <div class="info-value">{{my_plan.strengths}}</div>
             </div>
             <div class="info-item">
               <div class="info-key">경력 단절 기간</div>
-              <div class="info-value">{{my.career_gap_years}}</div>
+              <div class="info-value">{{my_plan.career_gap_years}}</div>
             </div>
             <h1 class="type">"재취업 도전 틈틈러"</h1>
           </section>
@@ -181,31 +181,32 @@
         </section>
         <!-- 카드 목록 -->
         <section class="card-container">
-            {% for job in jobs %}
+          {% for bookmark in bookmarks %}
           <div class="card">
             <div class="card-content">
+              <div class="logo-wrapper">
               <img
-                src="{{ job.company_logo }}"
+                src="{{ bookmark.job_post.company_logo.url }}"
                 alt="로고"
                 class="sample-logo"
               />
+              </div>
               <a
-                href="{% url 'jobs:job_redirect' job.id %}"
+                href="{% url 'jobs:job_redirect' bookmark.job_post.id %}"
                 target="_blank"
                 class="card-link"
               >
-                <h2>{{ job.title }}</h2>
+                <h2>{{ bookmark.job_post.title }}</h2>
               </a>
-              <p class="subtitle">{{ job.company }}</p>
-              <p class="category">{{ job.get_job_type_display }}</p>
+              <p class="subtitle">{{ bookmark.job_post.company }}</p>
+              <p class="category">{{ bookmark.job_post.get_job_type_display}}</p>
             </div>
             <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
-            <img
-              src={% static 'img/scrapbtn-filled.svg' %}
-              alt="스크랩"
-              class="scrap"
-              data-job-id="{{ job.id }}"
-            />
+            {% if user.is_authenticated %}
+                <a href="{% url 'jobs:toggle_bookmark' bookmark.job_post.id %}" class="scrap-button" data-job-id="{{ job.id }}">
+                        <img src="{% static 'img/scrapbtn-filled.svg' %}" alt="스크랩" class="scrap" /> {# 스크랩 안된 이미지 #}
+                </a>
+           {% endif %}
           </div>
         {% endfor %} 
         </section>
@@ -217,7 +218,7 @@
 
         <div class="footer-bottom">
           <h1>단절의 시간을 기회의 시간으로 바꾸는 플랫폼,</h1>
-          <img src={% static 'img/logo3.svg' %}class="logo3" />
+          <img src={% static 'img/logo3.svg'%} class="logo3" />
         </div>
       </footer>
     </div>

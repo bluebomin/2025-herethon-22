@@ -1,0 +1,613 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/plan_recommend.css' %}" />
+    <title>채용정보추천</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 헤더 -->
+      <header>
+        <!--경로수정-->
+        <div id="HderLogos">
+          <a href="{% url 'accounts:login' %}" class="logo">
+            <img
+              id="HdLogoTT"
+              src="{% static 'img/Group 315.png' %}"
+              alt="로고"
+            />
+            <img
+              id="HdLogoKTT"
+              src="{% static 'img/Group 318.png' %}"
+              alt="로고"
+            />
+          </a>
+        </div>
+        <div id="HdScetion">
+          <nav id="menu">
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이공유</p>
+              <div class="theSe">
+                <p>최신 채용 정보</p>
+                <p>틈틈러 재도전 이야기</p>
+              </div>
+            </div>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이정보</p>
+              <div class="theSe">
+                <p>온라인 강의 큐레이션</p>
+                <p>나의 재도전 계획</p>
+              </div>
+            </div>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이계획</p>
+              <div class="theSe">
+                <p>틈틈 상담소</p>
+                <p>선배 틈틈러의 이야기</p>
+              </div>
+            </div>
+          </nav>
+          <nav id="user-actions">
+            <!-- 로그인 안 한 경우 -->
+            {% if not user.is_authenticated %}
+            <a href="{% url 'accounts:login' %}">
+              <img
+                src="{% static 'img/Group 243.png' %}"
+                alt="로그인"
+                id="login"
+              />
+            </a>
+            {% endif %}
+
+            <!-- 로그인 한 경우 -->
+            {% if user.is_authenticated %}
+            <div id="LoginUserIf" style="display: flex">
+              <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+              <a href="{% url 'post:post_list' %}" id="LoginUsertxt">
+                <span id="LoginUserName">{{ user.username }}</span> 님
+                안녕하세요!
+              </a>
+            </div>
+            {% endif %}
+
+            <a href="{%url 'my:mypage' %}"
+              ><img
+                id="UserImg"
+                src="{%static 'img/User.png' %}"
+                alt="마이페이지"
+            /></a>
+            <a id="bell-wrapper"
+              ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
+              <div id="notif-box">
+                <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+                <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
+              </div>
+            </a>
+            <div id="search-container" style="display: none">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="검색어를 입력해주세요"
+              />
+            </div>
+            <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
+          </nav>
+        </div>
+      </header>
+      <!-- 채용정보 검색 -->
+      <main class="content">
+        <div id="title">
+          <img id="HdImg" src="{% static 'img/틈틈러 재도전 이야기.png' %}" />
+          <p id="titleDt">
+            재취업에 도전하는 틈틈러들과 이야기를 나누어 보아요.
+          </p>
+        </div>
+        <div id="PlanUS">
+          <p>
+            <span id="PlanUspan">{{ user.username }}</span> 님의 재도전 계획서
+          </p>
+          <a id="ReS" href="{% url 'plan:myplan'%}">수정하기</a>
+        </div>
+        <form action="/jobs/job_list/" method="GET" class="search-filter">
+          <div class="job-wrapper">
+            <span>희망 직종</span>
+            <div class="dropdown-container">
+              <div class="dropdown">직종 선택</div>
+              <img
+                src="{% static 'img/Vector 4.png' %}"
+                alt="화살표"
+                class="dropdownBtn"
+              />
+              <div class="dropdown-menu">
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="planning"
+                  />
+                  기획·전략</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="development"
+                  />
+                  IT·개발·데이터</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="manufacturing"
+                  />
+                  생산·제조</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="contents"
+                  />
+                  콘텐츠·미디어</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="marketing"
+                  />
+                  마케팅·홍보·MD</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="customer_service"
+                  />
+                  고객상담·CS</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="construction"
+                  />
+                  건축·시설관리</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="finance"
+                  />
+                  금융·보험</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="accounting"
+                  />
+                  회계·세무·재무</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="logistics"
+                  />
+                  물류·운송</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="healthcare"
+                  />
+                  의료·간호</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="public"
+                  />
+                  공공·복지</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="design"
+                  />
+                  디자인</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="operation"
+                  />
+                  운영·서비스업</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="job_type_filter"
+                    value="education"
+                  />
+                  교육·강의</label
+                >
+                <label
+                  ><input type="checkbox" name="job_type_filter" value="hr" />
+                  인사·사무·총무</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="location-wrapper">
+            <span>희망 근무 지역</span>
+            <div class="dropdown-container">
+              <div class="dropdown">지역 선택</div>
+              <img
+                src="{% static 'img/Vector 4.png' %}"
+                alt="화살표"
+                class="dropdownBtn"
+              />
+              <div class="dropdown-menu">
+                <label
+                  ><input type="checkbox" name="region_filter" value="seoul" />
+                  서울</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="region_filter"
+                    value="gyeonggi"
+                  />
+                  경기/인천</label
+                >
+                <label
+                  ><input type="checkbox" name="region_filter" value="busan" />
+                  부산/울산/경남</label
+                >
+                <label
+                  ><input type="checkbox" name="region_filter" value="daegu" />
+                  대구/경북</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="region_filter"
+                    value="gwangju"
+                  />
+                  광주/전남/전북</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="region_filter"
+                    value="daejeon"
+                  />
+                  대전/충남/충북</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="region_filter"
+                    value="gangwon"
+                  />
+                  강원</label
+                >
+                <label
+                  ><input type="checkbox" name="region_filter" value="jeju" />
+                  제주</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="career-wrapper">
+            <span>경력 단절 기간</span>
+            <label><input type="number" name="start_year" /> 년 ~ </label>
+            <label><input type="number" name="end_year" /> 년</label>
+          </div>
+
+          <div class="education-wrapper">
+            <span>보유역량</span>
+            <input
+              type="text"
+              id="skillInput"
+              class="dropdown"
+              placeholder="학력 조건"
+            />
+            <input
+              type="button"
+              class="dropdown"
+              style="
+                margin-left: 20px;
+                width: 70px;
+                background-color: #fff;
+                color: #9ca3af;
+              "
+              id="addBtn"
+              value="+"
+            />
+          </div>
+          <div
+            id="skillTags"
+            style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px"
+          ></div>
+          <div
+            id="skillTags"
+            style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px"
+          ></div>
+          <div class="cpsize-wrapper">
+            <span>이력서</span>
+            <label>
+              <div id="JobJp">이력서를 첨부해주세요. (hwp, pdf)</div>
+              <input
+                style="display: none"
+                type="file"
+                placeholder="이력서를 첨부해주세요. (hwp, pdf)"
+              />
+            </label>
+            <button id="CtFile" type="button">찾아보기</button>
+          </div>
+          <div class="cpsize-wrapper">
+            <span>목표</span>
+            <textarea
+              id="TA"
+              placeholder="재취업 목표를 작성해 보세요. :)"
+            ></textarea>
+          </div>
+        </form>
+        <section id="Sb">
+          <div id="PlanUSf">
+            <p>
+              <span id="PlanUspan">신명서</span> 님의 재도전 계획서를 기반으로
+              다음 활동을 추천할게요!
+            </p>
+          </div>
+          <div id="SubUsf">
+            <p>
+              <span>신명서</span> 님! 아직 <span>이력서</span> 업로드를 하지
+              않으셨네요. 선배 틈틈러의 재취업 후기를 읽고 영감을 얻어보세요!
+            </p>
+          </div>
+          <div id="SbRq">
+            <a href="경로 수정">선배 틈틈러에게 조언 요청하러 가기</a>
+          </div>
+        </section>
+        <section id="Sb2">
+          <div id="PlanUSf">
+            <p>
+              <span id="PlanUspan">신명서</span> 님의 재도전 계획서를 기반으로
+              다음 활동을 추천할게요!
+            </p>
+          </div>
+          <div id="SubUsf">
+            <p>
+              <span>신명서</span> 님! 아직 재취업 <span>목표</span>가 없으신
+              건가요? 선배 틈틈러의 1:1 조언을 통해 목표를 완성해보세요!
+            </p>
+          </div>
+          <div>
+            <article id="TeachVi">
+              <div id="TeachBox">
+                <div id="TcTop">
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="/plan/static/img/Star 1.png" />
+                </div>
+                <p id="CtT">인바운드 고객센터 상담직 채용</p>
+                <p id="CtLo">삼성웰스토리</p>
+                <p id="CtTy">고객상담·CS</p>
+              </div>
+              <div id="TeachBox">
+                <div id="TcTop">
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
+                </div>
+                <p id="CtT">SNS 콘텐츠 기획 및 마케팅 지원</p>
+                <p id="CtLo">우아한형제들</p>
+                <p id="CtTy">마케팅·홍보·MD</p>
+              </div>
+              <div id="TeachBox">
+                <div id="TcTop">
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
+                </div>
+                <p id="CtT">온라인 학습 콘텐츠 기획 담당자 모집</p>
+                <p id="CtLo">위더스교육</p>
+                <p id="CtTy">교육·강의</p>
+              </div>
+              <div id="TeachBox">
+                <div id="TcTop">
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
+                </div>
+                <p id="CtT">평생교육 프로그램 운영보조 모집</p>
+                <p id="CtLo">서울YWCA</p>
+                <p id="CtTy">교육·강의</p>
+              </div>
+              <div id="TeachBox">
+                <div id="TcTop">
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
+                </div>
+                <p id="CtT">급식사업부 영양사 채용</p>
+                <p id="CtLo">삼성웰스토리</p>
+                <p id="CtTy">운영·서비스업</p>
+              </div>
+              <div id="TeachBox">
+                <div id="TcTop">
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
+                </div>
+                <p id="CtT">인바운드 고객센터 상담직 채용</p>
+                <p id="CtLo">삼성웰스토리</p>
+                <p id="CtTy">고객상담·CS</p>
+              </div>
+            </article>
+          </div>
+          <div id="SbRq">
+            <a href="경로 수정">더 많은 정보 확인하러 가기</a>
+          </div>
+        </section>
+        <section id="Sb3">
+          <div id="PlanUSf">
+            <p>
+              <span id="PlanUspan">신명서</span> 님의 재도전 계획서를 기반으로
+              다음 활동을 추천할게요!
+            </p>
+          </div>
+          <div id="SubUsf">
+            <p>
+              <span>신명서</span> 님! 아직 <span>재도전 계획서</span>를 작성하지
+              않으셨네요. 다른 틈틈러들은 어떻게 준비하고 있는지 살펴볼까요?
+            </p>
+          </div>
+          <div>
+            <article id="TeachVi">
+              <div class="storyCt">
+                <p class="story">
+                  지금 최신 마케팅 공부하는데 너무 힘드네요.. 조언 부탁드려요.
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">김**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 5년</p>
+                      <p class="userJ">마케팅.홍보.MD</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  포트폴리오를 다시 만들고 싶은데 감각이 없어진 분들께 팁
+                  드릴게요
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">박**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 7년</p>
+                      <p class="userJ">디자인</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  지금 최신 마케팅 공부하는데 너무 힘드네요.. 조언 부탁드려요.
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">김**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 5년</p>
+                      <p class="userJ">마케팅.홍보.MD</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  아이 키우며 틈틈이 공부 잘 하는 방법 알려드릴게요!
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">한**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 4년</p>
+                      <p class="userJ">교육·강의</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  지금 최신 마케팅 공부하는데 너무 힘드네요.. 조언 부탁드려요.
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">이**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 2년</p>
+                      <p class="userJ">회계·세무·재무</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="storyCt">
+                <p class="story">
+                  관련 자격증은 땄는데 현장 복귀가 힘드네요.. 저만 이런가요?
+                </p>
+                <div class="storyIf">
+                  <img
+                    class="profile"
+                    src="{% static 'img/profile.png' %}"
+                    alt="프로필 이미지"
+                  />
+                  <div class="userIf">
+                    <p class="userName">정**</p>
+                    <div class="userSt">
+                      <p class="userT">경력 단절 1년</p>
+                      <p class="userJ">의료·간호</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div id="SbRq">
+            <a href="경로 수정">더 많은 정보 확인하러 가기</a>
+          </div>
+        </section>
+      </main>
+      <!-- 푸터 -->
+      <footer>
+        <img src="{% static 'img/Group 319.png' %}" alt="로고" class="logo2" />
+        <div>
+          <img src="{% static 'img/Group 320.png' %}" class="logo3" />
+        </div>
+      </footer>
+    </div>
+    <script src="{% static 'js/plan.js' %}"></script>
+  </body>
+</html>

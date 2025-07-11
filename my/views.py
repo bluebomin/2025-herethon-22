@@ -1,9 +1,23 @@
+# my/views.py (수정된 부분)
+
 from django.shortcuts import render
-from .forms import ProfileForm
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+from plan.models import Plan 
+from jobs.models import Bookmark, JobPost 
+from django.contrib.auth.models import User
+
+@login_required
 def myprofile(request):
-    profile_form = ProfileForm()
+    my_plan = None
+    try:
+        my_plan = request.user.plan 
+    except Plan.DoesNotExist:
+        pass
+
+    all_bookmark = Bookmark.objects.filter(user=request.user) #
+
     context = {
-        'profileform' : profile_form
+        'my_plan': my_plan,
+        'bookmarks': all_bookmark
     }
-    return render(request, 'myprofile.html', context)
+    return render(request, 'mypage.html', context)
