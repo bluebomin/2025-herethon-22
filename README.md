@@ -35,6 +35,7 @@
     - 게시글 작성/조회
     - 댓글 작성
     - 스크랩 기능 (마이페이지에서 확인 가능)
+ 
 ### 4. 최신 채용 정보
 
 - 다양한 외부 플랫폼과 연동해 최신 채용 정보를 간편하게 확인 가능
@@ -57,7 +58,23 @@
     - 관련 강의
     - 유사 사례 소개 등
 
-### 6. 마이페이지
+### 6. 틈틈 상담소
+
+- 재취업에 성공한 선배들과의 상담 및 소통 공간
+- 기능:
+    - 게시글 작성/조회
+    - 댓글 작성
+    - 스크랩 기능 (마이페이지에서 확인 가능)
+
+### 7. 선배 틈틈러의 이야기
+
+- 재취업 후기 공유
+- 기능:
+    - 게시글 작성/조회
+    - 댓글 작성
+    - 스크랩 기능 (마이페이지에서 확인 가능)
+
+### 8. 마이페이지
 
 - 나의 활동 기록을 모아보는 공간
 - 기능:
@@ -66,6 +83,38 @@
     - 스크랩한 게시글 확인
     - 내가 작성한 글/댓글
     - 알림 확인
+
+- **팀원 소개**
+  <table border="" cellspacing="0" cellpadding="0" width="100%">
+  <tr width="100%">
+  <td align="center">김채원</a></td>
+  <td align="center">주채빈</a></td>
+  <td  align="center">이소라</a></td>
+  <td  align="center">최이주</a></td>
+  <td  align="center">김보민</a></td>
+  </tr>
+  <tr width="100%">
+  <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/sWXnzcJ/befbedf87e51f5b02aac8b882ada60fd-sticker.png" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/MRr1QMW/f67635fddb50d05f2d0f142e63b0ab5c-sticker.png" alt="f67635fddb50d05f2d0f142e63b0ab5c-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/2KDG82L/d006044e5996d0023cd2e18425aa4677-sticker.png" alt="d006044e5996d0023cd2e18425aa4677-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/MRr1QMW/f67635fddb50d05f2d0f142e63b0ab5c-sticker.png" alt="f67635fddb50d05f2d0f142e63b0ab5c-sticker" border="0" width="90px"></a></td>
+  <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/2KDG82L/d006044e5996d0023cd2e18425aa4677-sticker.png" alt="d006044e5996d0023cd2e18425aa4677-sticker" border="0" width="90px"></a></td>
+  </tr>
+  <tr width="100%">
+  <td  align="center">기획·디자인</td>
+  <td  align="center">프론트엔드</td>
+  <td  align="center">프론트엔드</td>
+  <td  align="center">백엔드</td>
+  <td  align="center">백엔드</td>
+     </tr>
+      <tr width="100%">
+          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+           <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+          <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+           <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+            <td  align="center"><p>담당 기능 A</p><p>담당 기능 B</p><p>담당 기능 C</p></td>
+     </tr>
+  </table>
 
 ---
 
