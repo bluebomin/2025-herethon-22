@@ -76,3 +76,5 @@ class PlanForm(forms.ModelForm):
                 'placeholder': '재취업 목표를 작성해 보세요. :)',
             }),
         }
+
+        
