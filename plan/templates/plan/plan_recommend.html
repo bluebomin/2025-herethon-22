@@ -129,207 +129,16 @@
         <form action="/jobs/job_list/" method="GET" class="search-filter">
           <div class="job-wrapper">
             <span>희망 직종</span>
-            <div class="dropdown-container">
-              <div class="dropdown">직종 선택</div>
-              <img
-                src="{% static 'img/Vector 4.png' %}"
-                alt="화살표"
-                class="dropdownBtn"
-              />
-              <div class="dropdown-menu">
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="planning"
-                  />
-                  기획·전략</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="development"
-                  />
-                  IT·개발·데이터</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="manufacturing"
-                  />
-                  생산·제조</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="contents"
-                  />
-                  콘텐츠·미디어</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="marketing"
-                  />
-                  마케팅·홍보·MD</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="customer_service"
-                  />
-                  고객상담·CS</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="construction"
-                  />
-                  건축·시설관리</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="finance"
-                  />
-                  금융·보험</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="accounting"
-                  />
-                  회계·세무·재무</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="logistics"
-                  />
-                  물류·운송</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="healthcare"
-                  />
-                  의료·간호</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="public"
-                  />
-                  공공·복지</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="design"
-                  />
-                  디자인</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="operation"
-                  />
-                  운영·서비스업</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="job_type_filter"
-                    value="education"
-                  />
-                  교육·강의</label
-                >
-                <label
-                  ><input type="checkbox" name="job_type_filter" value="hr" />
-                  인사·사무·총무</label
-                >
-              </div>
-            </div>
+            <div class="dropdown-container">{{ plan.desired_job }}</div>
           </div>
 
           <div class="location-wrapper">
             <span>희망 근무 지역</span>
-            <div class="dropdown-container">
-              <div class="dropdown">지역 선택</div>
-              <img
-                src="{% static 'img/Vector 4.png' %}"
-                alt="화살표"
-                class="dropdownBtn"
-              />
-              <div class="dropdown-menu">
-                <label
-                  ><input type="checkbox" name="region_filter" value="seoul" />
-                  서울</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="region_filter"
-                    value="gyeonggi"
-                  />
-                  경기/인천</label
-                >
-                <label
-                  ><input type="checkbox" name="region_filter" value="busan" />
-                  부산/울산/경남</label
-                >
-                <label
-                  ><input type="checkbox" name="region_filter" value="daegu" />
-                  대구/경북</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="region_filter"
-                    value="gwangju"
-                  />
-                  광주/전남/전북</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="region_filter"
-                    value="daejeon"
-                  />
-                  대전/충남/충북</label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="region_filter"
-                    value="gangwon"
-                  />
-                  강원</label
-                >
-                <label
-                  ><input type="checkbox" name="region_filter" value="jeju" />
-                  제주</label
-                >
-              </div>
-            </div>
+            <div class="dropdown-container">{{ plan.desired_region }}</div>
           </div>
           <div class="career-wrapper">
             <span>경력 단절 기간</span>
-            <label><input type="number" name="start_year" /> 년 ~ </label>
-            <label><input type="number" name="end_year" /> 년</label>
+            <div class="dropdown-container">{{ plan.career_gap_years }} 년</div>
           </div>
 
           <div class="education-wrapper">
@@ -363,22 +172,16 @@
           ></div>
           <div class="cpsize-wrapper">
             <span>이력서</span>
-            <label>
-              <div id="JobJp">이력서를 첨부해주세요. (hwp, pdf)</div>
-              <input
-                style="display: none"
-                type="file"
-                placeholder="이력서를 첨부해주세요. (hwp, pdf)"
-              />
-            </label>
-            <button id="CtFile" type="button">찾아보기</button>
+            <div class="dropdown-container">
+              {% if plan.resume %}
+              <a href="{{ plan.resume.url }}" download>@file.pdf</a>
+            </div>
+            {% endif %}
+            <a id="FileED" href="{{ plan.resume.url }}">다운로드</a>
           </div>
           <div class="cpsize-wrapper">
             <span>목표</span>
-            <textarea
-              id="TA"
-              placeholder="재취업 목표를 작성해 보세요. :)"
-            ></textarea>
+            <textarea id="TA">{{ plan.goal }}</textarea>
           </div>
         </form>
         <!-- 선배 -->
