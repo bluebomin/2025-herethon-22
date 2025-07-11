@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/plan/static/css/plan_recommend.css" />
+    <link rel="stylesheet" href="{% static 'css/plan_recommend.css' %}" />
     <title>채용정보추천</title>
   </head>
   <body>
@@ -15,12 +15,12 @@
           <a href="/login/templates/login.html" class="logo">
             <img
               id="HdLogoTT"
-              src="/plan/static/img/Group 315.png"
+              src="{% static 'img/Group 315.png' %}"
               alt="로고"
             />
             <img
               id="HdLogoKTT"
-              src="/plan/static/img/Group 318.png"
+              src="{% static 'img/Group 318.png' %}"
               alt="로고"
             />
           </a>
@@ -37,7 +37,7 @@
             <a href="/login/">
               <!-- 로그인 후 스타일 변경 -->
               <img
-                src="/plan/static/img/Group 243.png"
+                src="{% static 'img/Group 243.png' %}"
                 alt="로그인"
                 id="login"
               />
@@ -45,11 +45,11 @@
             <a href="/mypage/"
               ><img
                 id="UserImg"
-                src="/plan/static/img/User.png"
+                src="{% static 'img/User.png' %}"
                 alt="마이페이지"
             /></a>
             <a id="bell-wrapper"
-              ><img id="BellImg" src="/plan/static/img/Bell.png" alt="알림" />
+              ><img id="BellImg" src="{% static 'img/Bell.png'%}" alt="알림" />
               <div id="notif-box">
                 <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
                 <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
@@ -67,14 +67,18 @@
                 placeholder="검색어를 입력해주세요"
               />
             </div>
-            <img id="SearchImg" src="/plan/static/img/Search.png" alt="검색" />
+            <img
+              id="SearchImg"
+              src="{% static 'img/Search.png' %}"
+              alt="검색"
+            />
           </nav>
         </div>
       </header>
       <!-- 채용정보 검색 -->
       <main class="content">
         <div id="title">
-          <img id="HdImg" src="/plan/static/img/틈틈러 재도전 이야기.png" />
+          <img id="HdImg" src="{% static 'img/틈틈러 재도전 이야기.png' %}" />
           <p id="titleDt">
             재취업에 도전하는 틈틈러들과 이야기를 나누어 보아요.
           </p>
@@ -89,7 +93,7 @@
             <div class="dropdown-container">
               <div class="dropdown">직종 선택</div>
               <img
-                src="/plan/static/img/Vector 4.png"
+                src="{% static 'img/Vector 4.png' %}"
                 alt="화살표"
                 class="dropdownBtn"
               />
@@ -227,7 +231,7 @@
             <div class="dropdown-container">
               <div class="dropdown">지역 선택</div>
               <img
-                src="/plan/static/img/Vector 4.png"
+                src="{% static 'img/Vector 4.png' %}"
                 alt="화살표"
                 class="dropdownBtn"
               />
@@ -372,7 +376,7 @@
             <article id="TeachVi">
               <div id="TeachBox">
                 <div id="TcTop">
-                  <img id="TcProfile" src="/plan/static/img/image 9.png" />
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
                   <img class="Tcstar" src="/plan/static/img/Star 1.png" />
                 </div>
                 <p id="CtT">인바운드 고객센터 상담직 채용</p>
@@ -381,8 +385,8 @@
               </div>
               <div id="TeachBox">
                 <div id="TcTop">
-                  <img id="TcProfile" src="/plan/static/img/image 9.png" />
-                  <img class="Tcstar" src="/plan/static/img/Star 1.png" />
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
                 </div>
                 <p id="CtT">SNS 콘텐츠 기획 및 마케팅 지원</p>
                 <p id="CtLo">우아한형제들</p>
@@ -390,8 +394,8 @@
               </div>
               <div id="TeachBox">
                 <div id="TcTop">
-                  <img id="TcProfile" src="/plan/static/img/image 9.png" />
-                  <img class="Tcstar" src="/plan/static/img/Star 1.png" />
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
                 </div>
                 <p id="CtT">온라인 학습 콘텐츠 기획 담당자 모집</p>
                 <p id="CtLo">위더스교육</p>
@@ -399,8 +403,8 @@
               </div>
               <div id="TeachBox">
                 <div id="TcTop">
-                  <img id="TcProfile" src="/plan/static/img/image 9.png" />
-                  <img class="Tcstar" src="/plan/static/img/Star 1.png" />
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
                 </div>
                 <p id="CtT">평생교육 프로그램 운영보조 모집</p>
                 <p id="CtLo">서울YWCA</p>
@@ -408,8 +412,8 @@
               </div>
               <div id="TeachBox">
                 <div id="TcTop">
-                  <img id="TcProfile" src="/plan/static/img/image 9.png" />
-                  <img class="Tcstar" src="/plan/static/img/Star 1.png" />
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
                 </div>
                 <p id="CtT">급식사업부 영양사 채용</p>
                 <p id="CtLo">삼성웰스토리</p>
@@ -417,8 +421,8 @@
               </div>
               <div id="TeachBox">
                 <div id="TcTop">
-                  <img id="TcProfile" src="/plan/static/img/image 9.png" />
-                  <img class="Tcstar" src="/plan/static/img/Star 1.png" />
+                  <img id="TcProfile" src="{% static 'img/image 9.png' %}" />
+                  <img class="Tcstar" src="{% static 'img/Star 1.png' %}" />
                 </div>
                 <p id="CtT">인바운드 고객센터 상담직 채용</p>
                 <p id="CtLo">삼성웰스토리</p>
@@ -452,7 +456,7 @@
                 <div class="storyIf">
                   <img
                     class="profile"
-                    src="/plan/static/img/profile.png"
+                    src="{% static 'img/profile.png' %}"
                     alt="프로필 이미지"
                   />
                   <div class="userIf">
@@ -472,7 +476,7 @@
                 <div class="storyIf">
                   <img
                     class="profile"
-                    src="/plan/static/img/profile.png"
+                    src="{% static 'img/profile.png' %}"
                     alt="프로필 이미지"
                   />
                   <div class="userIf">
@@ -491,7 +495,7 @@
                 <div class="storyIf">
                   <img
                     class="profile"
-                    src="/plan/static/img/profile.png"
+                    src="{% static 'img/profile.png' %}"
                     alt="프로필 이미지"
                   />
                   <div class="userIf">
@@ -510,7 +514,7 @@
                 <div class="storyIf">
                   <img
                     class="profile"
-                    src="/plan/static/img/profile.png"
+                    src="{% static 'img/profile.png' %}"
                     alt="프로필 이미지"
                   />
                   <div class="userIf">
@@ -529,7 +533,7 @@
                 <div class="storyIf">
                   <img
                     class="profile"
-                    src="/plan/static/img/profile.png"
+                    src="{% static 'img/profile.png' %}"
                     alt="프로필 이미지"
                   />
                   <div class="userIf">
@@ -548,7 +552,7 @@
                 <div class="storyIf">
                   <img
                     class="profile"
-                    src="/plan/static/img/profile.png"
+                    src="{% static 'img/profile.png' %}"
                     alt="프로필 이미지"
                   />
                   <div class="userIf">
@@ -569,12 +573,12 @@
       </main>
       <!-- 푸터 -->
       <footer>
-        <img src="/plan/static/img/Group 319.png" alt="로고" class="logo2" />
+        <img src="{% static 'img/Group 319.png' %}" alt="로고" class="logo2" />
         <div>
-          <img src="/plan/static/img/Group 320.png" class="logo3" />
+          <img src="{% static 'img/Group 320.png' %}" class="logo3" />
         </div>
       </footer>
     </div>
-    <script src="/plan/static/js/plan.js"></script>
+    <script src="{% static 'js/plan.js' %}"></script>
   </body>
 </html>

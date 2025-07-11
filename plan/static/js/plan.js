@@ -39,23 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const hasNotification = true; //false면 알람표시x
 
   if (hasNotification) {
-    BellImg.src = "/plan/static/img/Group 327.png"; // 알림 온 상태 이미지
+    BellImg.src = "/static/img/Group 327.png"; // 알림 온 상태 이미지
   } else {
-    BellImg.src = "/plan/static/img/Bell.png"; // 기본 종 이미지
+    BellImg.src = "/static/img/Bell.png"; // 기본 종 이미지
   }
 });
-
-// //연동시 반영
-// fetch("/api/notifications/unread")
-//   .then((res) => res.json())
-//   .then((data) => {
-//     const bellIcon = document.getElementById("bellIcon");
-//     if (data.hasUnread) {
-//       bellIcon.src = "/img/Bell_active.png";
-//     } else {
-//       bellIcon.src = "/img/Bell.png";
-//     }
-//   });
 
 //알림 클릭
 document.getElementById("BellImg").addEventListener("click", function () {
@@ -71,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginImg = document.getElementById("login");
   const userImg = document.getElementById("UserImg");
   const bellIcon = document.getElementById("BellImg");
-
+  const loginUser = document.getElementById("LoginUserIf");
   let isSearchOpen = false;
 
   searchIcon.addEventListener("click", function () {
@@ -80,11 +68,13 @@ document.addEventListener("DOMContentLoaded", function () {
       loginImg.style.display = "none";
       userImg.style.display = "none";
       bellIcon.style.display = "none";
+      loginUser.style.display = "none";
     } else {
       searchContainer.style.display = "none";
       loginImg.style.display = "inline";
       userImg.style.display = "inline";
       bellIcon.style.display = "inline";
+      loginUser.style.display = "inline";
     }
     isSearchOpen = !isSearchOpen;
   });
@@ -102,6 +92,36 @@ document.addEventListener("DOMContentLoaded", function () {
       searchInput.style.color = "  #9ca3af";
       searchInput.style.fontWeight = "300";
     }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchIcon = document.getElementById("SearchImg");
+  const searchContainer = document.getElementById("search-container");
+  const loginIcon = document.getElementById("login");
+  const userImg = document.getElementById("UserImg");
+  const bellIcon = document.getElementById("BellImg");
+  const loginUserBox = document.getElementById("LoginUserIf");
+
+  let isSearchOpen = false;
+
+  searchIcon.addEventListener("click", function () {
+    if (!isSearchOpen) {
+      // 검색창 열기
+      searchContainer.style.display = "flex";
+      if (loginIcon) loginIcon.style.display = "none";
+      if (userImg) userImg.style.display = "none";
+      if (bellIcon) bellIcon.style.display = "none";
+      if (loginUserBox) loginUserBox.style.display = "none";
+    } else {
+      // 검색창 닫기
+      searchContainer.style.display = "none";
+      if (loginIcon) loginIcon.style.display = "inline";
+      if (userImg) userImg.style.display = "inline";
+      if (bellIcon) bellIcon.style.display = "inline";
+      if (loginUserBox) loginUserBox.style.display = "flex";
+    }
+    isSearchOpen = !isSearchOpen;
   });
 });
 
@@ -326,23 +346,4 @@ document.addEventListener("DOMContentLoaded", function () {
       hiddenInput.value = selected.join(",");
     });
   });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const jobCheckboxes = document.querySelectorAll(".job-checkbox");
-  const jobInput = document.getElementById("desiredJobInput");
-
-  function updateJobInput() {
-    const selectedJobs = Array.from(jobCheckboxes)
-      .filter((cb) => cb.checked)
-      .map((cb) => cb.value);
-    jobInput.value = selectedJobs.join(",");
-  }
-
-  jobCheckboxes.forEach((cb) => {
-    cb.addEventListener("change", updateJobInput);
-  });
-
-  // 초기 로딩 시 반영
-  updateJobInput();
 });
