@@ -36,45 +36,9 @@ class Plan(models.Model):
     desired_job = models.CharField(max_length=100, choices=JOB_TYPE_CHOICES)
     desired_region = models.CharField(max_length=100, choices=REGION_CHOICES)
     career_gap_years = models.PositiveIntegerField()
-    start_year = models.PositiveIntegerField(null=True, blank=True)
-    end_year = models.PositiveIntegerField(null=True, blank=True)
     strengths = models.JSONField(default=list, blank=True)
     resume = models.FileField(upload_to='resumes/', blank=True, null=True)
     goal = models.TextField(blank=True)
 
     def __str__(self):
         return f"{self.user.username}의 재도전 계획"
-
-
-# forms.py
-from django import forms
-from .models import Plan, JOB_TYPE_CHOICES, REGION_CHOICES
-
-class PlanForm(forms.ModelForm):
-    strengths = forms.CharField(widget=forms.HiddenInput(), required=False)
-    desired_job = forms.ChoiceField(choices=JOB_TYPE_CHOICES)
-    desired_region = forms.ChoiceField(choices=REGION_CHOICES)
-
-    class Meta:
-        model = Plan
-        fields = [
-            'desired_job',
-            'desired_region',
-            'career_gap_years',
-            'strengths',
-            'resume',
-            'goal'
-        ]
-        widgets = {
-            'resume': forms.ClearableFileInput(attrs={
-                'id': 'resumeInput',
-                'class': 'file-input',
-            }),
-            'goal': forms.Textarea(attrs={
-                'class': 'textarea',
-                'id': 'TA',
-                'placeholder': '재취업 목표를 작성해 보세요. :)',
-            }),
-        }
-
-        

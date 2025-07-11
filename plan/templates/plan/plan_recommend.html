@@ -129,12 +129,12 @@
         <form action="/jobs/job_list/" method="GET" class="search-filter">
           <div class="job-wrapper">
             <span>희망 직종</span>
-            <div class="dropdown-container">{{ plan.desired_job }}</div>
+            <div class="dropdown-container">{{ plan.get_desired_job_display }}</div>
           </div>
 
           <div class="location-wrapper">
             <span>희망 근무 지역</span>
-            <div class="dropdown-container">{{ plan.desired_region }}</div>
+            <div class="dropdown-container">{{ plan.get_desired_region_display }}</div>
           </div>
           <div class="career-wrapper">
             <span>경력 단절 기간</span>
@@ -175,9 +175,10 @@
             <div class="dropdown-container">
               {% if plan.resume %}
               <a href="{{ plan.resume.url }}" download>@file.pdf</a>
+              {% else %}
+                  <p>아직 이력서를 등록하지 않았습니다</p>
             </div>
-            {% endif %}
-            <a id="FileED" href="{{ plan.resume.url }}">다운로드</a>
+              {% endif %}
           </div>
           <div class="cpsize-wrapper">
             <span>목표</span>
