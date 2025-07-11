@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/plan/static/css/plan.css" />
+    <link rel="stylesheet" href="{% static 'css/plan.css' %}" />
     <title>최신채용정보</title>
   </head>
   <body>
@@ -12,44 +13,74 @@
       <header>
         <!--경로수정-->
         <div id="HderLogos">
-          <a href="/login/templates/login.html" class="logo">
+          <a href="{% url 'accounts:login' %}" class="logo">
             <img
               id="HdLogoTT"
-              src="/plan/static/img/Group 315.png"
+              src="{% static 'img/Group 315.png' %}"
               alt="로고"
             />
             <img
               id="HdLogoKTT"
-              src="/plan/static/img/Group 318.png"
+              src="{% static 'img/Group 318.png' %}"
               alt="로고"
             />
           </a>
         </div>
         <div id="HdScetion">
           <nav id="menu">
-            <a class="HdA" href="">틈틈이공유</a>
-            <a class="HdA" href="">틈틈이정보</a>
-            <a class="HdA" href="">틈틈이계획</a>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이공유</p>
+              <div class="theSe">
+                <p>최신 채용 정보</p>
+                <p>틈틈러 재도전 이야기</p>
+              </div>
+            </div>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이정보</p>
+              <div class="theSe">
+                <p>온라인 강의 큐레이션</p>
+                <p>나의 재도전 계획</p>
+              </div>
+            </div>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이계획</p>
+              <div class="theSe">
+                <p>틈틈 상담소</p>
+                <p>선배 틈틈러의 이야기</p>
+              </div>
+            </div>
           </nav>
-
           <nav id="user-actions">
-            <!-- 추후 경로 페이지 수정 -->
-            <a href="/login/">
-              <!-- 로그인 후 스타일 변경 -->
+            <!-- 로그인 안 한 경우 -->
+            {% if not user.is_authenticated %}
+            <a href="{% url 'accounts:login' %}">
               <img
-                src="/plan/static/img/Group 243.png"
+                src="{% static 'img/Group 243.png' %}"
                 alt="로그인"
                 id="login"
               />
             </a>
-            <a href="/mypage/"
+            {% endif %}
+
+            <!-- 로그인 한 경우 -->
+            {% if user.is_authenticated %}
+            <div id="LoginUserIf" style="display: flex">
+              <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+              <a href="{% url 'post:post_list' %}" id="LoginUsertxt">
+                <span id="LoginUserName">{{ user.username }}</span> 님
+                안녕하세요!
+              </a>
+            </div>
+            {% endif %}
+
+            <a href="{%url 'my:mypage' %}"
               ><img
                 id="UserImg"
-                src="/plan/static/img/User.png"
+                src="{%static 'img/User.png' %}"
                 alt="마이페이지"
             /></a>
             <a id="bell-wrapper"
-              ><img id="BellImg" src="/plan/static/img/Bell.png" alt="알림" />
+              ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
               <div id="notif-box">
                 <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
                 <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
@@ -67,14 +98,14 @@
                 placeholder="검색어를 입력해주세요"
               />
             </div>
-            <img id="SearchImg" src="/plan/static/img/Search.png" alt="검색" />
+            <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
           </nav>
         </div>
       </header>
       <!-- 채용정보 검색 -->
       <main class="content">
         <div id="title">
-          <img id="HdImg" src="/plan/static/img/틈틈러 재도전 이야기.png" />
+          <img id="HdImg" src="{% static 'img/틈틈러 재도전 이야기.png' %}" />
           <p id="titleDt">
             재취업에 도전하는 틈틈러들과 이야기를 나누어 보아요.
           </p>
@@ -88,7 +119,7 @@
             <div class="dropdown-container">
               <div class="dropdown">직종 선택</div>
               <img
-                src="/plan/static/img/Vector 4.png"
+                src="{% static 'img/Vector 4.png' %}"
                 alt="화살표"
                 class="dropdownBtn"
               />
@@ -226,7 +257,7 @@
             <div class="dropdown-container">
               <div class="dropdown">지역 선택</div>
               <img
-                src="/plan/static/img/Vector 4.png"
+                src="{% static 'img/Vector 4.png' %}"
                 alt="화살표"
                 class="dropdownBtn"
               />
@@ -348,12 +379,12 @@
       </main>
       <!-- 푸터 -->
       <footer>
-        <img src="/plan/static/img/Group 319.png" alt="로고" class="logo2" />
+        <img src="{% static 'img/Group 319.png' %}" alt="로고" class="logo2" />
         <div>
-          <img src="/plan/static/img/Group 320.png" class="logo3" />
+          <img src="{% static 'img/Group 320.png' %}" class="logo3" />
         </div>
       </footer>
     </div>
-    <script src="/plan/static/js/plan.js"></script>
+    <script src="{ static 'js/plan.js' %}"></script>
   </body>
 </html>

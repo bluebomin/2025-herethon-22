@@ -65,7 +65,7 @@
           {% if user.is_authenticated %}
           <div id="LoginUserIf" style="display: flex">
             <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
-            <a href="{% url 'post:post_create' %}" id="LoginUsertxt">
+            <a href="{% url 'post:post_list' %}" id="LoginUsertxt">
               <span id="LoginUserName">{{ user.username }}</span> 님 안녕하세요!
             </a>
           </div>

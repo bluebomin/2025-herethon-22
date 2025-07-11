@@ -65,7 +65,7 @@
           {% if user.is_authenticated %}
           <div id="LoginUserIf" style="display: flex">
             <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
-            <a href="{% url 'post:post_create' %}" id="LoginUsertxt">
+            <a href="{% url 'post:post_list' %}" id="LoginUsertxt">
               <span id="LoginUserName">{{ user.username }}</span> 님 안녕하세요!
             </a>
           </div>
@@ -173,8 +173,11 @@
                   <p id="MenuTxt4"><span>5</span>년</p>
                 </div>
               </div>
-              <a class="reLink">더 자세히 확인하기</a>
+              <a href="{% url 'plan:myplan' %}" class="reLink"
+                >더 자세히 확인하기</a
+              >
             </div>
+
             <div class="T">
               <div class="reCo">
                 <p class="reT">'마케팅' 추천 채용 정보</p>
