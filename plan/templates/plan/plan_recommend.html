@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -12,7 +13,7 @@
       <header>
         <!--경로수정-->
         <div id="HderLogos">
-          <a href="/login/templates/login.html" class="logo">
+          <a href="{% url 'accounts:login' %}" class="logo">
             <img
               id="HdLogoTT"
               src="{% static 'img/Group 315.png' %}"
@@ -27,29 +28,59 @@
         </div>
         <div id="HdScetion">
           <nav id="menu">
-            <a class="HdA" href="">틈틈이공유</a>
-            <a class="HdA" href="">틈틈이정보</a>
-            <a class="HdA" href="">틈틈이계획</a>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이공유</p>
+              <div class="theSe">
+                <p>최신 채용 정보</p>
+                <p>틈틈러 재도전 이야기</p>
+              </div>
+            </div>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이정보</p>
+              <div class="theSe">
+                <p>온라인 강의 큐레이션</p>
+                <p>나의 재도전 계획</p>
+              </div>
+            </div>
+            <div class="theNav">
+              <p class="HdA" href="">틈틈이계획</p>
+              <div class="theSe">
+                <p>틈틈 상담소</p>
+                <p>선배 틈틈러의 이야기</p>
+              </div>
+            </div>
           </nav>
-
           <nav id="user-actions">
-            <!-- 추후 경로 페이지 수정 -->
-            <a href="/login/">
-              <!-- 로그인 후 스타일 변경 -->
+            <!-- 로그인 안 한 경우 -->
+            {% if not user.is_authenticated %}
+            <a href="{% url 'accounts:login' %}">
               <img
                 src="{% static 'img/Group 243.png' %}"
                 alt="로그인"
                 id="login"
               />
             </a>
-            <a href="/mypage/"
+            {% endif %}
+
+            <!-- 로그인 한 경우 -->
+            {% if user.is_authenticated %}
+            <div id="LoginUserIf" style="display: flex">
+              <img id="LoginPenImg" src="{% static 'img/pen.png' %}" />
+              <a href="{% url 'post:post_list' %}" id="LoginUsertxt">
+                <span id="LoginUserName">{{ user.username }}</span> 님
+                안녕하세요!
+              </a>
+            </div>
+            {% endif %}
+
+            <a href="{%url 'my:mypage' %}"
               ><img
                 id="UserImg"
-                src="{% static 'img/User.png' %}"
+                src="{%static 'img/User.png' %}"
                 alt="마이페이지"
             /></a>
             <a id="bell-wrapper"
-              ><img id="BellImg" src="{% static 'img/Bell.png'%}" alt="알림" />
+              ><img id="BellImg" src=" {%static 'img/Bell.png' %}" alt="알림" />
               <div id="notif-box">
                 <p>[틈틈러 재도전 이야기] 내 게시글에 댓글이 달렸어요.</p>
                 <p>[틈틈 상담소] 내 게시글에 댓글이 달렸어요.</p>
@@ -67,11 +98,7 @@
                 placeholder="검색어를 입력해주세요"
               />
             </div>
-            <img
-              id="SearchImg"
-              src="{% static 'img/Search.png' %}"
-              alt="검색"
-            />
+            <img id="SearchImg" src="{%static 'img/Search.png'%}" alt="검색" />
           </nav>
         </div>
       </header>
@@ -84,8 +111,10 @@
           </p>
         </div>
         <div id="PlanUS">
-          <p><span id="PlanUspan">신명서</span> 님의 재도전 계획서</p>
-          <a id="ReS" href="plan.html">수정하기</a>
+          <p>
+            <span id="PlanUspan">{{ user.username }}</span> 님의 재도전 계획서
+          </p>
+          <a id="ReS" href="{% url 'plan:myplan'%}">수정하기</a>
         </div>
         <form action="/jobs/job_list/" method="GET" class="search-filter">
           <div class="job-wrapper">
