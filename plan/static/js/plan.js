@@ -334,35 +334,19 @@ document.addEventListener("DOMContentLoaded", function () {
 //   }
 // });
 
-// 체크박스 변경 시 실시간으로 hidden input 업데이트
-document.addEventListener("DOMContentLoaded", function () {
-  const jobCheckboxes = document.querySelectorAll('input[name="job_type_filter"]');
-  const regionCheckboxes = document.querySelectorAll('input[name="region_filter"]');
-  const desiredJobInput = document.getElementById("desiredJobInput");
-  const desiredRegionInput = document.getElementById("desiredRegionInput");
+// document.addEventListener("DOMContentLoaded", function () {
+//   const checkboxes = document.querySelectorAll('input[name="job_type_filter"]');
+//   const hiddenInput = document.getElementById("desiredJobInput");
 
-  // 직종 체크박스 이벤트
-  jobCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      const selected = Array.from(jobCheckboxes)
-        .filter((cb) => cb.checked)
-        .map((cb) => cb.value);
-      if (desiredJobInput) desiredJobInput.value = selected.join(",");
-      console.log("직종 선택 업데이트:", selected); // 디버깅용
-    });
-  });
-
-  // 지역 체크박스 이벤트  
-  regionCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      const selected = Array.from(regionCheckboxes)
-        .filter((cb) => cb.checked)
-        .map((cb) => cb.value);
-      if (desiredRegionInput) desiredRegionInput.value = selected.join(",");
-      console.log("지역 선택 업데이트:", selected); // 디버깅용
-    });
-  });
-});
+//   checkboxes.forEach((checkbox) => {
+//     checkbox.addEventListener("change", () => {
+//       const selected = Array.from(checkboxes)
+//         .filter((cb) => cb.checked)
+//         .map((cb) => cb.value);
+//       hiddenInput.value = selected.join(",");
+//     });
+//   });
+// });
 
 //랜덤 추천
 document.addEventListener("DOMContentLoaded", function () {
@@ -395,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const desiredJobInput = document.getElementById("desiredJobInput");
   const desiredRegionInput = document.getElementById("desiredRegionInput");
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", function () {
     // 직종 체크박스 값 -> hidden input
     const selectedJobs = Array.from(jobCheckboxes)
       .filter(cb => cb.checked)
@@ -407,8 +391,5 @@ document.addEventListener("DOMContentLoaded", function () {
       .filter(cb => cb.checked)
       .map(cb => cb.value);
     if (desiredRegionInput) desiredRegionInput.value = selectedRegions.join(",");
-
-    console.log("Form submit - 직종:", selectedJobs);
-    console.log("Form submit - 지역:", selectedRegions);
   });
 });

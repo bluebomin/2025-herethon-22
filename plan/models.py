@@ -33,24 +33,46 @@ REGION_CHOICES = [
 
 class Plan(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    desired_job = models.JSONField(default=list, blank=True)  # 다중 선택 지원
-    desired_region = models.JSONField(default=list, blank=True)  # 다중 선택 지원
+    desired_job = models.CharField(max_length=100, choices=JOB_TYPE_CHOICES)
+    desired_region = models.CharField(max_length=100, choices=REGION_CHOICES)
+    career_gap_years = models.PositiveIntegerField()
     start_year = models.PositiveIntegerField(null=True, blank=True)
     end_year = models.PositiveIntegerField(null=True, blank=True)
-    career_gap_years = models.PositiveIntegerField(default=0)
     strengths = models.JSONField(default=list, blank=True)
     resume = models.FileField(upload_to='resumes/', blank=True, null=True)
     goal = models.TextField(blank=True)
 
-    def clean(self):
-        from django.core.exceptions import ValidationError
-        if self.start_year and self.end_year:
-            if self.start_year > self.end_year:
-                raise ValidationError('경력 시작 연도는 종료 연도보다 클 수 없습니다.')
-            self.career_gap_years = self.end_year - self.start_year
-        if not self.desired_job or not self.desired_region:
-            raise ValidationError('직종과 지역은 필수 입력입니다.')
-
     def __str__(self):
         return f"{self.user.username}의 재도전 계획"
 
+
+# forms.py
+from django import forms
+from .models import Plan, JOB_TYPE_CHOICES, REGION_CHOICES
+
+class PlanForm(forms.ModelForm):
+    strengths = forms.CharField(widget=forms.HiddenInput(), required=False)
+    desired_job = forms.ChoiceField(choices=JOB_TYPE_CHOICES)
+    desired_region = forms.ChoiceField(choices=REGION_CHOICES)
+
+    class Meta:
+        model = Plan
+        fields = [
+            'desired_job',
+            'desired_region',
+            'career_gap_years',
+            'strengths',
+            'resume',
+            'goal'
+        ]
+        widgets = {
+            'resume': forms.ClearableFileInput(attrs={
+                'id': 'resumeInput',
+                'class': 'file-input',
+            }),
+            'goal': forms.Textarea(attrs={
+                'class': 'textarea',
+                'id': 'TA',
+                'placeholder': '재취업 목표를 작성해 보세요. :)',
+            }),
+        }
