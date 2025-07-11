@@ -1,5 +1,3 @@
-# my/views.py (수정된 부분)
-
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from plan.models import Plan 
