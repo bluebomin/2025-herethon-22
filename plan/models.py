@@ -6,7 +6,7 @@ class Plan(models.Model):
     desired_job = models.CharField(max_length=100)
     desired_region = models.CharField(max_length=100)
     career_gap_years = models.PositiveIntegerField()
-    strengths = models.TextField(blank=True)
+    strengths = models.JSONField(default=list, blank=True)
     resume = models.FileField(upload_to='resumes/', blank=True, null=True)
     goal = models.TextField(blank=True)
 
