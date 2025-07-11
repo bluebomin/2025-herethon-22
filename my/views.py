@@ -13,9 +13,11 @@ def myprofile(request):
         pass
 
     all_bookmark = Bookmark.objects.filter(user=request.user) #
+    strengths =3 ;
 
     context = {
         'my_plan': my_plan,
+        'strengths_count' : strengths,
         'bookmarks': all_bookmark
     }
     return render(request, 'mypage.html', context)
