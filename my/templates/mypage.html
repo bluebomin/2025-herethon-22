@@ -4,14 +4,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/mypage.css"  />
+    <link rel="stylesheet" href={%static "css/mypage.css"%} />
     <title>마이페이지</title>
   </head>
   <body>
     <div class="wrapper">
       <!-- 헤더 -->
       <header>
-        <a href={%url 'home'%} class="logo"> <!--링크 이동 되는지 확인 필요-->
+        <a href={%url 'home:home'%} class="logo"> <!--링크 이동 되는지 확인 필요-->
           <img src={% static 'img/logo1.svg' %}  alt="로고" />
           <img src={% static 'img/logo4.svg' %} alt="로고" />
         </a>
@@ -196,7 +196,7 @@
               >
                 <h2>{{ bookmark.job_post.title }}</h2>
               </a>
-              <p class="subtitle">안녕하세요구르트</p>
+              <p class="subtitle">{{ bookmark.job_post.company }}</p>
               <p class="category">{{ bookmark.job_post.get_job_type_display}}</p>
             </div>
             <!-- 스크랩 유무에 따른 버튼 이미지 변경  -->
