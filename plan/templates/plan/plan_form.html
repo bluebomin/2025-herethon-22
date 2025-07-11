@@ -280,7 +280,11 @@
 
           <div class="location-wrapper">
             <span>희망 근무 지역</span>
-            <input type="hidden" name="desired_job" id="desiredJobInput" />
+            <input
+              type="hidden"
+              name="desired_region"
+              id="desiredRegionInput"
+            />
             <div class="dropdown-container">
               <div class="dropdown">지역 선택</div>
               <img
@@ -342,20 +346,13 @@
           </div>
           <div class="career-wrapper">
             <span>경력 단절 기간</span>
-            <!-- <label>
-              <input type="number" name="start_year" />{{ form.start_year }} 년
-              ~
-            </label>
-            <label
-              ><input type="number" name="end_year" />{{ form.end_year }}
-              년</label
-            > -->
-            {{ form.start_year }} 년 ~ {{ form.end_year }} 년
+            <input type="number" name="start_year" class="input-year" /> 년 ~
+            <input type="number" name="end_year" class="input-year" /> 년
           </div>
 
           <div class="education-wrapper">
             <span>보유역량</span>
-            {{ form.strengths }}
+            <input type="hidden" name="strengths" id="strengthsInput" />
             <input
               type="text"
               id="skillInput"
@@ -386,24 +383,22 @@
           ></div> -->
           <div class="cpsize-wrapper">
             <span>이력서</span>
-            {{ form.resume }}
-            <!-- <label>
-              <div id="JobJp">이력서를 첨부해주세요. (hwp, pdf)</div>
-              <input
-                style="display: none"
-                type="file"
-                placeholder="이력서를 첨부해주세요. (hwp, pdf)"
-              />
-            </label> -->
+            <input
+              type="file"
+              name="resume"
+              id="resumeInput"
+              class="file-input"
+            />
             <button id="CtFile" type="button">찾아보기</button>
           </div>
           <div class="cpsize-wrapper">
             <span>목표</span>
-            {{ form.goal }}
-            <!-- <textarea
+            <textarea
               id="TA"
+              name="goal"
+              class="textarea"
               placeholder="재취업 목표를 작성해 보세요. :)"
-            ></textarea> -->
+            ></textarea>
           </div>
 
           <lael>
